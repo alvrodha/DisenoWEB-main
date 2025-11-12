@@ -1,0 +1,95 @@
+/* ====== ESTILOS GENERALES ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fira Sans", sans-serif;
+  text-decoration: none;
+}
+
+body {
+  background-color: #9eb6ee ;
+  color: #222;
+}
+
+/* ====== MENÚ DE NAVEGACIÓN ====== */
+#nav {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1c1d3d;
+}
+
+#logo {
+  background-color: white;
+  padding: 2px 5px;
+    width: auto;
+    height: auto;
+}
+
+#nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex: 1;
+    list-style: none;
+    margin-left: 40px;
+    min-width: 250px;
+}
+
+#nav li a {
+    display: block;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: 0.3s;
+  background: none;
+  padding: 0.3rem 0.5rem;
+}
+
+#nav li a:hover {
+  color:#1c1d3d;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+/* ====== BREADCRUMB ====== */
+#navWindow {
+  background-color: #415f7e;
+  color: white;
+  padding: 0.4rem 2rem;
+  width: fit-content;
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+  font-size: 0.85rem;
+}
+
+#navWindow a {
+  color: #ffffff;
+}
+
+/* ====== CONTENIDO ====== */
+#content {
+  background-color: #9eb6ee ;
+  min-height: 500px;
+  padding: 1rem;
+}
+
+/* ====== FOOTER ====== */
+#footer {
+  background-color: #1c1d3d;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}
+
+#footer a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+#footer a:hover {
+  text-decoration: none;
+}

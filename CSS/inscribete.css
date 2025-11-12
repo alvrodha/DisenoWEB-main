@@ -1,0 +1,20 @@
+#content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#content div {
+    background-color: lightgray;
+    border-radius: 15px;
+}
+
+#formulario {
+    flex: 1;
+    margin-right: 20px;
+}
+
+#login {
+    flex: 1;
+    margin-left: 20px;
+}

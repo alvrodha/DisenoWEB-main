@@ -1,0 +1,10 @@
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#content div {
+    height: 300px;
+    width: 200px;
+}
