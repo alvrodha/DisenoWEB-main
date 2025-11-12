@@ -1,12 +1,39 @@
 #content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: space-around;
+    row-gap: 30px;
+    margin: 30px;
 }
 
 #content div {
     background-color: white;
-    
     height: 300px;
     width: 200px;
+    border-radius: 10px;
+}
+
+#content div h2 {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#content div img {
+    display: block;
+    margin: auto;
+    padding: 10px;
+    height: fit-content;
+}
+
+#content div input {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #415f7e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

@@ -1,7 +1,7 @@
 #content {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: center;
+    gap: 40px;
 }
 
 #content div {
@@ -9,12 +9,19 @@
     border-radius: 15px;
 }
 
+#content div h2 {
+    text-align: center;
+    padding: 15px;
+}
+
+#content div form {
+    
+}
+
 #formulario {
-    flex: 1;
     margin-right: 20px;
 }
 
 #login {
-    flex: 1;
     margin-left: 20px;
 }

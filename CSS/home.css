@@ -1,0 +1,25 @@
+#content {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+#pregs {
+    background-color: white;
+}
+
+#pregs :hover {
+
+}
+
+#resp {
+    background-color: white;
+}
+
+#resp :hover {
+
+}
+
+#content div {
+
+}
