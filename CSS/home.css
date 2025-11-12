@@ -1,25 +1,68 @@
 #content {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: stretch;
+    position: relative;
+    overflow: hidden;
 }
 
-#pregs {
+/* ======== Bloque 1 ======== */
+#preguntaQuien {
+    position: relative;
+    padding: 20px;
     background-color: white;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.5s ease;
 }
 
-#pregs :hover {
-
+#respuestaQuien {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #f9f9f9;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: left 0.5s ease;
+    z-index: 0;
 }
 
-#resp {
+#preguntaQuien:hover #respuestaQuien {
+    left: 0;
+    background-color: #415f7e;
+}
+
+/* ======== Bloque 2 ======== */
+#preguntaQue {
+    position: relative;
+    padding: 20px;
     background-color: white;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.5s ease;
 }
 
-#resp :hover {
-
+#respuestaQue {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: #f9f9f9;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: right 0.5s ease;
+    z-index: 0;
 }
 
-#content div {
-
+#preguntaQue:hover #respuestaQue {
+    right: 0;
+    background-color: #415f7e;
 }
+
