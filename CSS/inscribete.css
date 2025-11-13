@@ -1,7 +1,21 @@
 #content {
     display: flex;
-    justify-content: center;
-    gap: 40px;
+    justify-content: center;  
+    align-items: center;               
+    padding: 40px;
+}
+
+#registro {
+    background-color: white;
+    border-radius: 15px;
+    padding: 50px;
+    height: 470x;             
+}
+
+#registro form {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;               
 }
 
 #content div {
@@ -9,19 +23,8 @@
     border-radius: 15px;
 }
 
-#content div h2 {
-    text-align: center;
-    padding: 15px;
-}
-
-#content div form {
-    
-}
-
 #formulario {
+    flex: 1;
     margin-right: 20px;
-}
-
-#login {
-    margin-left: 20px;
+    height: 70px;
 }
