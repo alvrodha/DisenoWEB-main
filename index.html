@@ -21,39 +21,125 @@
         </ul>
     </div>
     <div id="navWindow">
-        <a href="index.html">Home</a>
+        <div id="navWindowPath">
+            <a href="index.html">Home</a>
+        </div>
+        <div id="navWindowUser">
+            <a href="HTML/inscribete.html">Registrate</a>
+            <a>Inicia sesión</a>
+        </div>
     </div>
-    <div id="content">
-        <div id="preguntaQuien">
-            <h1>¿Quienes somos?</h1>
-            <div id="respuestaQuien">
-                <p>TetuScores nació como un proyecto de fin de curso para la asignatura de Diseño Web de Desarrollo de Aplicaciones Web en el centro Tetuán de las victorias.</p>
-                <p>Su objetivo estaba claro, crear una página web para la gestión de la liga de fútbol sala que se celebra cada año a principios de curso.</p>
+    
+<!-- Contenedor principal de todo el contenido de la página -->
+<div id="content">
+
+    <!-- 📰 Bloque de noticias superior -->
+    <div class="bloque noticias">
+        <h1>📰 Noticias</h1>
+        <div class="noticias-content">
+            <!-- 👇 Primera noticia empieza visible (tiene la clase "active") -->
+            <p class="active">El calendario de la nueva temporada ya está disponible.</p>
+            <p>¡Abiertas las inscripciones para nuevos equipos!</p>
+            <p>Actualizada la clasificación con los últimos resultados.</p>
+            <p>Próximamente: torneo amistoso entre cursos.</p>
+        </div>
+    </div>
+
+    <!-- ====== BLOQUES INFERIORES ====== -->
+    <!-- Este div agrupa las seis cajas con animaciones al pasar el ratón -->
+    <div class="bloques-inferiores">
+
+        <!-- Cada .bloque representa una caja -->
+        <div class="bloque slide-up">
+            <h1>¿Quiénes somos?</h1>
+            <div class="respuesta">
+                <p>TetuScores nació como un proyecto de fin de curso para la asignatura de Diseño Web en el centro Tetuán de las Victorias.</p>
             </div>
         </div>
-        <div id="preguntaQue">
+
+        <div class="bloque slide-up">
             <h1>¿Qué ofrecemos?</h1>
-            <div id="respuestaQue">
-                <p>En TetuScores ofrecemos una plataforma completa para la gestión de ligas de fútbol sala, incluyendo:</p>
+            <div class="respuesta">
                 <ul>
                     <li>Calendario de partidos actualizado.</li>
                     <li>Clasificación en tiempo real.</li>
-                    <li>Información detallada de equipos y jugadores.</li>
-                    <li>Formulario de inscripción para nuevos equipos.</li>
+                    <li>Información de equipos y jugadores.</li>
+                    <li>Formulario de inscripción.</li>
                 </ul>
             </div>
         </div>
-        <div id="preguntaDonde">
-            <h1>¿Donde Encontrarnos?</h1>
-            <div id="respuestaDonde">
-                <p>Nos ubicamos en IES Tetuán de las Victorias, Madrid.</p>
+
+        <div class="bloque slide-up">
+            <h1>¿Dónde estamos?</h1>
+            <div class="respuesta">
+                <p>Nos encontramos en el IES Tetuán de las Victorias, Madrid.</p>
+            </div>
+        </div>
+
+        <div class="bloque clasificacion">
+    <h1>Clasificación</h1>
+    <div class="tabla-contenedor">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th>Equipo</th>
+                    <th>Pts</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>1ºDAM</td><td>30</td></tr>
+                <tr><td>2</td><td>1ºB AF DUAL</td><td>28</td></tr>
+                <tr><td>3</td><td>1ºB SMR</td><td>26</td></tr>
+                <tr><td>4</td><td>1ºDAW</td><td>24</td></tr>
+                <tr><td>5</td><td>FPB</td><td>22</td></tr>
+            </tbody>
+        </table>
+        <p class="ver-mas"><a href="HTML/clasificacion.html">Ver tabla completa →</a></p>
+    </div>
+</div>
+
+        <div class="bloque slide-up">
+            <h1>¿A quién va dirigido?</h1>
+            <div class="respuesta">
+                <p>A estudiantes, profesores y aficionados al deporte del centro.</p>
+            </div>
+        </div>
+
+        <div class="bloque slide-up">
+            <h1>¿Cómo participar?</h1>
+            <div class="respuesta">
+                <p>Solo necesitas formar tu equipo e inscribirte en la sección correspondiente.</p>
             </div>
         </div>
     </div>
+</div>
+
+
     <div id="footer">
         <p>Contacto: <a href="mailto:jorgeparron2@gmail.com">jorgeparron2@gmail.com</a></p>
         <p>Teléfono: +34 644 73 67 88</p>
         <p>Dirección: Calle Fantasía 12, Madrid, España</p>
+
     </div>
 </body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const noticias = document.querySelectorAll(".noticias-content p");
+    let index = 0;
+
+    function mostrarSiguienteNoticia() {
+        noticias.forEach(n => n.classList.remove("active"));
+        noticias[index].classList.add("active");
+        index = (index + 1) % noticias.length;
+    }
+
+    // Muestra la primera noticia al cargar
+    mostrarSiguienteNoticia();
+
+    // Cambia cada 3 segundos
+    setInterval(mostrarSiguienteNoticia, 3000);
+});
+</script>
+
 </html>
