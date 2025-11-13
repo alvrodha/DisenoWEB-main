@@ -1,6 +1,6 @@
 #content {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 45% 10% 45%;
     align-items: stretch;
     position: relative;
     overflow: hidden;
@@ -8,14 +8,20 @@
 
 /* ======== Bloque 1 ======== */
 #preguntaQuien {
-    position: relative;
-    padding: 20px;
-    background-color: white;
     grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    grid-row: 1 / 2;  
+    position: relative;
     overflow: hidden;
+    background-color: white;
+    padding: 20px;
     z-index: 1;
     transition: transform 0.5s ease;
+    border-radius: 0 15px 15px 0;
+}
+
+#preguntaQuien h2{
+    color: #1c1d3d;
+    text-align: center;
 }
 
 #respuestaQuien {
@@ -41,10 +47,12 @@
     position: relative;
     padding: 20px;
     background-color: white;
-    grid-column: 2 / 3;
+    grid-column: 3 / 4;
     grid-row: 2 / 3;
     overflow: hidden;
     z-index: 1;
+    width: 100%;
+    border-radius: 15px 0 0 15px;
     transition: transform 0.5s ease;
 }
 
@@ -66,3 +74,15 @@
     background-color: #415f7e;
 }
 
+#preguntaDonde {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;  
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    padding: 20px;
+    z-index: 1;
+    transition: transform 0.5s ease;
+    border-radius: 0 15px 15px 0;
+    align-items: center;
+}
