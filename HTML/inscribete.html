@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,58 +9,94 @@
     <link rel="stylesheet" href="../CSS/inscribete.css" />
 </head>
 <body>
-    <div id="nav">
-        <div id="logo">
-            <a href="../index.html"><img src="../SRC/Logo1.png" alt="Logo" width="200px"></a>
-        </div>
-        <ul id="nav-list">
-            <li><a href="calendario.html">CALENDARIO</a></li>
-            <li><a href="equipos.html">EQUIPOS</a></li>
-            <li><a href="clasificacion.html">CLASIFICACIÓN</a></li>
-            <li><a href="inscribete.html">INSCRÍBETE</a></li>
+<div id="nav">
+    <div id="logo">
+        <a href="../index.html"><img src="../SRC/Logo1.png" alt="Logo" width="200px"></a>
+    </div>
+    <ul id="nav-list">
+        <li><a href="calendario.html">CALENDARIO</a></li>
+        <li><a href="equipos.html">EQUIPOS</a></li>
+        <li><a href="clasificacion.html">CLASIFICACIÓN</a></li>
+        <li><a href="jugadores.html">JUGADORES</a></li>
+    </ul>
+</div>
+<div class="ticker-s24">
+    <div class="ticker__wrap">
+        <ul class="ticker__list">
+            <li class="ticker__item">Últimos resultados actualizados</li>
+            <li class="ticker__item">Nuevos partidos añadidos a Tetuscores</li>
+            <li class="ticker__item">Estadísticas en tiempo real disponibles</li>
+            <li class="ticker__item">Consulta rankings y clasificaciones</li>
+            <li class="ticker__item">Notificaciones de goles al instante</li>
+            <li class="ticker__item">Sigue tus equipos favoritos</li>
+            <li class="ticker__item">Tetuscores – Datos precisos y al momento</li>
+            <li class="ticker__item">Nuevas funciones disponibles en la app</li>
+            <li class="ticker__item">Calendario de próximos partidos</li>
+            <li class="ticker__item">Estadísticas de jugadores actualizadas</li>
+        </ul>
+        <!-- Copia automática para el loop -->
+        <ul class="ticker__list">
+            <li class="ticker__item">   </li>
+            <li class="ticker__item">Nuevos partidos añadidos a Tetuscores</li>
+            <li class="ticker__item">Estadísticas en tiempo real disponibles</li>
+            <li class="ticker__item">Consulta rankings y clasificaciones</li>
+            <li class="ticker__item">Notificaciones de goles al instante</li>
+            <li class="ticker__item">Sigue tus equipos favoritos</li>
+            <li class="ticker__item">Tetuscores – Datos precisos y al momento</li>
+            <li class="ticker__item">Nuevas funciones disponibles en la app</li>
+            <li class="ticker__item">Calendario de próximos partidos</li>
+            <li class="ticker__item">Estadísticas de jugadores actualizadas</li>
         </ul>
     </div>
-    <div id="navWindow">
-        <div id="navWindowPath">
-            <a href="../index.html">Home</a>
-        </div>
-        <div id="navWindowUser">
-            <a href="../HTML/inscribete.html">Registrate</a>
-            <a>Inicia sesión</a>
-        </div>
+</div>
+<div id="navWindow">
+    <div id="navWindowPath">
+        <a href="../index.html">Home</a> &gt; <a href="inscribete.html">Inscríbete</a>
     </div>
-    <div id="content">
-        <div id="registro">
-            <!-- Formulario de inscripción cambiado para que cuadre con el php-->
-            <form method="post" action="aviso.php">
-                <h2>Formulario de Inscripción</h2>
-                <br>
-                <label for="nombre_equipo">Nombre del Equipo:</label>
-                <input type="text" id="nombre_equipo" name="nombre_equipo" placeholder="minimo 3 caracteres" required><br>
-
-                <label for="contrasena">Contraseña:</label>
-                <input type="text" id="contrasena" name="contrasena" placeholder="minimo 3 caracteres" required><br>
-
-                <label for="correo_contacto">Correo Electrónico de Contacto:</label>
-                <input type="email" id="correo_contacto" name="correo_contacto" placeholder="Tu correo" required><br>
-
-                <label for="telefono_contacto">Número de Teléfono:</label>
-                <input type="tel" id="telefono_contacto" name="telefono_contacto" placeholder="opcional" ><br>
-
-                <label for="aceptar_terminos">
-                    <input type="checkbox" id="aceptar_terminos" name="aceptar_terminos" required>
-                      Acepto los términos y condiciones
-                </label><br>
-
-                <input type="reset" id="boton_restablecer" value="Restablecer">
-                <input type="submit" id="boton_enviar" value="Enviar inscripción"> 
+</div>
+<div id="content">
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Create Account</h1>
+                <span>or use your email for registration</span>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button>Sign Up</button>
             </form>
         </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Sign in</h1>
+                <span>or use your account</span>
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <a href="#">Forgot your password?</a>
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
     <div id="footer">
         <p>Contacto: <a href="mailto:tetuanLeague@gmail.com">tetuanLeague@gmail.com</a></p>
         <p>Teléfono: +34 644 73 67 88</p>
         <p>Dirección: Calle Fantasía 12, Madrid, España</p>
     </div>
+<script src="../JS/inscribete.js"></script>
 </body>
 </html>

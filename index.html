@@ -17,8 +17,37 @@
             <li><a href="HTML/calendario.html">CALENDARIO</a></li>
             <li><a href="HTML/equipos.html">EQUIPOS</a></li>
             <li><a href="HTML/clasificacion.html">CLASIFICACIÓN</a></li>
-            <li><a href="HTML/inscribete.html">INSCRÍBETE</a></li>
+            <li><a href="HTML/jugadores.html">JUGADORES</a></li>
         </ul>
+    </div>
+    <div class="ticker-s24">
+        <div class="ticker__wrap">
+            <ul class="ticker__list">
+                <li class="ticker__item">Últimos resultados actualizados</li>
+                <li class="ticker__item">Nuevos partidos añadidos a Tetuscores</li>
+                <li class="ticker__item">Estadísticas en tiempo real disponibles</li>
+                <li class="ticker__item">Consulta rankings y clasificaciones</li>
+                <li class="ticker__item">Notificaciones de goles al instante</li>
+                <li class="ticker__item">Sigue tus equipos favoritos</li>
+                <li class="ticker__item">Tetuscores – Datos precisos y al momento</li>
+                <li class="ticker__item">Nuevas funciones disponibles en la app</li>
+                <li class="ticker__item">Calendario de próximos partidos</li>
+                <li class="ticker__item">Estadísticas de jugadores actualizadas</li>
+            </ul>
+            <!-- Copia automática para el loop -->
+            <ul class="ticker__list">
+                <li class="ticker__item">   </li>
+                <li class="ticker__item">Nuevos partidos añadidos a Tetuscores</li>
+                <li class="ticker__item">Estadísticas en tiempo real disponibles</li>
+                <li class="ticker__item">Consulta rankings y clasificaciones</li>
+                <li class="ticker__item">Notificaciones de goles al instante</li>
+                <li class="ticker__item">Sigue tus equipos favoritos</li>
+                <li class="ticker__item">Tetuscores – Datos precisos y al momento</li>
+                <li class="ticker__item">Nuevas funciones disponibles en la app</li>
+                <li class="ticker__item">Calendario de próximos partidos</li>
+                <li class="ticker__item">Estadísticas de jugadores actualizadas</li>
+            </ul>
+        </div>
     </div>
     <div id="navWindow">
         <div id="navWindowPath">
@@ -29,6 +58,7 @@
             <a>Inicia sesión</a>
         </div>
     </div>
+
     
 <!-- Contenedor principal de todo el contenido de la página -->
 <div id="content">
@@ -124,7 +154,7 @@
     </div>
 </body>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
     const noticias = document.querySelectorAll(".noticias-content p");
     let index = 0;
 
@@ -136,10 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Muestra la primera noticia al cargar
     mostrarSiguienteNoticia();
-
     // Cambia cada 3 segundos
     setInterval(mostrarSiguienteNoticia, 3000);
 });
 </script>
-
 </html>

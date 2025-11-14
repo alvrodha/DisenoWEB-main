@@ -59,12 +59,49 @@ body {
   padding-right: 30px;
 }
 
+/* ====== TICKER NOTICIAS ====== */
+.ticker-s24 {
+    background-color: #070c5a;
+    overflow: hidden;
+    width: 100%;
+    position: sticky;
+    top: 60px;
+}
+
+.ticker__wrap {
+    display: flex;
+    width: max-content;
+    animation: tickerMove 25s linear infinite;
+}
+
+.ticker__list {
+    display: flex;
+    gap: 80px;
+    white-space: nowrap;
+    padding: 5px 0;
+}
+
+.ticker__item {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+@keyframes tickerMove {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
 /* ====== BREADCRUMBS ====== */
 #navWindow {
   display: grid;
   justify-content: space-between;
   position: sticky;
-  top: 60px;
+  top: 88px;
 }
 
 #navWindowPath {
@@ -109,6 +146,9 @@ body {
   text-align: center;
   padding: 1rem 0;
   font-size: 0.9rem;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 #footer a {
