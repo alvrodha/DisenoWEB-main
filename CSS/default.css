@@ -21,6 +21,7 @@ body {
     align-items: center;
     padding: 10px 20px;
     background-color: #1c1d3d;
+    z-index: 1000;
 }
 
 #logo {
@@ -66,6 +67,7 @@ body {
     width: 100%;
     position: sticky;
     top: 60px;
+    z-index: 999;
 }
 
 .ticker__wrap {

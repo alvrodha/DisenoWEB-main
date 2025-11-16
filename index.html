@@ -55,7 +55,7 @@
         </div>
         <div id="navWindowUser">
             <a href="HTML/inscribete.html">Registrate</a>
-            <a>Inicia sesión</a>
+            <a>/ Inicia sesión</a>
         </div>
     </div>
 
@@ -99,12 +99,42 @@
             </div>
         </div>
 
-        <div class="bloque slide-up">
-            <h1>¿Dónde estamos?</h1>
-            <div class="respuesta">
-                <p>Nos encontramos en el IES Tetuán de las Victorias, Madrid.</p>
-            </div>
-        </div>
+        <div class="bloque calendario">
+    <h1>Próximos partidos</h1>
+
+    <!-- El calendario SIEMPRE visible -->
+    <table class="tabla-partidos">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Día</th>
+                <th>Partido</th>
+                <th>Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10/10/2025</td>
+                <td>Viernes</td>
+                <td>1ºB SMR vs 1ºDAM</td>
+                <td>11:15 / 11:40</td>
+            </tr>
+            <tr>
+                <td>15/10/2025</td>
+                <td>Miércoles</td>
+                <td>1ºDAW vs FPB</td>
+                <td>11:15 / 11:40</td>
+            </tr>
+            <tr>
+                <td>17/10/2025</td>
+                <td>Viernes</td>
+                <td>2ºDAM vs 2ºASIR</td>
+                <td>11:15 / 11:40</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="ver-mas"><a href="HTML/calendario.html">Ver tabla completa →</a></p>
+    </div>
 
         <div class="bloque clasificacion">
     <h1>Clasificación</h1>
@@ -146,12 +176,17 @@
 </div>
 
 
-    <div id="footer">
+<div id="footer">
+    <div class="footer-content">
         <p>Contacto: <a href="mailto:jorgeparron2@gmail.com">jorgeparron2@gmail.com</a></p>
-        <p>Teléfono: +34 644 73 67 88</p>
-        <p>Dirección: Calle Fantasía 12, Madrid, España</p>
-
+        <p>Teléfono: <a href="tel:+34644736788">+34 644 73 67 88</a></p>
+        <p>Dirección: Calle Vía Límite, 14, 28029 Madrid, España</p>
     </div>
+    <div class="footer-copy">
+        <p>© 2025 TetuScores. Todos los derechos reservados.</p>
+    </div>
+</div>
+
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", () => {

@@ -90,9 +90,12 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   padding: 20px;
   overflow: hidden;
-  height: 300px;
   cursor: pointer;
+  height: auto; /* se ajusta al contenido */
+  min-height: 300px; /* opcional: para bloques pequeños mantener tamaño base */
 }
+
+
 
 /* Pregunta siempre visible */
 .bloque.slide-up h1 {
@@ -123,6 +126,33 @@
 /* Al hacer hover, la respuesta sube hasta un punto fijo */
 .bloque.slide-up:hover .respuesta {
   transform: translateY(0px); /* sube totalmente hasta el fondo de la pregunta */
+}
+
+/* ======== TABLA DE PARTIDOS ======== */
+.tabla-partidos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 13px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabla-partidos th {
+    background-color: #415f7e;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.tabla-partidos td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabla-partidos tr:hover {
+    background-color: #f1f1f1;
 }
 /* ======== CLASIFICACIÓN MINI (dentro de caja) ======== */
 .clasificacion {

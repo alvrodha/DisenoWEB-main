@@ -1,4 +1,3 @@
-
 /* Contenedor principal */
 #content {
   width: 95%;
@@ -14,7 +13,7 @@
 #content h2 {
   text-align: center;
   font-size: 2rem;
-  color: #004aad;
+  color: #415f7e; /* Azul de la página */
   font-weight: 700;
   letter-spacing: 1px;
   margin-bottom: 25px;
@@ -30,7 +29,7 @@
 
 /* Encabezado */
 #content th {
-  background-color: #004aad;
+  background-color: #415f7e; /* Azul de la página */
   color: #ffffff;
   text-transform: uppercase;
   padding: 12px;
@@ -50,38 +49,38 @@
 
 /* Filas alternas */
 #content tr:nth-child(even) {
-  background-color: #f8f9fc;
+  background-color: #f2f4f7; /* tono suave gris-azulado */
 }
 
 /* Hover en filas */
 #content tr:hover {
-  background-color: #e8f0ff;
+  background-color: #d9e2f1; /* azul claro */
   transition: background-color 0.3s ease;
 }
 
 /* Posición destacada */
 #content td:first-child {
   font-weight: bold;
-  color: #004aad;
+  color: #415f7e;
 }
 
 /* Primer lugar (posición 1) */
 #content tr:nth-child(2) td {
-  background-color: #e3fcef;
+  background-color: #d3f0e5; /* verde claro suave */
   font-weight: bold;
-  color: #0b8a2d;
+  color: #0b8a2d; /* verde intenso */
 }
 
 /* Segunda posición */
 #content tr:nth-child(3) td {
-  background-color: #f2fce3;
+  background-color: #f0f7d3; /* verde amarillento suave */
   color: #7a9a00;
   font-weight: 600;
 }
 
 /* Tercera posición */
 #content tr:nth-child(4) td {
-  background-color: #fff7e3;
+  background-color: #fff7e3; /* amarillo suave */
   color: #c98c00;
   font-weight: 600;
 }
@@ -124,7 +123,7 @@
     left: 15px;
     text-align: left;
     font-weight: 600;
-    color: #004aad;
+    color: #415f7e; /* azul página */
   }
 
   #content th {
