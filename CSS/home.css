@@ -16,6 +16,7 @@
    CAJA DE NOTICIAS SUPERIOR
    ========================= */
 .noticias {
+    font-size: 25px;
     background-color: #415f7e;
     color: rgb(37, 14, 247);
     text-align: center;
@@ -24,10 +25,11 @@
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     width: 100%;
     max-width: 1000px;
+    height: 100px;
 }
 
 .noticias-content {
-    position: relative;
+    position: center;
     height: 60px;
     overflow: hidden;
     width: 100%;
