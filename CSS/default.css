@@ -132,6 +132,11 @@ body {
 
 #navWindowUser a {
   color: white;
+  background-color: forestgreen;
+}
+
+#navWindowUser a img {
+  margin: 2px;
 }
 
 /* ====== CONTENIDO ====== */
