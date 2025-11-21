@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="SRC/favicon.png">
+    <title>TetuScores</title>
+    <link rel="stylesheet" href="../CSS/default.css"/>
+    <link rel="stylesheet" href="../CSS/recordarContrasenna.css"/>
+</head>
+<body>
+    <div id="nav">
+        <div id="logo">
+            <a href="../index.html"><img src="../SRC/Logo1.png" alt="Logo" width="200px"></a>
+        </div>
+        <ul id="nav-list">
+            <li><a href="calendario.html">CALENDARIO</a></li>
+            <li><a href="equipos.html">EQUIPOS</a></li>
+            <li><a href="clasificacion.html">CLASIFICACIÓN</a></li>
+            <!--<li><a href="jugadores.html">JUGADORES</a></li>-->
+        </ul>
+    </div>
+    <div class="ticker-s24">
+        <div class="ticker__wrap">
+            <ul class="ticker__list">
+                <li class="ticker__item">Últimos resultados actualizados</li>
+                <li class="ticker__item">Nuevos partidos añadidos a Tetuscores</li>
+                <li class="ticker__item">Estadísticas en tiempo real disponibles</li>
+                <li class="ticker__item">Consulta rankings y clasificaciones</li>
+                <li class="ticker__item">Notificaciones de goles al instante</li>
+                <li class="ticker__item">Sigue tus equipos favoritos</li>
+                <li class="ticker__item">Tetuscores – Datos precisos y al momento</li>
+                <li class="ticker__item">Nuevas funciones disponibles en la app</li>
+                <li class="ticker__item">Calendario de próximos partidos</li>
+                <li class="ticker__item">Estadísticas de jugadores actualizadas</li>
+            </ul>
+            <!-- Copia automática para el loop -->
+            <ul class="ticker__list">
+                <li class="ticker__item">   </li>
+                <li class="ticker__item">Nuevos partidos añadidos a Tetuscores</li>
+                <li class="ticker__item">Estadísticas en tiempo real disponibles</li>
+                <li class="ticker__item">Consulta rankings y clasificaciones</li>
+                <li class="ticker__item">Notificaciones de goles al instante</li>
+                <li class="ticker__item">Sigue tus equipos favoritos</li>
+                <li class="ticker__item">Tetuscores – Datos precisos y al momento</li>
+                <li class="ticker__item">Nuevas funciones disponibles en la app</li>
+                <li class="ticker__item">Calendario de próximos partidos</li>
+                <li class="ticker__item">Estadísticas de jugadores actualizadas</li>
+            </ul>
+        </div>
+    </div>
+    <div id="navWindow">
+        <div id="navWindowPath">
+            <a href="../index.html">Home</a>
+        </div>
+        <div id="navWindowUser">
+            <div id="navWindowUserButton">
+                <img src="../SRC/user.png">
+                <a href="inscribete.html">Iniciar sesión</a>
+            </div> 
+        </div>
+    </div>
+
+    <!-- Contenedor principal de todo el contenido de la página -->
+    <div id="content">
+        <div id="container">
+            <form>
+                <h1></h1>
+                <input type="text" placeholder="correo">
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const noticias = document.querySelectorAll(".noticias-content p");
+    let index = 0;
+
+    function mostrarSiguienteNoticia() {
+        noticias.forEach(n => n.classList.remove("active"));
+        noticias[index].classList.add("active");
+        index = (index + 1) % noticias.length;
+    }
+
+    // Muestra la primera noticia al cargar
+    mostrarSiguienteNoticia();
+    // Cambia cada 3 segundos
+    setInterval(mostrarSiguienteNoticia, 3000);
+});
+</script>
+</html>
