@@ -1,0 +1,1 @@
+INSERT INTO `usuarios` (`email`, `user`, `password`) VALUES ('root@gmail.com', 'root', 'root');

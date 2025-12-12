@@ -1,20 +1,27 @@
 <?php
 class Usuario
 {
-    private $nombre;
-    private $login;
+    private $email;
+    private $user;
     private $password;
+    private $bloqueado;
+    private $intentos;
+    private $edad;
+    private $nombre;
+    private $ape1;
+    private $ape2;
+
     
     // Getter con método mágico
-    public function __get($atributo){
-        if(property_exists($this, $atributo)) {
-            return $this->$atributo;
+    function __get($name){
+        if(property_exists($this, $name)) {
+            return $this->$name;
         }
     }
     // Setter con método mágico
-    public function __set($atributo,$valor){
-        if(property_exists($this, $atributo)) {
-            $this->$atributo = $valor;
+    function __set($name,$valor){
+        if(property_exists($this, $name)) {
+            $this->$name = $valor;
         }
     }
 }
