@@ -8,7 +8,7 @@ $password = $_POST['password'];
 $ac = AccesoDatos::getModelo();
 $usr = $ac->getUsuario($email, $password);
 if ($usr) {
-    echo 'ACCESO CORRECTO!!';//CAMBIAR
+    echo 'ACCESO CORRECTO!! Bienvenido: ' . $usr->email;//CAMBIAR
 } else {
     echo "Usuario no encontrado o contraseña incorrecta.";
 }
