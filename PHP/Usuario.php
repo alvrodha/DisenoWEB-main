@@ -2,7 +2,7 @@
 class Usuario
 {
     private $email;
-    private $user;
+    private $usser;
     private $password;
     private $bloqueado;
     private $intentos;

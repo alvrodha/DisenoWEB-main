@@ -48,6 +48,22 @@ class AccesoDatos {
         }
         return $usr;
     }
+
+    public function addUsuario($usuario): bool {
+    try {
+        $stmt = $this->dbh->prepare(
+            "INSERT INTO usuarios (`email`, `usser`, `passwd`) VALUES (?, ?, ?)"
+        );
+        $stmt->execute([$usuario->email, $usuario->user, $usuario->passwd]);
+
+        return $stmt->rowCount() === 1;
+
+    } catch (PDOException $e) {
+        error_log("Error al insertar usuario: " . $e->getMessage());
+        return false;
+    }
+}
+
 }
 
 ?>
