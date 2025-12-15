@@ -16,7 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ac = AccesoDatos::getModelo();
         $usr = $ac->getUsuario($email, $password);
         if ($usr) {
-            header("Location: ../index.html");
+            if ($usr->usser === 'admin') {
+                header("location: ../HTML/administrador.html");
+            } else {
+                header("Location: ../index.html");
+            }
         } else {
             echo "Usuario no encontrado o contraseña incorrecta.";
         }
