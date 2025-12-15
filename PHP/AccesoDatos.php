@@ -54,7 +54,7 @@ class AccesoDatos {
         $stmt = $this->dbh->prepare(
             "INSERT INTO usuarios (`email`, `usser`, `passwd`) VALUES (?, ?, ?)"
         );
-        $stmt->execute([$usuario->email, $usuario->user, $usuario->passwd]);
+        $stmt->execute([$usuario->email, $usuario->usser, $usuario->passwd]);
 
         return $stmt->rowCount() === 1;
 

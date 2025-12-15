@@ -22,17 +22,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif ($accion === 'register') {
 
-        $user = trim($_POST['user'] ?? '');
+        $usser = trim($_POST['usser'] ?? '');
         $email = trim($_POST['email'] ?? '');
         $password = trim($_POST['password'] ?? '');
 
-        if (empty($user) || empty($email) || empty($password)) {
+        if (empty($usser) || empty($email) || empty($password)) {
             echo "Por favor, complete todos los campos.";
             exit();
         }
 
         $db = AccesoDatos::getModelo();
-        $db->addUsuario((object)['user' => $user, 'email' => $email, 'passwd' => $password]);
+        $db->addUsuario((object)['usser' => $usser, 'email' => $email, 'passwd' => $password]);
         header("Location: ../index.html");
     }
 }
