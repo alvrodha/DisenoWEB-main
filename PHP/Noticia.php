@@ -1,9 +1,11 @@
 <?php
 class Noticia
 {
-    private $msg;
-    private $fecha;
+    private $id;
+    private $titulo;
+    private $contenido;
     private $autor;
+    private $fecha;
     
     // Getter con método mágico
     public function __get($atributo){

@@ -26,7 +26,7 @@ class AccesoDatos {
 
     public function __construct() {
         try {
-            $dns = 'mysql:host='.SERVER_DB.';dbname='.DATABASE;
+            $dns = 'mysql:host='.SERVER_DB.';dbname='.DATABASE_USUARIOS;
             $this->dbh = new PDO($dns, DB_USER, '');
             $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
