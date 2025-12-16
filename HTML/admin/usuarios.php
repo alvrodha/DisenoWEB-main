@@ -1,7 +1,6 @@
 <?php
-include_once('../../PHP/AccesoDatos.php');
+include_once('../../PHP/AccesoUsuarios.php');
 include_once('../../PHP/funciones.php');
-include_once('../../PHP/acciones.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,9 +28,8 @@ include_once('../../PHP/acciones.php');
     <div id="content">
         <div id="tabla">
             <h1>Panel de Administrador de usuarios</h1>
-            <?= $contenido = mostrarUsusarios() ?>
+            <?= mostrarUsusarios() ?>
         </div>
-        
     </div>
 </body>
 </html>

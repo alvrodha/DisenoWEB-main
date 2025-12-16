@@ -1,5 +1,5 @@
 <?php
-include_once('../../PHP/AccesoDatos.php');
+include_once('../../PHP/AccesoLiga.php');
 include_once('../../PHP/funciones.php');
 include_once('../../PHP/acciones.php');
 ?>

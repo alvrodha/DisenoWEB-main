@@ -1,7 +1,7 @@
 <?php 
 
 function mostrarUsusarios() {
-        $titulos = [ "Usuario","Email","Contraseña","Nombre"];
+    $titulos = [ "Usuario","Email","Contraseña"];
     $msg = "<table>\n";
      // Identificador de la tabla
     $msg .= "<tr>";
@@ -9,23 +9,69 @@ function mostrarUsusarios() {
         $msg .= "<th>$titulos[$j]</th>";
     }  
     $msg .= "</tr>";
-    $auto = $_SERVER['PHP_SELF'];
-    $db = AccesoDatos::getModelo();
+    $db = Accesousuarios::getModelo();
     $tussers = $db->getUsuarios();
     foreach ($tussers as $usser) {
         $msg .= "<tr>";
         $msg .= "<td>$usser->usser</td>";
         $msg .= "<td>$usser->email</td>";
-        $msg .= "<td>$usser->password</td>";
-        $msg .= "<td>$usser->nombre</td>";
-        $msg .="<td><a href=\"#\" onclick=\"accionBorrar('$usser->nombre','$usser->login');\" >Borrar</a></td>\n";
-        $msg .="<td><a href=\"#\" onclick=\"accionModificar('$usser->email');\" >Modificar</a></td>\n";
-        $msg .="<td><a href=\"#\" onclick=\"accionAlta('$usser->login');\" >Añadir</a></td>\n";
+        $msg .= "<td>$usser->passwd</td>";
+        $msg .="<td><a href=\"#\" onclick=\"accionDetalles('$usser->usser');\" >Detalles</a></td>\n";
         $msg .="</tr>\n";
     }
-    $msg .= "</table>";
+    $msg .= "</table>\n";
+    $msg .="<a href=\"#\" onclick=\"accionAlta('$usser->login');\" >Añadir</a>";
    
     return $msg;  
+}
+
+function mostrarNoticias() {
+    $msg = "";
+    $estado = true;
+    $db = AccesoNoticias::getModelo();
+    $tnoticias = $db->getNoticias();
+    foreach ($tnoticias as $noticia) {
+        if ($noticia->visible == true) {
+            if ($estado) {
+                $msg .= '<p clase="active">';
+                $estado == false;
+            } else {
+                $msg .= "<p>";
+            }
+            $msg .= "$noticia->fecha" . ":" . "$noticia->contenido";
+            $msg .= "</p>\n";
+        }
+    }
+    return $msg;
+}
+
+function mostrarNoticiasAdmin(){
+    $titulos = [ "Título","Email","Contraseña","Nombre"];
+    $msg = "<table>\n";
+     // Identificador de la tabla
+    $msg .= "<tr>";
+    for ($j=0; $j < count($titulos); $j++){
+        $msg .= "<th>$titulos[$j]</th>";
+    }  
+    $msg .= "</tr>";
+    $db = AccesoNoticias::getModelo();
+    $tnoticias = $db->getNoticias();
+    foreach ($tnoticias as $noticia) {
+        $msg .= "<tr>";
+        $msg .= "<td> $noticia->titulo </td>";
+        $msg .= "<td> $noticia->fecha </td>";
+        $msg .= "<td> $noticia->autor </td>";
+        $msg .= "<td> $noticia->contenido </td>";
+        if ($noticia->visible = true) {
+            $msg .= "<td>Visible</td>";
+        } else {
+            $msg .= "<td>Oculto</td>";
+        }
+        $msg .= "</tr>\n";
+    }
+    $msg .= "</table>\n";
+
+    return $msg;
 }
 
 

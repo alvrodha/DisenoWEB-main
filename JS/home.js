@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const noticias = document.querySelectorAll(".noticias-content p");
+    var noticias = document.querySelectorAll(".noticias-content p");
     let index = 0;
 
     function mostrarSiguienteNoticia() {

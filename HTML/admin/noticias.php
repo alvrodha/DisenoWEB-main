@@ -1,7 +1,6 @@
 <?php
-include_once('../../PHP/AccesoDatos.php');
+include_once('../../PHP/AccesoNoticias.php');
 include_once('../../PHP/funciones.php');
-include_once('../../PHP/acciones.php');
 ?>
 
 <!DOCTYPE html>
@@ -29,10 +28,10 @@ include_once('../../PHP/acciones.php');
     <div id="content">
         <h1>Panel de Administrador</h1>
         <p>Bienvenido al panel de administración. Aquí puedes gestionar usuarios, noticias y la liga.</p>
-        <?php
-            $contenido="";
-            $contenido .= mostrarUsusarios();
-        ?>
+        <div id="tabla">
+            <h1>Panel de Administrador de usuarios</h1>
+            <?= mostrarNoticiasAdmin() ?>
+        </div>
     </div>
 </body>
 </html>

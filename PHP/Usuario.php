@@ -1,9 +1,10 @@
 <?php
 class Usuario
 {
+    private $usuario_id;
     private $email;
     private $usser;
-    private $password;
+    private $passwd;
     private $bloqueado;
     private $intentos;
     private $edad;

@@ -3,7 +3,7 @@
 include_once "Usuario.php";
 include_once 'config.php';
 
-class AccesoDatos {
+class AccesoUsuarios {
 
     private static $modelo = null;
     private $dbh = null;
@@ -11,7 +11,7 @@ class AccesoDatos {
     public static function getModelo(){
         // Si no existe lo crea el acceso de a la BD
         if (self::$modelo == null){
-            self::$modelo = new AccesoDatos();
+            self::$modelo = new AccesoUsuarios();
         }
         return self::$modelo;
     }
@@ -37,7 +37,7 @@ class AccesoDatos {
 
     public function getUsuario (String $email, String $password) {
         $usr = false;
-        $stmt_usuario = $this->dbh->prepare("select * from usuarios where email =? and password =?");
+        $stmt_usuario = $this->dbh->prepare("select * from usuarios where email =? and passwd =?");
         $stmt_usuario->setFetchMode(PDO::FETCH_CLASS, 'usuario');
         $stmt_usuario->bindParam(1, $email);
         $stmt_usuario->bindParam(2, $password);

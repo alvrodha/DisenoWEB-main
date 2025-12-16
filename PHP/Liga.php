@@ -1,12 +1,8 @@
 <?php
-class Noticia
-{
-    private $noticia_id;
-    private $titulo;
-    private $contenido;
-    private $autor;
-    private $fecha;
-    private $visible;
+
+class Liga {
+
+
     
     // Getter con método mágico
     public function __get($atributo){
@@ -21,4 +17,5 @@ class Noticia
         }
     }
 }
+
 ?>
