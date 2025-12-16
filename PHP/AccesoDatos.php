@@ -49,21 +49,56 @@ class AccesoDatos {
         return $usr;
     }
 
+    public function getUsuarioAdm (String $email) {
+        $usr = false;
+        $stmt_usuario = $this->dbh->prepare("select * from usuarios where email =?");
+        $stmt_usuario->setFetchMode(PDO::FETCH_CLASS, 'usuario');
+        $stmt_usuario->bindParam(1, $email);
+        if ($stmt_usuario->execute()) {
+            if ($obj = $stmt_usuario->fetch()) {
+                $usr = $obj;
+            }
+        }
+        return $usr;
+    }
+
+    public function getUsuarios(): array {
+        $tusser = [];
+        $stmt = $this->dbh->prepare("SELECT * FROM usuarios");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Usuario');
+        if ($stmt->execute()) {
+            while ($obj = $stmt->fetch()) {
+                $tusser[] = $obj;
+            }
+        }
+        return $tusser;
+    }
+
     public function addUsuario($usuario): bool {
-    try {
-        $stmt = $this->dbh->prepare(
-            "INSERT INTO usuarios (`email`, `usser`, `passwd`) VALUES (?, ?, ?)"
-        );
-        $stmt->execute([$usuario->email, $usuario->usser, $usuario->passwd]);
+        try {
+            $stmt = $this->dbh->prepare(
+                "INSERT INTO usuarios (`email`, `usser`, `passwd`) VALUES (?, ?, ?)"
+            );
+            $stmt->execute([$usuario->email, $usuario->usser, $usuario->passwd]);
 
-        return $stmt->rowCount() === 1;
+            return $stmt->rowCount() === 1;
 
-    } catch (PDOException $e) {
-        error_log("Error al insertar usuario: " . $e->getMessage());
-        return false;
+        } catch (PDOException $e) {
+            error_log("Error al insertar usuario: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function borrarUsuario($login): bool {
+        try {
+            $stmt = $this->dbh->prepare("DELETE FROM usuarios WHERE login = ?");
+            $stmt->bindParam(1, $login);
+            $stmt->execute();
+            return $stmt->rowCount() === 1;
+        } catch (PDOException $e) {
+            error_log("Error al borrar usuario: " . $e->getMessage());
+            return false;
+        }
     }
 }
-
-}
-
 ?>

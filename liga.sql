@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS 'tetuan_legue';
+USE 'tetuan_legue';
+
 CREATE TABLE equipos (
     id_equipo INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(40) NOT NULL,

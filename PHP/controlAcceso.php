@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ac = AccesoDatos::getModelo();
         $usr = $ac->getUsuario($email, $password);
         if ($usr) {
-            if ($usr->usser === 'admin') {
+            if ($usr->usser === 'root') {
                 header("location: ../HTML/administrador.html");
             } else {
                 header("Location: ../index.html");
