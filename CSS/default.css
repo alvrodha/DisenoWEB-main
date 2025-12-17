@@ -7,10 +7,18 @@
   text-decoration: none;
 }
 
-body {
-  background-color: #9eb6ee;
-  color: #222;
+/* ====== BACKGROUND ANIMADO ====== */
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  display: block;
 }
+
 
 /* ====== MENÚ DE NAVEGACIÓN ====== */
 #nav {
@@ -42,7 +50,7 @@ body {
 }
 
 #nav li a {
-    display: block;
+  display: block;
   color: #ffffff;
   background-color: #1c1d3d;
   clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
@@ -153,7 +161,7 @@ body {
 
 /* ====== CONTENIDO ====== */
 #content {
-  background-color: #9eb6ee ;
+
   min-height: 500px;
 
 }

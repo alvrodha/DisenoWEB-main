@@ -11,6 +11,7 @@ include_once('../../PHP/funciones.php');
     <link rel="icon" type="image/png" href="../../SRC/favicon.png">
     <title>TetuScores</title>
     <link rel="stylesheet" href="../../CSS/default.css"/>
+    <link rel="stylesheet" href="../../CSS/AdmNoticias.css">
 </head>
 <body>
     <div id="nav">
@@ -26,8 +27,6 @@ include_once('../../PHP/funciones.php');
 
 <!-- Contenedor principal de todo el contenido de la página -->
     <div id="content">
-        <h1>Panel de Administrador</h1>
-        <p>Bienvenido al panel de administración. Aquí puedes gestionar usuarios, noticias y la liga.</p>
         <div id="tabla">
             <h1>Panel de Administrador de usuarios</h1>
             <?= mostrarNoticiasAdmin() ?>

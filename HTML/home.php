@@ -14,6 +14,7 @@ include_once('../PHP/funciones.php');
     <link rel="stylesheet" href="../CSS/home.css"/>
 </head>
 <body>
+    <canvas id="background"></canvas>
     <div id="nav">
         <div id="logo">
             <a href="../index.php"><img src="../SRC/Logo1.png" alt="Logo" width="200px"></a>
@@ -190,7 +191,7 @@ include_once('../PHP/funciones.php');
         <p>© 2025 TetuScores. Todos los derechos reservados.</p>
     </div>
 </div>
-
+<script src="../JS/background.js"></script>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", () => {

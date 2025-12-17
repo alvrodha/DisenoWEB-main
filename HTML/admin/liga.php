@@ -12,11 +12,12 @@ include_once('../../PHP/acciones.php');
     <link rel="icon" type="image/png" href="../../SRC/favicon.png">
     <title>TetuScores</title>
     <link rel="stylesheet" href="../../CSS/default.css"/>
+    <link rel="stylesheet" href="../../CSS/AdmLiga.css">
 </head>
 <body>
     <div id="nav">
         <div id="logo">
-            <a href="../../index.html"><img src="../../SRC/Logo1.png" alt="Logo" width="200px"></a>
+            <a href="../../index.php"><img src="../../SRC/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
             <li><a href="liga.php">Liga</a></li>
@@ -24,7 +25,7 @@ include_once('../../PHP/acciones.php');
             <li><a href="usuarios.php">Usuarios</a></li>
         </ul>
     </div>
-
+    
 <!-- Contenedor principal de todo el contenido de la página -->
     <div id="content">
         <h1>Panel de Administrador</h1>

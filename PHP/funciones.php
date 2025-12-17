@@ -1,7 +1,7 @@
 <?php 
 
 function mostrarUsusarios() {
-    $titulos = [ "Usuario","Email","Contraseña"];
+    $titulos = [ "Usuario","Email","Contraseña", "Gestionar"];
     $msg = "<table>\n";
      // Identificador de la tabla
     $msg .= "<tr>";
@@ -46,7 +46,7 @@ function mostrarNoticias() {
 }
 
 function mostrarNoticiasAdmin(){
-    $titulos = [ "Título","Email","Contraseña","Nombre"];
+    $titulos = [ "Título","Fecha","Autor","Contenido", "Visibilidad", "Gestionar"];
     $msg = "<table>\n";
      // Identificador de la tabla
     $msg .= "<tr>";
@@ -67,6 +67,7 @@ function mostrarNoticiasAdmin(){
         } else {
             $msg .= "<td>Oculto</td>";
         }
+        $msg .= "<td><a href>Detalles</a></td>\n";
         $msg .= "</tr>\n";
     }
     $msg .= "</table>\n";
