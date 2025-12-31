@@ -47,7 +47,7 @@ function mostrarNoticias() {
 
 function mostrarNoticiasAdmin(){
     $titulos = [ "Título","Fecha","Autor","Contenido", "Visibilidad", "Gestionar"];
-    $msg = "<table>\n";
+    $msg = '<table id="tablaNoticias">'."\n";
      // Identificador de la tabla
     $msg .= "<tr>";
     for ($j=0; $j < count($titulos); $j++){

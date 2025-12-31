@@ -28,7 +28,12 @@ include_once('../../PHP/funciones.php');
 <!-- Contenedor principal de todo el contenido de la página -->
     <div id="content">
         <div id="tabla">
-            <h1>Panel de Administrador de usuarios</h1>
+            <div id="controladorTabla">
+                <form>
+                    <h1>Panel de Administrador de noticias</h1>
+                    <input type="submit" name="addNoticia" value="añadir noticia">
+                </form>
+            </div>
             <?= mostrarNoticiasAdmin() ?>
         </div>
     </div>
