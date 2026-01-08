@@ -11,6 +11,7 @@ include_once('../../app/funciones.php');
     <link rel="icon" type="image/png" href="../../web/IMG/favicon.png">
     <title>TetuScores</title>
     <link rel="stylesheet" href="../../web/CSS/default.css"/>
+    <link rel="stylesheet" href="../../web/CSS/adm/usuarios.css"/>
 </head>
 <body>
     <div id="nav">
@@ -26,11 +27,33 @@ include_once('../../app/funciones.php');
 
 <!-- Contenedor principal de todo el contenido de la página -->
     <div id="content">
-        <div id="tabla">
-            <h1>Panel de Administrador de usuarios</h1>
+        <div id="content-user">
+            <div id="content-header">
+                <h1>Panel de Administrador de usuarios</h1>
+                <input  type="button" id="modal-btn" name="addDato" value="añadir usuario">
+                <div class="modal" ></div>
+            </div>
             <!-- La funcion tiene que devolver la tabla con los usuarios según la query -->
-            <?= mostrarUsusarios() ?>
+            <table id="content-table">
+                <tr>
+                    <th>ID Usuario</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th colspan="2">Acciones</th>
+                </tr>
+                <tr>
+                    <td>123456</td>
+                    <td>usuarioEjemplo</td>
+                    <td>usuarioEjemplo@example.com</td>
+                    <td>Administrador</td>
+                    <td><button>Editar</button></td>
+                    <td><button>Eliminar</button></td>
+                </tr>
+            </table>
+            <!-- <?= mostrarUsusarios() ?> -->
         </div>
     </div>
+    <script src="../../web/JS/admin.js"></script>
 </body>
 </html>
