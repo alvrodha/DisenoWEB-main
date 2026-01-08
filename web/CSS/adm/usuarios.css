@@ -112,6 +112,9 @@
 }
 
 .modal-content {
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
     background-color: white;
     padding: 25px;
     border-radius: 15px;
@@ -120,29 +123,40 @@
 }
 
 .modal-content h2 {
+    border: 2px solid blue;
     margin: 0;
     color: #1C1D3D;
 }
 
-.modal-content input,
-.modal-content select {
+/* Inputs del modal */
+.modal-form {
+    border: 2px solid pink;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-form input {
+    border: 2px solid violet;
     padding: 0.6rem;
+    margin: 0.4rem;
     border-radius: 8px;
-    border: 1px solid #ccc;
 }
 
 /* Botones del modal */
 .modal-actions {
-
+    display: flex;
+    justify-content: space-between;
 }
 
-.modal-actions button {
-
+.modal-actions input {
+    background-color: #1C1D3D;
+    color: white;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
 }
 
 .confirm {
-    background-color: #1C1D3D;
-    color: white;
+    
 }
 
 .confirm.danger {
@@ -164,8 +178,8 @@
 
 #content-table th,
 #content-table td {
-    padding: 12px;
-    text-align: left;
+    padding: 0.2rem;
+    text-align: center;
 }
 
 #content-table th {
@@ -188,7 +202,7 @@
 .modal-btn-edit,
 .modal-btn-del {
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
 .modal-btn-edit {

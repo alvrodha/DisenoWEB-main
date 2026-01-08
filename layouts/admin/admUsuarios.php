@@ -50,15 +50,15 @@ include_once('../../app/funciones.php');
                     <div id="modal-add" class="modal" hidden>
                         <div class="modal-content">
                             <h2>Añadir usuario</h2>
-                            <input type="text" placeholder="Nombre">
-                            <input type="email" placeholder="Email">
-                            <select>
-                                <option>Administrador</option>
-                                <option>Usuario</option>
-                            </select>
+                            <form class="modal-form" method="post" action="">
+                                <input type="hidden" value="añadir">
+                                <input type="text" id="usuario" placeholder="Usuario">
+                                <input type="email" id="email" placeholder="Email">
+                                <input type="contraseña" id="contraseña" placeholder="Constraseña">
+                            </form>
                             <div class="modal-actions">
-                                <button class="close-modal">Cancelar</button>
-                                <button class="confirm">Guardar</button>
+                                <input type="reset" class="close-modal" value="Cancelar"></button>
+                                <input type="submit" class="confirm">
                             </div>
                         </div>
                     </div>
@@ -68,10 +68,13 @@ include_once('../../app/funciones.php');
                         <div class="modal-content">
                             <h2>Eliminar usuario</h2>
                             <p>¿Estás seguro de que quieres eliminar este usuario?</p>
-                            <div class="modal-actions">
-                                <button class="close-modal">Cancelar</button>
-                                <button class="confirm danger">Eliminar</button>
-                            </div>
+                            <form class="modal-form" method="post">
+                                <input type="hidden" value="eliminar">
+                                <div class="modal-actions">
+                                    <input type="reset" class="close-modal" value="Cancelar"></button>
+                                    <input type="submit" class="confirm" value="Eliminar">
+                                </div>
+                            </form>
                         </div>
                     </div>
 
@@ -79,16 +82,16 @@ include_once('../../app/funciones.php');
                     <div id="modal-edit" class="modal" hidden>
                         <div class="modal-content">
                             <h2>Editar usuario</h2>
-                            <input type="text" placeholder="Nombre">
-                            <input type="email" placeholder="Email">
-                            <select>
-                                <option>Administrador</option>
-                                <option>Usuario</option>
-                            </select>
-                            <div class="modal-actions">
-                                <button class="close-modal">Cancelar</button>
-                                <button class="confirm">Guardar cambios</button>
-                            </div>
+                            <form class="modal-form" method="post">
+                                <input type="hidden" value="editar">
+                                <input type="text" id="nombre" placeholder="Nombre">
+                                <input type="email" id="email" placeholder="Email">
+                                <input type="text" id="contraseña" placeholder="Contraseña">
+                                <div class="modal-actions">
+                                    <input type="button" class="close-modal" value="Cancelar"></input>
+                                    <input type="button" class="confirm" value="Guardar Cambios"></input>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
