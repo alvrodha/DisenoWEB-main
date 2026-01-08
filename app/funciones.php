@@ -13,10 +13,10 @@ function mostrarUsusarios() {
     $tussers = $db->getUsuarios();
     foreach ($tussers as $usser) {
         $msg .= "<tr>";
-        $msg .= "<td>$usser->usser</td>";
+        $msg .= "<td>$usser->nombre</td>";
         $msg .= "<td>$usser->email</td>";
         $msg .= "<td>$usser->passwd</td>";
-        $msg .="<td><a href=\"#\" onclick=\"accionDetalles('$usser->usser');\" >Detalles</a></td>\n";
+        $msg .= "<td><a href=\"#\" onclick=\"accionDetalles('$usser->usser');\" >Detalles</a></td>\n";
         $msg .="</tr>\n";
     }
     $msg .= "</table>\n";

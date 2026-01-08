@@ -33,26 +33,10 @@ include_once('../../app/funciones.php');
                 <input  type="button" id="modal-btn" name="addDato" value="añadir usuario">
                 <div class="modal" ></div>
             </div>
-            <!-- La funcion tiene que devolver la tabla con los usuarios según la query -->
-            <table id="content-table">
-                <tr>
-                    <th>ID Usuario</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                    <th colspan="2">Acciones</th>
-                </tr>
-                <tr>
-                    <td>123456</td>
-                    <td>usuarioEjemplo</td>
-                    <td>usuarioEjemplo@example.com</td>
-                    <td>Administrador</td>
-                    <td><button>Editar</button></td>
-                    <td><button>Eliminar</button></td>
-                </tr>
-            </table>
-            <!-- <?= mostrarUsusarios() ?> -->
+         <!-- La funcion tiene que devolver la tabla con los usuarios según la query -->
+            <?= mostrarUsusarios() ?>   
         </div>
+        
     </div>
     <script src="../../web/JS/admin.js"></script>
 </body>
