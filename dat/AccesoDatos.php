@@ -134,5 +134,10 @@
             return false;
         }
     }
+    //evitar clonar objetos(PATRON SINGLETON)
+     public function __clone()
+    { 
+        trigger_error('La clonación no permitida', E_USER_ERROR); 
+    }
  }
  ?>
