@@ -31,7 +31,15 @@ include_once('../../app/funciones.php');
             <div id="controladorTabla">
                 <h1>Panel de Administrador de noticias</h1>
                 <input  type="button" id="modal-btn" name="addNoticia" value="añadir noticia">
-                <div class="modal" ></div>
+                <div class="modal modal-add" hidden>
+
+                </div>
+                <div class="modal modal-del" hiden>
+
+                </div>
+                <div class="modal modal-edit" hiden>
+
+                </div>
             </div>
             <!-- La funcion tiene que devolver la tabla con las noticias según la query -->
             <?= mostrarNoticiasAdmin() ?>

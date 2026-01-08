@@ -1,4 +1,4 @@
-/* Contenedor principal de todo el contenido de la página */
+/* ================= CONTENEDOR PRINCIPAL ================= */
 #content-user {
     border: 2px solid green;
     padding: 10px;
@@ -6,14 +6,16 @@
     margin: auto;
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
-/* Contenedor del encabezado del contenido */
+/* ================= HEADER ================= */
 #content-header {
     border: 2px solid blue;
-    margin-bottom: 20px;
+    padding: 15px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 15px;
 }
 
 #content-header h1 {
@@ -21,23 +23,178 @@
     color: #333;
 }
 
-#modal-btn {
-    color: white;
+/* ================= INPUTS HEADER ================= */
+#inputs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Buscador */
+.search-bar {
+    border-radius: 50px;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid #ccc;
+    width: 250px;
+    width: 95%;
+}
+
+/* ================= MENU ORDENAR ================= */
+.menu-order {
+    list-style: none;
+    position: relative;
+}
+
+.menu-link {
+    display: block;
+    padding: 0.8rem 1.2rem;
     background-color: #1C1D3D;
-    padding: 0.8rem;
+    color: white;
     border-radius: 1rem;
+    text-decoration: none;
     cursor: pointer;
 }
- /* Contenedor de la tabla */
-#content-table tr:first-child {
-    background-color: lightgrey;
+
+/* Dropdown */
+.sub-menu {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    padding: 0.5rem 0;
+    list-style: none;
+    display: none;
+    min-width: 150px;
+    z-index: 10;
 }
 
-#content-table tr:hover{
-    background-color: gray;
+.sub-menu-item {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: #333;
+    text-decoration: none;
 }
 
-#content-table tr th {
-    
+.sub-menu-item:hover {
+    background-color: #f0f0f0;
 }
 
+/* Mostrar dropdown */
+.menu-order:hover .sub-menu {
+    display: block;
+}
+
+/* ================= BOTÓN AÑADIR ================= */
+#modal-btn-add {
+    color: white;
+    background-color: #1C1D3D;
+    padding: 0.8rem 1.2rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+/* ================= MODALES ================= */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 350px;
+    gap: 15px;
+}
+
+.modal-content h2 {
+    margin: 0;
+    color: #1C1D3D;
+}
+
+.modal-content input,
+.modal-content select {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Botones del modal */
+.modal-actions {
+
+}
+
+.modal-actions button {
+
+}
+
+.confirm {
+    background-color: #1C1D3D;
+    color: white;
+}
+
+.confirm.danger {
+    background-color: darkred;
+}
+
+.close-modal {
+    background-color: #ccc;
+}
+
+
+/* ================= TABLA ================= */
+#content-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#content-table th,
+#content-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+#content-table th {
+    background-color: lightgray;
+}
+
+#content-table tr {
+    background-color: white;
+}
+
+#content-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#content-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+/* ================= ICONOS ================= */
+.modal-btn-edit,
+.modal-btn-del {
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.modal-btn-edit {
+    color: #1C1D3D;
+}
+
+.modal-btn-del {
+    color: darkred;
+}
