@@ -1,0 +1,36 @@
+<?php
+include_once('../../app/AccesoNoticias.php');
+include_once('../../app/funciones.php');
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../../web/IMG/favicon.png">
+    <title>TetuScores</title>
+    <link rel="stylesheet" href="../../web/CSS/default.css"/>
+</head>
+<body>
+    <div id="nav">
+        <div id="logo">
+            <a href="../../index.php"><img src="../../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
+        </div>
+        <ul id="nav-list">
+            <li><a href="admLiga.html">Liga</a></li>
+            <li><a href="admNoticias.php">Noticias</a></li>
+            <li><a href="admUsuarios.php">Usuarios</a></li>
+        </ul>
+    </div>
+
+<!-- Contenedor principal de todo el contenido de la página -->
+    <div id="content">
+        <div id="tabla">
+            <h1>Panel de Administrador de usuarios</h1>
+            <!-- La funcion tiene que devolver la tabla con los usuarios según la query -->
+            <?= mostrarUsusarios() ?>
+        </div>
+    </div>
+</body>
+</html>
