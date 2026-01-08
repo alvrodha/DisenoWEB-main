@@ -1,5 +1,5 @@
 <?php
-include_once ('../app/AccesoNoticias.php');
+include_once ('../dat/AccesoDatos.php');
 include_once ('../app/funciones.php');
 ?>
 
@@ -80,11 +80,11 @@ include_once ('../app/funciones.php');
             <?= mostrarNoticias() ?>
         </div>
     </div>
-
+     
     <!-- ====== BLOQUES INFERIORES ====== -->
     <!-- Este div agrupa las seis cajas con animaciones al pasar el ratón -->
     <div class="bloques-inferiores">
-
+   
         <!-- Cada .bloque representa una caja -->
         <div class="bloque slide-up">
             <h1>¿Quiénes somos?</h1>
