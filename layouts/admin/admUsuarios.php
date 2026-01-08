@@ -28,7 +28,7 @@ include_once('../../app/funciones.php');
 
 <!-- Contenedor principal de todo el contenido de la página -->
     <div id="content">
-        <div id="content-user">
+        <div id="content-table">
             <div id="content-header">
                 <h1>Panel de Administrador de usuarios</h1>
                 <div id="inputs-header">
@@ -91,35 +91,11 @@ include_once('../../app/funciones.php');
                             </div>
                         </div>
                     </div>
-
-<input type="button" id="modal-btn-add" value="Añadir usuario">
-
+                    <input type="button" id="modal-btn-add" value="Añadir usuario">
+                </div>
             </div>
-<<<<<<< HEAD
-            <!-- La funcion tiene que devolver la tabla con los usuarios según la query -->
-            <table id="content-table">
-                <tr>
-                    <th>ID Usuario</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                </tr>
-                <tr>
-                    <td>123456</td>
-                    <td>usuarioEjemplo</td>
-                    <td>usuarioEjemplo@example.com</td>
-                    <td>Administrador</td>
-                    <td><i class='bx  bx-pencil modal-btn-edit'></i></td>
-                    <td><i class='bx  bx-trash modal-btn-del'></i></td>
-                </tr>
-            </table>
-            
-=======
-         <!-- La funcion tiene que devolver la tabla con los usuarios según la query -->
             <?= mostrarUsusarios() ?>   
->>>>>>> 13ab9db6e248918f6033661259b46250809d3f70
-        </div>
-        
+        </div> 
     </div>
     <script src="../../web/JS/admin.js" defer></script>
 </body>
