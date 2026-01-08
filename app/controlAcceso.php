@@ -1,5 +1,5 @@
 <?php
-include_once 'AccesoUsuarios.php';
+include_once '../dat/AccesoDatos.php';
 include_once '../dat/Usuario.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -13,13 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        $ac = AccesoUsuarios::getModelo();
+        $ac = AccesoDatos::getModelo();
         $usr = $ac->getUsuario($email, $passwd);
         if ($usr) {
             if ($usr->usser === 'root') {
                 header("location: ../layouts/home.php");
+                echo "El Acceso es correcto, bienvenido a la página! (administrador)";
             } else {
                 header("Location: ../layouts/home.php");
+                echo "El Acceso es correcto, bienvenido a la página!";
             }
         } else {
             echo "Usuario no encontrado o contraseña incorrecta.";
@@ -35,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        $db = Accesousuarios::getModelo();
+        $db = AccesoDatos::getModelo();
         $db->addUsuario((object)['usser' => $usser, 'email' => $email, 'passwd' => $passwd]);
         header("Location: ../layouts/home.php");
     }

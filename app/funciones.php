@@ -9,7 +9,7 @@ function mostrarUsusarios() {
         $msg .= "<th>$titulos[$j]</th>";
     }  
     $msg .= "</tr>";
-    $db = Accesousuarios::getModelo();
+    $db = AccesoDatos::getModelo();
     $tussers = $db->getUsuarios();
     foreach ($tussers as $usser) {
         $msg .= "<tr>";
@@ -28,7 +28,7 @@ function mostrarUsusarios() {
 function mostrarNoticias() {
     $msg = "";
     $estado = true;
-    $db = AccesoNoticias::getModelo();
+    $db = AccesoDatos::getModelo();
     $tnoticias = $db->getNoticias();
     foreach ($tnoticias as $noticia) {
         if ($noticia->visible == true) {
@@ -54,7 +54,7 @@ function mostrarNoticiasAdmin(){
         $msg .= "<th>$titulos[$j]</th>";
     }  
     $msg .= "</tr>";
-    $db = AccesoNoticias::getModelo();
+    $db = AccesoDatos::getModelo();
     $tnoticias = $db->getNoticias();
     foreach ($tnoticias as $noticia) {
         $msg .= "<tr>";
