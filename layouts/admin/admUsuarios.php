@@ -1,5 +1,5 @@
 <?php
-include_once('../../app/AccesoNoticias.php');
+include_once('../../dat/AccesoDatos.php');
 include_once('../../app/funciones.php');
 ?>
 
