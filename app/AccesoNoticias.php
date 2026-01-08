@@ -1,7 +1,7 @@
 <?php
 
-include_once('Noticia.php');
-include_once('config.php');
+include_once ('../dat/Noticia.php');
+include_once ('config.php');
 
 class AccesoNoticias {
     private static $modelo = null;
@@ -25,7 +25,7 @@ class AccesoNoticias {
 
     public function __construct() {
         try {
-            $dns = 'mysql:host='.SERVER_DB.';dbname='.DATABASE_NOTICIAS;
+            $dns = 'mysql:host='.SERVER_DB.';dbname='.DATABASE_NAME;
             $this->dbh = new PDO($dns, DB_USER, '');
             $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {

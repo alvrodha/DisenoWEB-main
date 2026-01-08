@@ -1,29 +1,30 @@
-<?php 
-include_once('../PHP/AccesoNoticias.php');
-include_once('../PHP/funciones.php');
+<?php
+include_once ('../app/AccesoNoticias.php');
+include_once ('../app/funciones.php');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="SRC/favicon.png">
+    <link rel="icon" type="image/png" href="../web/IMG/favicon.png">
     <title>TetuScores</title>
-    <link rel="stylesheet" href="../CSS/default.css"/>
-    <link rel="stylesheet" href="../CSS/home.css"/>
+    <link rel="stylesheet" href="../web/CSS/default.css"/>
+    <link rel="stylesheet" href="../web/CSS/home.css"/>
 </head>
 <body>
     <canvas id="background"></canvas>
     <div id="nav">
         <div id="logo">
-            <a href="../index.php"><img src="../SRC/Logo1.png" alt="Logo" width="200px"></a>
+            <a href="../index.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
             <li><a href="calendario.html">CALENDARIO</a></li>
             <li><a href="equipos.html">EQUIPOS</a></li>
             <li><a href="clasificacion.html">CLASIFICACIÓN</a></li>
-            <!--<li><a href="HTML/jugadores.html">JUGADORES</a></li>-->
+            <!--<li><a href="TETULEAGUE PHP/web/HTML/jugadores.html">JUGADORES</a></li>-->
         </ul>
     </div>
     <div class="ticker-s24">
@@ -57,11 +58,11 @@ include_once('../PHP/funciones.php');
     </div>
     <div id="navWindow">
         <div id="navWindowPath">
-            <a href="index.html">Home</a>
+            <a href="../index.php">Home</a>
         </div>
         <div id="navWindowUser">
             <div id="navWindowUserButton">
-                <img src="../SRC/user.png">
+                <img src="../web/IMG/user.png">
                 <a href="inscribete.html">Iniciar sesión</a>
             </div> 
         </div>
@@ -191,7 +192,7 @@ include_once('../PHP/funciones.php');
         <p>© 2025 TetuScores. Todos los derechos reservados.</p>
     </div>
 </div>
-<script src="../JS/background.js"></script>
+<script src="TETULEAGUE PHP/web/JS/background.js"></script>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", () => {

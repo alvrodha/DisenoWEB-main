@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="SRC/favicon.png">
+    <link rel="icon" type="image/png" href="../web/IMG/favicon.png">
     <title>TetuScores</title>
-    <link rel="stylesheet" href="../CSS/default.css"/>
-    <link rel="stylesheet" href="../CSS/recordarContrasenna.css"/>
+    <link rel="stylesheet" href="../web/CSS/default.css"/>
+    <link rel="stylesheet" href="../web/CSS/home.css"/>
 </head>
 <body>
     <div id="nav">
         <div id="logo">
-            <a href="../index.html"><img src="../SRC/Logo1.png" alt="Logo" width="200px"></a>
+            <a href="../index.html"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
             <li><a href="calendario.html">CALENDARIO</a></li>
@@ -34,7 +34,6 @@
                 <li class="ticker__item">Calendario de próximos partidos</li>
                 <li class="ticker__item">Estadísticas de jugadores actualizadas</li>
             </ul>
-            <!-- Copia automática para el loop -->
             <ul class="ticker__list">
                 <li class="ticker__item">   </li>
                 <li class="ticker__item">Nuevos partidos añadidos a Tetuscores</li>
@@ -51,42 +50,25 @@
     </div>
     <div id="navWindow">
         <div id="navWindowPath">
-            <a href="../index.html">Home</a>
+            <a href="../index.php">Home</a>
         </div>
         <div id="navWindowUser">
             <div id="navWindowUserButton">
-                <img src="../SRC/user.png">
+                <img src="../web/IMG/user.png">
                 <a href="inscribete.html">Iniciar sesión</a>
             </div> 
         </div>
     </div>
-
-    <!-- Contenedor principal de todo el contenido de la página -->
-    <div id="content">
-        <div id="container">
-            <form>
-                <h1></h1>
-                <input type="text" placeholder="correo">
-                <input type="submit" value="Enviar">
-            </form>
-        </div>
+</div>
+<div id="footer">
+    <div class="footer-content">
+        <p>Contacto: <a href="mailto:jorgeparron2@gmail.com">jorgeparron2@gmail.com</a></p>
+        <p>Teléfono: <a href="tel:+34644736788">+34 644 73 67 88</a></p>
+        <p>Dirección: Calle Vía Límite, 14, 28029 Madrid, España</p>
     </div>
+    <div class="footer-copy">
+        <p>© 2025 TetuScores. Todos los derechos reservados.</p>
+    </div>
+</div>
 </body>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const noticias = document.querySelectorAll(".noticias-content p");
-    let index = 0;
-
-    function mostrarSiguienteNoticia() {
-        noticias.forEach(n => n.classList.remove("active"));
-        noticias[index].classList.add("active");
-        index = (index + 1) % noticias.length;
-    }
-
-    // Muestra la primera noticia al cargar
-    mostrarSiguienteNoticia();
-    // Cambia cada 3 segundos
-    setInterval(mostrarSiguienteNoticia, 3000);
-});
-</script>
 </html>

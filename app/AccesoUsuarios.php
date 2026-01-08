@@ -1,7 +1,7 @@
 <?php
 
-include_once "Usuario.php";
-include_once 'config.php';
+include_once ('../dat/Usuario.php');
+include_once ('config.php');
 
 class AccesoUsuarios {
 
@@ -26,7 +26,7 @@ class AccesoUsuarios {
 
     public function __construct() {
         try {
-            $dns = 'mysql:host='.SERVER_DB.';dbname='.DATABASE_USUARIOS;
+            $dns = 'mysql:host='.SERVER_DB.';dbname='.DATABASE_NAME;
             $this->dbh = new PDO($dns, DB_USER, '');
             $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
@@ -35,12 +35,12 @@ class AccesoUsuarios {
         }
     }
 
-    public function getUsuario (String $email, String $password) {
+    public function getUsuario (String $email, String $passwd) {
         $usr = false;
         $stmt_usuario = $this->dbh->prepare("select * from usuarios where email =? and passwd =?");
         $stmt_usuario->setFetchMode(PDO::FETCH_CLASS, 'usuario');
         $stmt_usuario->bindParam(1, $email);
-        $stmt_usuario->bindParam(2, $password);
+        $stmt_usuario->bindParam(2, $passwd);
         if ($stmt_usuario->execute()) {
             if ($obj = $stmt_usuario->fetch()) {
                 $usr = $obj;
