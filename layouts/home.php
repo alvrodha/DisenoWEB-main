@@ -192,8 +192,9 @@ include_once ('../app/funciones.php');
         <p>© 2025 TetuScores. Todos los derechos reservados.</p>
     </div>
 </div>
-<script src="TETULEAGUE PHP/web/JS/background.js"></script>
+
 </body>
+<script src="../web/JS/background.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
     var noticias = document.querySelectorAll(".noticias-content p");
