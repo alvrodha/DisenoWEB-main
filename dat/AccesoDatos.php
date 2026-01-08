@@ -1,9 +1,10 @@
 <!-- ACCESODATOS DE NOTICIAS Y USUARIOS CON SUS RESPECTIVAS FUNCIONES CON SQL -->
  <?php
  
- include_once ('../app/config.php');
- include_once ('Usuario.php');
- include_once ('Noticia.php');
+ include_once __DIR__ . '/../app/config.php';
+ include_once __DIR__ . '/Usuario.php';
+ include_once __DIR__ . '/Noticia.php';
+ 
  class AccesoDatos{
     //Modelo de Patrón singleton
     private static $modelo = null;
