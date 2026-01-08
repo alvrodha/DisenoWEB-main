@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ac = AccesoDatos::getModelo();
         $usr = $ac->getUsuario($email, $passwd);
         if ($usr) {
-            if ($usr->usser === 'root') {
-                header("location: ../layouts/home.php");
+            if ($usr->email === 'root@gmail.com') {
+                header("location: ../layouts/admin/administrador.php");
                 echo "El Acceso es correcto, bienvenido a la página! (administrador)";
             } else {
                 header("Location: ../layouts/home.php");

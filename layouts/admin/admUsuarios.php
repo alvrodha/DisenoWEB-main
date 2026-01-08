@@ -1,5 +1,5 @@
 <?php
-include_once('../../app/AccesoNoticias.php');
+include_once('../../dat/AccesoDatos.php');
 include_once('../../app/funciones.php');
 ?>
 
@@ -95,6 +95,7 @@ include_once('../../app/funciones.php');
 <input type="button" id="modal-btn-add" value="Añadir usuario">
 
             </div>
+<<<<<<< HEAD
             <!-- La funcion tiene que devolver la tabla con los usuarios según la query -->
             <table id="content-table">
                 <tr>
@@ -113,7 +114,12 @@ include_once('../../app/funciones.php');
                 </tr>
             </table>
             
+=======
+         <!-- La funcion tiene que devolver la tabla con los usuarios según la query -->
+            <?= mostrarUsusarios() ?>   
+>>>>>>> 13ab9db6e248918f6033661259b46250809d3f70
         </div>
+        
     </div>
     <script src="../../web/JS/admin.js" defer></script>
 </body>
