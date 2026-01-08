@@ -12,28 +12,35 @@
 #controladorTabla {
     display: flex;
     flex-wrap: wrap;
-}
-
-#controladorTabla form {
-    width: 100%;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
     gap: 50px;
 }
 
-#controladorTabla form h1 {
+
+#controladorTabla  h1 {
     color: #333;
     margin-bottom: 20px;
 }
 
-#controladorTabla form input {
+#controladorTabla input {
     color: white;
     background-color: #415f7e;
     border-color: #415f7e;
     border-radius: 10px;
     padding: 5px;
 }
+
+/* Estilos para la tabla emergente de creación de noticias */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+
+
 
 #tablaNoticias {
     width: 100%;
