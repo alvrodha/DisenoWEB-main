@@ -16,7 +16,7 @@ include_once('../../app/funciones.php');
 <body>
     <div id="nav">
         <div id="logo">
-            <a href="../../index.php"><img src="../../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
+            <a href="administrador.php"><img src="../../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
             <li><a href="admLiga.html">Liga</a></li>
@@ -29,14 +29,14 @@ include_once('../../app/funciones.php');
     <div id="content">
         <div id="tabla">
             <div id="controladorTabla">
-                <form>
-                    <h1>Panel de Administrador de noticias</h1>
-                    <input type="submit" name="addNoticia" value="añadir noticia">
-                </form>
+                <h1>Panel de Administrador de noticias</h1>
+                <input  type="button" id="modal-btn" name="addNoticia" value="añadir noticia">
+                <div class="modal" ></div>
             </div>
             <!-- La funcion tiene que devolver la tabla con las noticias según la query -->
             <?= mostrarNoticiasAdmin() ?>
         </div>
     </div>
+    <script src="../../web/JS/admin.js"></script>
 </body>
 </html>
