@@ -91,7 +91,6 @@ include_once('../../app/funciones.php');
                             </div>
                         </div>
                     </div>
-                    <input type="button" id="modal-btn-add" value="Añadir usuario">
                 </div>
             </div>
             <?= mostrarUsusarios() ?>   

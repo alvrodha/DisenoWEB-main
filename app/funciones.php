@@ -1,7 +1,7 @@
 <?php 
 
 function mostrarUsusarios() {
-    $titulos = [ "Usuario","Email","Contraseña", "Gestionar"];
+    $titulos = [ "Usuario","Email","Contraseña"];
     $msg = "<table>\n";
      // Identificador de la tabla
     $msg .= "<tr>";
@@ -16,11 +16,12 @@ function mostrarUsusarios() {
         $msg .= "<td>$usser->nombre</td>";
         $msg .= "<td>$usser->email</td>";
         $msg .= "<td>$usser->passwd</td>";
-        $msg .= "<td><a href=\"#\" onclick=\"accionDetalles('$usser->usser');\" >Detalles</a></td>\n";
+        $msg .= "<td><a class=\"\" href=\"#\" onclick=\"accionEditar('$usser->usser');\" ><i class='bx bx-pencil modal-btn-edit'></a></td>\n";
+        $msg .= "<td><a class=\"\" href=\"#\" onclick=\"accionEliminar('$usser->usser');\" ><i class='bx bx-trash modal-btn-del'></i></td>";
         $msg .="</tr>\n";
     }
     $msg .= "</table>\n";
-    $msg .="<a href=\"#\" onclick=\"accionAlta('$usser->login');\" >Añadir</a>";
+    $msg .="<a id=\"modal-btn-add\" href=\"#\" onclick=\"accionAlta('$usser->login');\" >Añadir</a>";
    
     return $msg;  
 }
