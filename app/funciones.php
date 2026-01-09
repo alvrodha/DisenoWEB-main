@@ -92,10 +92,24 @@ function limpiarArrayEntrada(array &$entrada){
     }
 }
 
-function validarAddUser($usuario, $passwd, $email) {
+// Función para validar la inserción de un usuario para evitar duplicaciones
+function validarAddUser($usuario, $passwd, $passwdRep, $email):bool {
     $db = AccesoDatos::getModelo();
-    if ($db->checkEmail($email)) {
-
+    if (!$db->checkEmail($email)) {
+        return false;
     }
+    if (!$db->checkUser($usuario)) {
+        return false;
+    }
+    if ($passwd != $passwdRep) {
+        return false;
+    }
+    if (count_chars($passwd) < 10) {
+        return false;
+    }
+    if (!contieneNoAlfa($passwd)) {
+        return false;
+    }
+    return true;
 }
 ?>

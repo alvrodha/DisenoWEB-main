@@ -4,10 +4,12 @@ include_once('../../app/funciones.php');
 
 $usuario = $_POST['usuario'];
 $passwd = $_POST['contraseña'];
+$passwdRep = $_POST['contraseñaRep'];
 $email = $_POST['email'];
 
-if (validarAddUser($usuario, $passwd, $email)) {
-    
+if (validarAddUser($usuario, $passwd, $passwdRep, $email)) {
+    $db = AccesoDatos::getModelo();
+    $db -> addUsuario($usuario);
 }
 
 ?>
@@ -63,7 +65,8 @@ if (validarAddUser($usuario, $passwd, $email)) {
                                 <input type="hidden" value="añadir">
                                 <input type="text" id="usuario" placeholder="Usuario">
                                 <input type="email" id="email" placeholder="Email">
-                                <input type="contraseña" id="contraseña" placeholder="Constraseña">
+                                <input type="text" id="contraseña" placeholder="Constraseña">
+                                <input type="text" id="contraseñaRep" placeholder="Contraseña">
                                 <div class="modal-actions">
                                     <input type="reset" class="close-modal" value="Cancelar"></button>
                                     <input type="submit" class="confirm">
