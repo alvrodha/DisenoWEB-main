@@ -1,5 +1,6 @@
 <?php 
-include_once('../dat/AccesoDatos.php');
+include_once(__DIR__ . '/../dat/AccesoDatos.php');
+
 
 function mostrarUsusarios() {
     $titulos = [ "Usuario","Email","Contraseña"];
@@ -92,28 +93,24 @@ function limpiarArrayEntrada(array &$entrada){
 }
 
 // Función para validar la inserción de un usuario para evitar duplicaciones
-function validarAddUser($usser, $passwd, $passwdRep, $email) {
+function validarAddUser($usuario) {
     $db = AccesoDatos::getModelo();
-    if (!$db->checkEmail($email)) {
+    if (!$db->checkEmail($usuario->email)) {
         return false;
     }
-    if (!$db->checkUser($usser)) {
+    if (!$db->checkUser($usuario->usser)) {
         return false;
     }
-    if ($passwd != $passwdRep) {
+    if ($usuario->passwd != $usuario->passwdRep) {
         return false;
     }
-    if (count_chars($passwd) < 10) {
+    if (count_chars($usuario->passwd) < 10) {
         return false;
     }
-    if (!contieneNoAlfa($passwd)) {
+    if (!contieneNoAlfa($usuario->passwd)) {
         return false;
     }
     $db = AccesoDatos::getModelo();
-    $usuario = new Usuario();
-    $usuario->$email;
-    $usuario->$usser;
-    $usuario->$passwd;
     $db -> addUsuario($usuario);
     return true;
 }
