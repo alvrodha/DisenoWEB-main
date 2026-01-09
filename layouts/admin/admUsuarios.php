@@ -1,16 +1,12 @@
 <?php
-include_once('../../dat/AccesoDatos.php');
-include_once('../../app/funciones.php');
+include_once ('../../app/funciones.php');
 
-$usuario = $_POST['usuario'];
+$usser = $_POST['usuario'];
 $passwd = $_POST['contraseña'];
 $passwdRep = $_POST['contraseñaRep'];
 $email = $_POST['email'];
 
-if (validarAddUser($usuario, $passwd, $passwdRep, $email)) {
-    $db = AccesoDatos::getModelo();
-    $db -> addUsuario($usuario);
-}
+validarAddUser($usser, $passwd, $passwdRep, $email)
 
 ?>
 
@@ -72,7 +68,6 @@ if (validarAddUser($usuario, $passwd, $passwdRep, $email)) {
                                     <input type="submit" class="confirm">
                                 </div>
                             </form>
-                            
                         </div>
                     </div>
 
