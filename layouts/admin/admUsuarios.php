@@ -1,26 +1,22 @@
 <?php
 include_once ('../../app/funciones.php');
+
+$transactionStatus = null;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $accion = $_POST['accion'];
+    $accion = $_POST['accion'] ?? null;
+
     switch ($accion) {
         case "añadir":
-            $usuario = definirNewUsr();
-            if (validarAddUser($usuario)) {
-                
-            }
+            $transactionStatus = validarAddUser(definirNewUsr()) ? 'success' : 'fail';
             break;
-        case "eliminar":
-            $usuario = definirUsr();
-            if (validarDelUser($usuario)) {
 
-            }
+        case "eliminar":
+            $transactionStatus = validarDelUser(definirUsr()) ? 'success' : 'fail';
             break;
+
         case "editar":
-            $usuario = definirUsr();
-            $NewUsuario = definirNewUsr();
-            if (!validarEditUser($usuario, $NewUsuario)) {
-                $msg = '';
-            }
+            $transactionStatus = validarEditUser(definirUsr(), definirNewUsr()) ? 'success' : 'fail';
             break;
     }
 }
@@ -90,7 +86,7 @@ function definirNewUsr() {
                     </ul>
 
                     <!-- MODAL AÑADIR -->
-                    <div id="modal-add" class="modal" hidden>
+                    <div id="modal-add" class="modal">
                         <div class="modal-content">
                             <h2>Añadir usuario</h2>
                             <form class="modal-form" method="post">
@@ -108,7 +104,7 @@ function definirNewUsr() {
                     </div>
 
                     <!-- MODAL ELIMINAR -->
-                    <div id="modal-del" class="modal" hidden>
+                    <div id="modal-del" class="modal">
                         <div class="modal-content">
                             <h2>Eliminar usuario</h2>
                             <p>¿Estás seguro de que quieres eliminar este usuario?</p>
@@ -126,7 +122,7 @@ function definirNewUsr() {
                     </div>
 
                     <!-- MODAL EDITAR -->
-                    <div id="modal-edit" class="modal" hidden>
+                    <div id="modal-edit" class="modal">
                         <div class="modal-content">
                             <h2>Editar usuario</h2>
                             <form class="modal-form" method="post">
@@ -144,19 +140,30 @@ function definirNewUsr() {
                     </div>
 
                     <!-- MODAL ÉXITO EN LA TRANSACCiÓN -->
-                    <div id="modal-succes" class="modal" hidden>
-                        <h2>Éxito en la transacción</h2>
+                    <div id="modal-success" class="modal">
+                        <div class="modal-content">
+                            <h2>Éxito</h2>
+                            <p>La operación se realizó correctamente.</p>
+                            <button class="close-modal">Aceptar</button>
+                        </div>
                     </div>
 
                     <!-- MODAL ERROR EN LA TRANSACCiÓN -->
-                    <div id="modal-fail" class="modal" hidden>
-                        <h2>Error en la transacción</h2>
+                    <div id="modal-fail" class="modal">
+                        <div class="modal-content">
+                            <h2>Error</h2>
+                            <p>Ha ocurrido un error durante la operación.</p>
+                            <button class="close-modal">Cerrar</button>
+                        </div>
                     </div>
                 </div>
             </div>
             <?= mostrarUsusarios() ?>   
         </div> 
     </div>
+    <script>
+        const transactionStatus = <?= json_encode($transactionStatus) ?>;
+    </script>
     <script src="../../web/JS/admin.js" defer></script>
 </body>
 </html>
