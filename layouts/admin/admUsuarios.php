@@ -1,13 +1,14 @@
 <?php
 include_once ('../../app/funciones.php');
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $usuario = new Usuario();
+    $usuario->usser = $_POST['usuario'] ?? '';
+    $usuario->passwd = $_POST['contraseña'] ?? '';
+    $usuario->passwdRep = $_POST['contraseñaRep'] ?? '';
+    $usuario->email = $_POST['email'] ?? '';
 
-$usser = $_POST['usuario'];
-$passwd = $_POST['contraseña'];
-$passwdRep = $_POST['contraseñaRep'];
-$email = $_POST['email'];
-
-validarAddUser($usser, $passwd, $passwdRep, $email)
-
+    validarAddUser($usuario);
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +58,7 @@ validarAddUser($usser, $passwd, $passwdRep, $email)
                     <div id="modal-add" class="modal" hidden>
                         <div class="modal-content">
                             <h2>Añadir usuario</h2>
-                            <form class="modal-form" method="post" >
+                            <form class="modal-form" method="post" action="" >
                                 <input type="hidden" value="añadir">
                                 <input type="text" id="usuario" placeholder="Usuario">
                                 <input type="email" id="email" placeholder="Email">
@@ -65,7 +66,7 @@ validarAddUser($usser, $passwd, $passwdRep, $email)
                                 <input type="text" id="contraseñaRep" placeholder="Contraseña">
                                 <div class="modal-actions">
                                     <input type="reset" class="close-modal" value="Cancelar"></button>
-                                    <input type="submit" class="confirm">
+                                    <input type="submit"  class="confirm">
                                 </div>
                             </form>
                         </div>
