@@ -135,6 +135,19 @@
             return false;
         }
     }
+
+    //checkEmail --> Funcion check para evitar validar usuarios con correos ya existentes
+    public function checkEmail($email): bool {
+        try {
+            $stmt = $this->dbh->prepare("SELECT EXISTS(SELECT 1 FROM usuarios WHERE email = ?");
+            $stmt->bindParam(1, $email);
+            $stmt->execute();
+            return (bool) $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     //evitar clonar objetos(PATRON SINGLETON)
      public function __clone()
     { 

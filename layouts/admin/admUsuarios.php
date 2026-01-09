@@ -1,6 +1,15 @@
 <?php
 include_once('../../dat/AccesoDatos.php');
 include_once('../../app/funciones.php');
+
+$usuario = $_POST['usuario'];
+$passwd = $_POST['contraseña'];
+$email = $_POST['email'];
+
+if (validarAddUser($usuario, $passwd, $email)) {
+    
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -50,16 +59,17 @@ include_once('../../app/funciones.php');
                     <div id="modal-add" class="modal" hidden>
                         <div class="modal-content">
                             <h2>Añadir usuario</h2>
-                            <form class="modal-form" method="post" action="">
+                            <form class="modal-form" method="post" >
                                 <input type="hidden" value="añadir">
                                 <input type="text" id="usuario" placeholder="Usuario">
                                 <input type="email" id="email" placeholder="Email">
                                 <input type="contraseña" id="contraseña" placeholder="Constraseña">
+                                <div class="modal-actions">
+                                    <input type="reset" class="close-modal" value="Cancelar"></button>
+                                    <input type="submit" class="confirm">
+                                </div>
                             </form>
-                            <div class="modal-actions">
-                                <input type="reset" class="close-modal" value="Cancelar"></button>
-                                <input type="submit" class="confirm">
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -68,7 +78,7 @@ include_once('../../app/funciones.php');
                         <div class="modal-content">
                             <h2>Eliminar usuario</h2>
                             <p>¿Estás seguro de que quieres eliminar este usuario?</p>
-                            <form class="modal-form" method="post">
+                            <form class="modal-form" method="post" acction="accionEliminar()">
                                 <input type="hidden" value="eliminar">
                                 <div class="modal-actions">
                                     <input type="reset" class="close-modal" value="Cancelar"></button>
@@ -82,7 +92,7 @@ include_once('../../app/funciones.php');
                     <div id="modal-edit" class="modal" hidden>
                         <div class="modal-content">
                             <h2>Editar usuario</h2>
-                            <form class="modal-form" method="post">
+                            <form class="modal-form" method="post" action="accionEditar()">
                                 <input type="hidden" value="editar">
                                 <input type="text" id="nombre" placeholder="Nombre">
                                 <input type="email" id="email" placeholder="Email">
@@ -93,6 +103,16 @@ include_once('../../app/funciones.php');
                                 </div>
                             </form>
                         </div>
+                    </div>
+
+                    <!-- MODAL ÉXITO EN LA TRANSACCiÓN -->
+                    <div id="modal-succes" class="modal" hidden>
+                        <h2>Éxito en la transacción</h2>
+                    </div>
+
+                    <!-- MODAL ERROR EN LA TRANSACCiÓN -->
+                    <div id="modal-fail" class="modal" hidden>
+                        <h2>Error en la transacción</h2>
                     </div>
                 </div>
             </div>

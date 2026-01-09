@@ -1,4 +1,6 @@
 <?php 
+include_once('../dat/AccesoDatos.php');
+
 
 function mostrarUsusarios() {
     $titulos = [ "Usuario","Email","Contraseña"];
@@ -87,6 +89,12 @@ function limpiarArrayEntrada(array &$entrada){
  
     foreach ($entrada as $key => $value ) {
         $entrada[$key] = limpiarEntrada($value);
+    }
+}
+
+function validarAddUser($usuario, $passwd, $email) {
+    if (checkEmail($email)) {
+
     }
 }
 ?>
