@@ -1,14 +1,49 @@
 <?php
 include_once ('../../app/funciones.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuario = new Usuario();
-    $usuario->usser = $_POST['usuario'];
-    $usuario->passwd = $_POST['contraseña'];
-    $usuario->passwdRep = $_POST['contraseñaRep'];
-    $usuario->email = $_POST['email'];
+    $accion = $_POST['accion'];
+    switch ($accion) {
+        case "añadir":
+            $usuario = definirNewUsr();
+            if (validarAddUser($usuario)) {
+                
+            }
+            break;
+        case "eliminar":
+            $usuario = definirUsr();
+            if (validarDelUser($usuario)) {
 
-    validarAddUser($usuario);
+            }
+            break;
+        case "editar":
+            $usuario = definirUsr();
+            $NewUsuario = definirNewUsr();
+            if (!validarEditUser($usuario, $NewUsuario)) {
+                $msg = '';
+            }
+            break;
+    }
 }
+
+// Definir usuario, a partir de la tabla generada
+function definirUsr() {
+    $usuario = new Usuario();
+    $usuario->usser = '';
+    $usuario->passwd = '';
+    $usuario->email = '';
+    return $usuario;
+
+}
+
+// Definir usuario, a partir de los datos introducidos
+function definirNewUsr() {
+        $usuario = new Usuario();
+        $usuario->usser = $_POST['usuario'];
+        $usuario->passwd = $_POST['contraseña'];
+        $usuario->passwdRep = $_POST['contraseñaRep'] ?? '';
+        $usuario->email = $_POST['email'];
+        return $usuario;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="modal-content">
                             <h2>Añadir usuario</h2>
                             <form class="modal-form" method="post">
-                                <input type="hidden" name="añadir">
+                                <input type="hidden" name="accion" value="añadir">
                                 <input type="text" name="usuario" value="Usuario">
                                 <input type="email" name="email" value="Email">
                                 <input type="text" name="contraseña" value="Contraseña">
@@ -77,10 +112,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="modal-content">
                             <h2>Eliminar usuario</h2>
                             <p>¿Estás seguro de que quieres eliminar este usuario?</p>
-                            <form class="modal-form" method="post" acction="accionEliminar()">
-                                <input type="hidden" value="eliminar">
+                            <form class="modal-form" method="post">
+                                <input type="hidden" name="accion" value="eliminar">
+                                <input type="hidden" name="usuario" value="Usuario">
+                                <input type="hidden" name="email" value="Email">
+                                <input type="hidden" name="contraseña" value="Contraseña">
                                 <div class="modal-actions">
-                                    <input type="reset" class="close-modal" value="Cancelar"></button>
+                                    <input type="reset" class="close-modal" value="Cancelar">
                                     <input type="submit" class="confirm" value="Eliminar">
                                 </div>
                             </form>
@@ -91,14 +129,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div id="modal-edit" class="modal" hidden>
                         <div class="modal-content">
                             <h2>Editar usuario</h2>
-                            <form class="modal-form" method="post" action="accionEditar()">
-                                <input type="hidden" value="editar">
-                                <input type="text" id="nombre" placeholder="Nombre">
-                                <input type="email" id="email" placeholder="Email">
-                                <input type="text" id="contraseña" placeholder="Contraseña">
+                            <form class="modal-form" method="post">
+                                <input type="hidden" name="accion" value="editar">
+                                <input type="text" name="Newnombre" value="Nombre">
+                                <input type="email" name="Newemail" value="Email">
+                                <input type="text" name="NewContraseña" value="Contraseña">
+                                <input type="text" name="NewRepContraseña" value="Confirmar Contraseña">
                                 <div class="modal-actions">
-                                    <input type="button" class="close-modal" value="Cancelar"></input>
-                                    <input type="button" class="confirm" value="Guardar Cambios"></input>
+                                    <input type="reset" class="close-modal" value="Cancelar"></input>
+                                    <input type="submit" class="confirm" value="Guardar Cambios"></input>
                                 </div>
                             </form>
                         </div>

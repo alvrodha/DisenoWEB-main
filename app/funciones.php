@@ -18,8 +18,8 @@ function mostrarUsusarios() {
         $msg .= "<td>$usser->usser</td>";
         $msg .= "<td>$usser->email</td>";
         $msg .= "<td>$usser->passwd</td>";
-        $msg .= "<td><a class=\"\" href=\"#\" onclick=\"accionEditar('$usser->usser');\" ><i class='bx bx-pencil modal-btn-edit'></a></td>\n";
-        $msg .= "<td><a class=\"\" href=\"#\" onclick=\"accionEliminar('$usser->usser');\" ><i class='bx bx-trash modal-btn-del'></i></td>";
+        $msg .= "<td><a class=\"modal-btn-edit\"><i class='bx bx-pencil modal-btn-edit'></a></td>\n";
+        $msg .= "<td><a class=\"modal-btn-del\"><i class='bx bx-trash modal-btn-del'></i></td>";
         $msg .="</tr>\n";
     }
     $msg .= "</table>\n";
@@ -94,7 +94,7 @@ function limpiarArrayEntrada(array &$entrada){
 
 // Función para validar la inserción de un usuario para evitar duplicaciones
 function validarAddUser($usuario):bool {
-    /*
+    $db = AccesoDatos::getModelo();
     if (!$db->checkEmail($usuario->email)) {
         return false;
     }
@@ -104,12 +104,26 @@ function validarAddUser($usuario):bool {
     if ($usuario->passwd != $usuario->passwdRep) {
         return false;
     }
-    if (count_chars($usuario->passwd) < 10) {
+    if (!count_chars($usuario->passwd) < 10) {
         return false;
     }
-    */
-    $db = AccesoDatos::getModelo();
     $db->addUsuario($usuario);
+    return true;
+}
+
+// Función para validar la eliminación de un usuario
+function validarDelUser($usuario):bool {
+    $db = AccesoDatos::getModelo();
+    if (!$db->borrarUsuario($usuario)) {
+        return false;
+    }
+    return true;
+}
+
+// Función para validar la edición de un usuario
+function validarEditUser($usuario, $NewUsuario):bool {
+    $db = AccesoDatos::getModelo();
+
     return true;
 }
 ?>

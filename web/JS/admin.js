@@ -1,5 +1,9 @@
 const btnAdd = document.getElementById("modal-btn-add");
 const modalAdd = document.getElementById("modal-add");
+const btnDel = document.getElementById("modal-btn-del");
+const modalDel = document.getElementById("modal-del");
+const btnEdit = document.getElementById("modal-btn-edit");
+const modalEdit = document.getElementById("modal-edit");
 
 if (btnAdd && modalAdd) {
     btnAdd.addEventListener("click", () => {
