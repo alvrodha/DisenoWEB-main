@@ -105,7 +105,7 @@
     //addUsuario--> funcion insert para añadir usuarios 
     public function addUsuario($usuario): bool {
         try {
-            $stmt = $this->dbh->prepare("INSERT INTO usuarios (`email`, `user`, `passwd`) VALUES (?, ?, ?)");
+            $stmt = $this->dbh->prepare("INSERT INTO usuarios (`email`, `usser`, `passwd`) VALUES (?, ?, ?)");
             $stmt->execute([$usuario->email, $usuario->usser, $usuario->passwd]);
             return $stmt->rowCount() === 1;
         } catch (PDOException $e) {
@@ -141,7 +141,7 @@
     //checkEmail --> Funcion check para evitar validar usuarios con correos ya existentes
     public function checkUser($usuario): bool {
         try {
-            $stmt = $this->dbh->prepare("SELECT EXISTS(SELECT 1 FROM usuarios WHERE user = ?");
+            $stmt = $this->dbh->prepare("SELECT EXISTS(SELECT 1 FROM usuarios WHERE usser = ?");
             $stmt->bindParam(1, $usuario);
             $stmt->execute();
             return (bool) $stmt->fetchColumn();

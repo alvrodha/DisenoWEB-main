@@ -93,7 +93,7 @@ function limpiarArrayEntrada(array &$entrada){
 }
 
 // Función para validar la inserción de un usuario para evitar duplicaciones
-function validarAddUser($usuario) {
+function validarAddUser($usuario):bool {
     /*
     if (!$db->checkEmail($usuario->email)) {
         return false;
