@@ -166,5 +166,25 @@
     { 
         trigger_error('La clonación no permitida', E_USER_ERROR); 
     }
+    public function migrarContrasenas() {
+    $stmtSelect = $this->dbh->prepare("SELECT email, passwd FROM usuarios");
+    $stmtSelect->execute();
+    $usuarios = $stmtSelect->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmtUpdate = $this->dbh->prepare("UPDATE usuarios SET passwd = :passwd WHERE email = :email");
+
+    foreach ($usuarios as $row) {
+        if (!password_get_info($row['passwd'])['algo']) {
+            $hash = password_hash($row['passwd'], PASSWORD_DEFAULT);
+            $stmtUpdate->execute([
+                ':passwd' => $hash,
+                ':email'     => $row['email']
+            ]);
+        }
+    }
+    echo "Contraseñas migradas correctamente";
+}
+
  }
+ 
  ?>
