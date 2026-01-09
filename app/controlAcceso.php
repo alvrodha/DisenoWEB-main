@@ -14,18 +14,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $ac = AccesoDatos::getModelo();
-        $usr = $ac->getUsuario($email, $passwd);
-        if ($usr) {
-            if ($usr->email === 'root@gmail.com') {
-                header("location: ../layouts/admin/administrador.php");
-                echo "El Acceso es correcto, bienvenido a la página! (administrador)";
-            } else {
-                header("Location: ../layouts/home.php");
-                echo "El Acceso es correcto, bienvenido a la página!";
-            }
-        } else {
-            echo "Usuario no encontrado o contraseña incorrecta.";
+        $usr = $ac->getUsuario($email);
+       if (!$usr) {
+           echo "Usuario no encontrado";
+           exit();
         }
+
+       if (password_verify($passwd, $usr->passwd)) {
+           session_start();
+           $_SESSION['usuario'] = $usr->nombre;
+           header("Location: ../layouts/admin/administrador.php");
+       }else if(($usr->email == "root@gmail.com") || password_verify($passwd, $usr->passwd)){
+           $_SESSION['usuario'] = $usr->nombre;
+           header("Location: ../layouts/home.php");
+       }
+        } else {
+            echo "Contraseña incorrecta";
+       }
     } elseif ($accion === 'register') {
 
         $usser = trim($_POST['usser'] ?? '');
@@ -41,5 +46,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $db->addUsuario((object)['usser' => $usser, 'email' => $email, 'passwd' => $passwd]);
         header("Location: ../layouts/home.php");
     }
-}
+
 ?>

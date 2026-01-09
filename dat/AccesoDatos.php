@@ -68,18 +68,12 @@
     //FUNCIONES BBDD de usuarios
     //-------------------------------------------------------------
 
-    //getUsuario--> Funcion SELECT para el control de acceso MVC, recibe un usuario y contraseña y lo guarda en usr
-    public function getUsuario (String $email, String $passwd) {
-        $usr = false;
-        $stmt_usuario = $this->dbh->prepare("select * from usuarios where email =? and passwd =?");
-        $stmt_usuario->setFetchMode(PDO::FETCH_CLASS, 'usuario');
-        $stmt_usuario->bindParam(1, $email);
-        $stmt_usuario->bindParam(2, $passwd);
-        if ($stmt_usuario->execute()) {
-            if ($obj = $stmt_usuario->fetch()) {
-                $usr = $obj;
-            }
-        }
+    //getUsuario--> Funcion SELECT para el control de acceso MVC, recibe un email y lo guarda en usr
+    public function getUsuario (String $email){
+        $stmt = $this->dbh->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $stmt->execute([$email]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Usuario');
+        $usr = $stmt->fetch();
         return $usr;
     }
    //ALVARO LEE ESTO, entiendo el proposito pero no tengo ni idea de como se supone que funciona con esto, supongo que con un 
