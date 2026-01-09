@@ -23,8 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            header("Location: ../layouts/admin/administrador.php");
        }else if(password_verify($passwd, $usr->passwd)){  
            header("Location: ../layouts/home.php");
-       }
-        } else {
+       } else {
            header("Location: ../index.php");
        }
     } elseif ($accion === 'register') {
@@ -42,5 +41,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $db->addUsuario((object)['usser' => $usser, 'email' => $email, 'passwd' => $passwd]);
         header("Location: ../layouts/home.php");
     }
-
+}
 ?>
