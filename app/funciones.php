@@ -93,7 +93,8 @@ function limpiarArrayEntrada(array &$entrada){
 }
 
 function validarAddUser($usuario, $passwd, $email) {
-    if (checkEmail($email)) {
+    $db = AccesoDatos::getModelo();
+    if ($db->checkEmail($email)) {
 
     }
 }
