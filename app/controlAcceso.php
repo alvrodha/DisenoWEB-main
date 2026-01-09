@@ -19,17 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            echo "Usuario no encontrado";
            exit();
         }
-
-       if (password_verify($passwd, $usr->passwd)) {
-           session_start();
-           $_SESSION['usuario'] = $usr->nombre;
+       if (($usr->email === "root@gmail.com") && password_verify($passwd, $usr->passwd)) {    
            header("Location: ../layouts/admin/administrador.php");
-       }else if(($usr->email == "root@gmail.com") || password_verify($passwd, $usr->passwd)){
-           $_SESSION['usuario'] = $usr->nombre;
+       }else if(password_verify($passwd, $usr->passwd)){  
            header("Location: ../layouts/home.php");
        }
         } else {
-            echo "Contraseña incorrecta";
+           header("Location: ../index.php");
        }
     } elseif ($accion === 'register') {
 
