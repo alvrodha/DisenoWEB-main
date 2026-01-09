@@ -117,7 +117,7 @@
     public function borrarUsuario($usuario): bool {
         try {
             $stmt = $this->dbh->prepare("DELETE FROM usuarios WHERE usser = ?");
-            $stmt->bindValue(1, $usuario->usser);
+            $stmt->bindValue(1, $usuario);
             $stmt->execute();
             return $stmt->rowCount() === 1;
         } catch (PDOException $e) {

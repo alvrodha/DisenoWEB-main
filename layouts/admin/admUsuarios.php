@@ -5,18 +5,20 @@ $transactionStatus = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $accion = $_POST['accion'] ?? null;
+    $usuario = definirUsr();
+    $newUsuario = definirNewUsr();
 
     switch ($accion) {
         case "añadir":
-            $transactionStatus = validarAddUser(definirNewUsr()) ? 'success' : 'fail';
+            $transactionStatus = validarAddUser($newUsuario) ? 'success' : 'fail';
             break;
 
         case "eliminar":
-            $transactionStatus = validarDelUser(definirUsr()) ? 'success' : 'fail';
+            $transactionStatus = validarDelUser($usuario) ? 'success' : 'fail';
             break;
 
         case "editar":
-            $transactionStatus = validarEditUser(definirUsr(), definirNewUsr()) ? 'success' : 'fail';
+            $transactionStatus = validarEditUser($usuario, $newUsuario) ? 'success' : 'fail';
             break;
     }
 }
@@ -24,9 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Definir usuario, a partir de la tabla generada
 function definirUsr() {
     $usuario = new Usuario();
-    $usuario->usser = '';
-    $usuario->passwd = '';
-    $usuario->email = '';
+    $usuario->usser = $_POST['usuario'] ?? '';
+    $usuario->passwd = $_POST['contraseña'] ?? '';
+    $usuario->email = $_POST['email'] ?? '';
     return $usuario;
 
 }
@@ -34,10 +36,10 @@ function definirUsr() {
 // Definir usuario, a partir de los datos introducidos
 function definirNewUsr() {
         $usuario = new Usuario();
-        $usuario->usser = $_POST['usuario'];
-        $usuario->passwd = $_POST['contraseña'];
-        $usuario->passwdRep = $_POST['contraseñaRep'] ?? '';
-        $usuario->email = $_POST['email'];
+        $usuario->usser = $_POST['NewUsuario'] ?? '';
+        $usuario->passwd = $_POST['NewContraseña'] ?? '';
+        $usuario->passwdRep = $_POST['NewContraseñaRep'] ?? '';
+        $usuario->email = $_POST['NewEmail'] ?? '';
         return $usuario;
     }
 ?>
@@ -91,10 +93,10 @@ function definirNewUsr() {
                             <h2>Añadir usuario</h2>
                             <form class="modal-form" method="post">
                                 <input type="hidden" name="accion" value="añadir">
-                                <input type="text" name="usuario" value="Usuario">
-                                <input type="email" name="email" value="Email">
-                                <input type="text" name="contraseña" value="Contraseña">
-                                <input type="text" name="contraseñaRep" value="Contraseña">
+                                <input type="text" name="NewUsuario" value="Usuario">
+                                <input type="email" name="NewEmail" value="Email">
+                                <input type="text" name="NewContraseña" value="Contraseña">
+                                <input type="text" name="NewContraseñaRep" value="Contraseña">
                                 <div class="modal-actions">
                                     <input type="reset" class="close-modal" value="Cancelar"></button>
                                     <input type="submit" class="confirm" value="Añadir">
@@ -110,9 +112,6 @@ function definirNewUsr() {
                             <p>¿Estás seguro de que quieres eliminar este usuario?</p>
                             <form class="modal-form" method="post">
                                 <input type="hidden" name="accion" value="eliminar">
-                                <input type="hidden" name="usuario" value="Usuario">
-                                <input type="hidden" name="email" value="Email">
-                                <input type="hidden" name="contraseña" value="Contraseña">
                                 <div class="modal-actions">
                                     <input type="reset" class="close-modal" value="Cancelar">
                                     <input type="submit" class="confirm" value="Eliminar">

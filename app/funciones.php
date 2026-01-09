@@ -93,36 +93,39 @@ function limpiarArrayEntrada(array &$entrada){
 }
 
 // Función para validar la inserción de un usuario para evitar duplicaciones
-function validarAddUser($usuario):bool {
+function validarAddUser($newUsuario):bool {
     $db = AccesoDatos::getModelo();
-    if (!$db->checkEmail($usuario->email)) {
+    if (!$db->checkEmail($newUsuario->email)) {
         return false;
-    }
-    if (!$db->checkUser($usuario->usser)) {
+    } elseif (!$db->checkUser($newUsuario->usser)) {
         return false;
-    }
-    if ($usuario->passwd != $usuario->passwdRep) {
+    } elseif ($newUsuario->passwd != $newUsuario->passwdRep) {
         return false;
-    }
-    if (!count_chars($usuario->passwd) < 10) {
+    } elseif (!count_chars($newUsuario->passwd) < 10) {
         return false;
+    } elseif ($db->addUsuario($newUsuario)) {
+        return false;
+    } else {
+        return true;
     }
-    $db->addUsuario($usuario);
-    return true;
 }
 
 // Función para validar la eliminación de un usuario
 function validarDelUser($usuario):bool {
     $db = AccesoDatos::getModelo();
-    if (!$db->borrarUsuario($usuario)) {
+    if ($db->checkUser($usuario->usser)) {
         return false;
+    } elseif (!$db->borrarUsuario($usuario->usser)) {
+        return false;
+    } else {
+        return true;
     }
-    return true;
 }
 
 // Función para validar la edición de un usuario
 function validarEditUser($usuario, $NewUsuario):bool {
     $db = AccesoDatos::getModelo();
+
 
     return true;
 }
