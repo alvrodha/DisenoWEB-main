@@ -1,0 +1,3 @@
+Todas las contraseñas son el nombre de usuario + 123 
+Ejemplo: ana@gmail.com -> ana123
+El usuario root@gmail.com es el admin y su contraseña es root
