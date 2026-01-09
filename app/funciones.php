@@ -15,7 +15,7 @@ function mostrarUsusarios() {
     $tussers = $db->getUsuarios();
     foreach ($tussers as $usser) {
         $msg .= "<tr>";
-        $msg .= "<td>$usser->nombre</td>";
+        $msg .= "<td>$usser->usser</td>";
         $msg .= "<td>$usser->email</td>";
         $msg .= "<td>$usser->passwd</td>";
         $msg .= "<td><a class=\"\" href=\"#\" onclick=\"accionEditar('$usser->usser');\" ><i class='bx bx-pencil modal-btn-edit'></a></td>\n";
@@ -23,7 +23,7 @@ function mostrarUsusarios() {
         $msg .="</tr>\n";
     }
     $msg .= "</table>\n";
-    $msg .="<a id=\"modal-btn-add\" href=\"#\" onclick=\"accionAlta('$usser->login');\" >Añadir</a>";
+    $msg .="<a id=\"modal-btn-add\">Añadir</a>";
    
     return $msg;  
 }
@@ -94,7 +94,7 @@ function limpiarArrayEntrada(array &$entrada){
 
 // Función para validar la inserción de un usuario para evitar duplicaciones
 function validarAddUser($usuario) {
-    $db = AccesoDatos::getModelo();
+    /*
     if (!$db->checkEmail($usuario->email)) {
         return false;
     }
@@ -107,11 +107,9 @@ function validarAddUser($usuario) {
     if (count_chars($usuario->passwd) < 10) {
         return false;
     }
-    if (!contieneNoAlfa($usuario->passwd)) {
-        return false;
-    }
+    */
     $db = AccesoDatos::getModelo();
-    $db -> addUsuario($usuario);
+    $db->addUsuario($usuario);
     return true;
 }
 ?>
