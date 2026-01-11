@@ -1,5 +1,6 @@
 <!--<//?php header("Location: web/HTML/home.php"); ?> -->
 <?
+
 include_once('app/funciones.php');
 include_once('app/config.php');
 include_once('dat/cifrarContrasena.php');

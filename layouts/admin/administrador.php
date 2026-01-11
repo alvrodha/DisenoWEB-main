@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 //control de sesion
 include_once ('../../app/funciones.php');
 controlInteraccion();

@@ -134,12 +134,10 @@ function validarEditUser($usuario, $NewUsuario):bool {
 Function controlInteraccion(){
     $timeout = 10; 
 
-    if (isset($_SESSION['ultimaAccion']) &&
-    (time() - $_SESSION['ultimaAccion']) > $timeout) {
-
+    if (isset($_SESSION['ultimaAccion']) && (time() - $_SESSION['ultimaAccion']) > $timeout) {
     session_unset();
     session_destroy();
-    header("Location: /index.php");
+    header("Location: /php/DisenoWEB-main/index.php");
     exit();
 }
 
