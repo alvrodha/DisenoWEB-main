@@ -1,6 +1,8 @@
 <!--<//?php header("Location: web/HTML/home.php"); ?> -->
 <?
-
+//se destruye la sesion porque si se pulsa el boton de home volveria a este formularios sin cerrar la sesion.
+session_unset();
+session_destroy();
 include_once('app/funciones.php');
 include_once('app/config.php');
 include_once('dat/cifrarContrasena.php');
