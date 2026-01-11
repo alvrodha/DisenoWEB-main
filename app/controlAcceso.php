@@ -21,11 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
        if (($usr->email === "root@gmail.com") && password_verify($passwd, $usr->passwd)) {    
            session_start();
-           $_SESSION['last_activity'] = time();
+           $_SESSION['ultimaAccion'] = time();
            header("Location: ../layouts/admin/administrador.php");
        }else if(password_verify($passwd, $usr->passwd)){  
            session_start();
-           $_SESSION['last_activity'] = time();
+           $_SESSION['ultimaAccion'] = time();
            header("Location: ../layouts/home.php");
        } else {
            header("Location: ../index.php");

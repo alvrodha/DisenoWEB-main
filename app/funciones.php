@@ -134,8 +134,8 @@ function validarEditUser($usuario, $NewUsuario):bool {
 Function controlInteraccion(){
     $timeout = 10; 
 
-    if (isset($_SESSION['last_activity']) &&
-    (time() - $_SESSION['last_activity']) > $timeout) {
+    if (isset($_SESSION['ultimaAccion']) &&
+    (time() - $_SESSION['ultimaAccion']) > $timeout) {
 
     session_unset();
     session_destroy();
@@ -143,6 +143,6 @@ Function controlInteraccion(){
     exit();
 }
 
-$_SESSION['last_activity'] = time();
+$_SESSION['ultimaAccion'] = time();
 }
 ?>
