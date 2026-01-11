@@ -20,8 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            exit();
         }
        if (($usr->email === "root@gmail.com") && password_verify($passwd, $usr->passwd)) {    
+           session_start();
            header("Location: ../layouts/admin/administrador.php");
        }else if(password_verify($passwd, $usr->passwd)){  
+           session_start();
            header("Location: ../layouts/home.php");
        } else {
            header("Location: ../index.php");

@@ -1,3 +1,11 @@
+<?php
+//control de sesion
+include_once __DIR__ . 'funciones.php';
+controlInteraccion();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

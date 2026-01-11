@@ -1,6 +1,9 @@
 <?php
 include_once('../../dat/AccesoDatos.php');
 include_once('../../app/funciones.php');
+//control de sesion
+include_once __DIR__ . 'funciones.php';
+controlInteraccion();
 ?>
 
 <!DOCTYPE html>

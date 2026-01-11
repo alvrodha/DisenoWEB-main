@@ -129,4 +129,21 @@ function validarEditUser($usuario, $NewUsuario):bool {
 
     return true;
 }
+
+//Función de detección de interaccion con la pagina web
+Function controlInteraccion(){
+    $timeout = 600; 
+
+    if (isset($_SESSION['last_activity']) &&
+    (time() - $_SESSION['last_activity']) > $timeout) {
+
+    session_unset();
+    session_destroy();
+    header("Location: /index.php");
+    exit();
+}
+
+// Actualiza la actividad en CADA petición
+$_SESSION['last_activity'] = time();
+}
 ?>

@@ -1,6 +1,8 @@
 <?php
 include_once ('../dat/AccesoDatos.php');
 include_once ('../app/funciones.php');
+//control de sesion
+controlInteraccion();
 ?>
 
 
