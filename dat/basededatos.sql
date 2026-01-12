@@ -2,7 +2,7 @@ CREATE database IF NOT EXISTS tetuan_league;
 --  SCRIPTS DE CREACION DE TABLA
 CREATE TABLE IF NOT EXISTS usuarios (
     email VARCHAR(100),
-    user VARCHAR(50),
+    usser VARCHAR(50),
     passwd VARCHAR(255),
     bloqueado BOOLEAN,
     intentos INT, 

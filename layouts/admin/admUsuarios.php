@@ -8,33 +8,44 @@ $transactionStatus = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $accion = $_POST['accion'] ?? null;
-    $usuario = definirUsr();
-    $newUsuario = definirNewUsr();
 
-    switch ($accion) {
-        case "añadir":
-            $transactionStatus = validarAddUser($newUsuario) ? 'success' : 'fail';
-            break;
-
-        case "eliminar":
-            $transactionStatus = validarDelUser($usuario) ? 'success' : 'fail';
-            break;
-
-        case "editar":
-            $transactionStatus = validarEditUser($usuario, $newUsuario) ? 'success' : 'fail';
-            break;
+    if ($accion === "eliminar") {
+        $usuario = definirUsr();
+        $transactionStatus = validarDelUser($usuario) ? 'success' : 'fail';
     }
+    if($accion === "añadir") {
+        $newUsuario = definirNewUsr();
+        $transactionStatus = validarAddUser($newUsuario) ? 'success' : 'fail';
+    }
+    // Editar...
+    /*
+    if ($accion === "editar" {
+        $transactionStatus = validarEditUser($usuario, $newUsuario) ? 'success' : 'fail';
+    }
+    */
+                
 }
+
+            
 
 // Definir usuario, a partir de la tabla generada
+/*
 function definirUsr() {
     $usuario = new Usuario();
-    $usuario->usser = $_POST['usuario'] ?? '';
-    $usuario->passwd = $_POST['contraseña'] ?? '';
-    $usuario->email = $_POST['email'] ?? '';
+    $usuario->usser = $_POST['del-usuario'] ?? '';
     return $usuario;
-
 }
+*/
+// depuración
+function definirUsr() {
+    $usuario = new Usuario();
+    $usuario->usser = trim($_POST['del-usuario'] ?? '');
+    var_dump($usuario->usser); // ver qué valor llega
+    return $usuario;
+}
+
+
+    
 
 // Definir usuario, a partir de los datos introducidos
 function definirNewUsr() {
@@ -76,7 +87,7 @@ function definirNewUsr() {
             <div id="content-header">
                 <h1>Panel de Administrador de usuarios</h1>
                 <div id="inputs-header">
-                    <input type="search" class="search-bar" value="Search">
+                    <input type="search" id="search-bar" class="search-bar" value="Search">
                     <ul class="menu-order">
                         <li class="menu-order menu-order-dropdown">
                             <a href="#" class="menu-link">
@@ -115,6 +126,7 @@ function definirNewUsr() {
                             <p>¿Estás seguro de que quieres eliminar este usuario?</p>
                             <form class="modal-form" method="post">
                                 <input type="hidden" name="accion" value="eliminar">
+                                <input type="hidden" name="del-usuario" id="del-usuario">
                                 <div class="modal-actions">
                                     <input type="reset" class="close-modal" value="Cancelar">
                                     <input type="submit" class="confirm" value="Eliminar">
@@ -124,22 +136,26 @@ function definirNewUsr() {
                     </div>
 
                     <!-- MODAL EDITAR -->
+                    <!--
                     <div id="modal-edit" class="modal">
                         <div class="modal-content">
                             <h2>Editar usuario</h2>
                             <form class="modal-form" method="post">
                                 <input type="hidden" name="accion" value="editar">
-                                <input type="text" name="Newnombre" value="Nombre">
-                                <input type="email" name="Newemail" value="Email">
-                                <input type="text" name="NewContraseña" value="Contraseña">
-                                <input type="text" name="NewRepContraseña" value="Confirmar Contraseña">
+                                <input type="hidden" name="usuario" id="edit-usuario">
+
+                                <input type="text" name="NewUsuario" id="edit-nombre">
+                                <input type="email" name="NewEmail" id="edit-email">
+                                <input type="text" name="NewContraseña" id="edit-passwd">
+
                                 <div class="modal-actions">
-                                    <input type="reset" class="close-modal" value="Cancelar"></input>
-                                    <input type="submit" class="confirm" value="Guardar Cambios"></input>
+                                    <input type="reset" class="close-modal" value="Cancelar">
+                                    <input type="submit" class="confirm" value="Guardar Cambios">
                                 </div>
                             </form>
                         </div>
                     </div>
+                    -->
 
                     <!-- MODAL ÉXITO EN LA TRANSACCiÓN -->
                     <div id="modal-success" class="modal">
