@@ -114,10 +114,10 @@
         }
     }
     //borrarUsuario --> Funcion DELETE para borrar usuarios, borrando por el codigo de usuario o login
-    public function borrarUsuario($usuario): bool {
+    public function borrarUsuario($usser): bool {
         try {
             $stmt = $this->dbh->prepare("DELETE FROM usuarios WHERE usser = ?");
-            $stmt->bindValue(1, $usuario);
+            $stmt->bindValue(1, $usser);
             $stmt->execute();
             return $stmt->rowCount() === 1;
         } catch (PDOException $e) {
@@ -129,7 +129,7 @@
     //checkEmail --> Funcion check para evitar validar usuarios con correos ya existentes
     public function checkEmail($email): bool {
         try {
-            $stmt = $this->dbh->prepare("SELECT EXISTS(SELECT 1 FROM usuarios WHERE email = ?");
+            $stmt = $this->dbh->prepare("SELECT EXISTS (SELECT 1 FROM usuarios WHERE email = ?)");
             $stmt->bindParam(1, $email);
             $stmt->execute();
             return (bool) $stmt->fetchColumn();
@@ -141,7 +141,7 @@
     //checkUser --> Funcion check para evitar validar usuarios con correos ya existentes
     public function checkUser($usuario): bool {
         try {
-            $stmt = $this->dbh->prepare("SELECT EXISTS(SELECT 1 FROM usuarios WHERE usser = ?");
+            $stmt = $this->dbh->prepare("SELECT EXISTS(SELECT 1 FROM usuarios WHERE usser = ?)");
             $stmt->bindParam(1, $usuario);
             $stmt->execute();
             return (bool) $stmt->fetchColumn();
