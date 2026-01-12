@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            $_SESSION['ultimaAccion'] = time();
            header("Location: ../layouts/home.php");
        } else {
-           header("Location: ../index.php");
+           header("Location: ../layouts/perfil.php");
        }
     } elseif ($accion === 'register') {
 
