@@ -77,7 +77,7 @@ controlInteraccion();
     <div class="bloque noticias">
         <h1>📰 Noticias</h1>
         <div class="noticias-content">
-           <a href="../index.php"> <H2>BLOQUEADO PARA INVITADOS...</H2> </a>
+           <a href="../index.php"> <H3>BLOQUEADO PARA INVITADOS...</H3> </a>
         </div>
     </div>
      
@@ -108,13 +108,13 @@ controlInteraccion();
         <div class="bloque calendario">
     <h1>Próximos partidos</h1>
 
-    <a href="../index.php"> <H2>BLOQUEADO PARA INVITADOS...</H2> </a>
+    <a href="../index.php"> <H3>BLOQUEADO PARA INVITADOS...</H3> </a>
     </div>
 
         <div class="bloque clasificacion">
     <h1>Clasificación</h1>
     <div class="tabla-contenedor">
-        <a href="../index.php"> <H2>BLOQUEADO PARA INVITADOS...</H2> </a>
+        <a href="../index.php"> <H3>BLOQUEADO PARA INVITADOS...</H3> </a>
     </div>
 </div>
 
@@ -147,22 +147,14 @@ controlInteraccion();
 </div>
 
 </body>
-<script src="../web/JS/background.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-    var noticias = document.querySelectorAll(".noticias-content p");
-    let index = 0;
-
-    function mostrarSiguienteNoticia() {
-        noticias.forEach(n => n.classList.remove("active"));
-        noticias[index].classList.add("active");
-        index = (index + 1) % noticias.length;
+<style>
+    h3{
+        color: red;
     }
+    h2{
+        color: white;
+    }
+</style>
 
-    // Muestra la primera noticia al cargar
-    mostrarSiguienteNoticia();
-    // Cambia cada 3 segundos
-    setInterval(mostrarSiguienteNoticia, 3000);
-});
 </script>
 </html>
