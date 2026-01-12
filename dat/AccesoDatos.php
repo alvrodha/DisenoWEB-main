@@ -76,20 +76,7 @@
         $usr = $stmt->fetch();
         return $usr;
     }
-   //ALVARO LEE ESTO, entiendo el proposito pero no tengo ni idea de como se supone que funciona con esto, supongo que con un 
-   //rol del gmail o algo
-    public function getUsuarioAdm (String $email) {
-        $usr = false;
-        $stmt_usuario = $this->dbh->prepare("select * from usuarios where email =?");
-        $stmt_usuario->setFetchMode(PDO::FETCH_CLASS, 'usuario');
-        $stmt_usuario->bindParam(1, $email);
-        if ($stmt_usuario->execute()) {
-            if ($obj = $stmt_usuario->fetch()) {
-                $usr = $obj;
-            }
-        }
-        return $usr;
-    }
+    
     //Funcion de admin (no de acceso MVC) select para recoger una tabla que luego devolvera a ADMIN para ver
     public function getUsuarios(): array {
         $tusser = [];

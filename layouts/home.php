@@ -61,7 +61,7 @@ controlInteraccion();
     </div>
     <div id="navWindow">
         <div id="navWindowPath">
-            <a href="../index.php">Home</a>
+            <a href="home.php">Home</a>
         </div>
         <div id="navWindowUser">
             <div id="navWindowUserButton">
