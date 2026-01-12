@@ -1,9 +1,5 @@
 <?php
-session_start();
-include_once ('../dat/AccesoDatos.php');
-include_once ('../app/funciones.php');
-//control de sesion
-controlInteraccion();
+
 ?>
 
 
@@ -58,9 +54,7 @@ controlInteraccion();
         </div>
     </div>
     <div id="navWindow">
-        <div id="navWindowPath">
-            <a href="../index.php">Home</a>
-        </div>
+       
         <div id="navWindowUser">
             <div id="navWindowUserButton">
                 <img src="../web/IMG/user.png">
