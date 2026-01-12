@@ -58,7 +58,9 @@ include_once('dat/cifrarContrasena.php');
 </div>
 
 <div id="content">
+      <H5><a href="layouts/homeInvitado.php">ENTRAR COMO INVITADO</a></H5>
     <div class="container" id="container">
+        
         <div class="form-container sign-up-container">
             <form method="post" action="app/controlAcceso.php">
                 <h1>Crea una cuenta</h1>
@@ -73,6 +75,7 @@ include_once('dat/cifrarContrasena.php');
             </div>
         <div class="form-container sign-in-container">
             <form method="post" action="app/controlAcceso.php">
+              
                 <h1>Inicia sesión</h1>
                 <span> </span>
                 <input type="hidden" name="action" value="login">
@@ -88,6 +91,7 @@ include_once('dat/cifrarContrasena.php');
                     <h1>¡Bienvenido de nuevo!</h1>
                     <p>Para seguir conectado inicia sesión con nosotros</p>
                     <button class="ghost" id="signIn">Inciar sesión</button>
+                    
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>¡Hola, amigo!</h1> <br>
@@ -111,3 +115,9 @@ include_once('dat/cifrarContrasena.php');
  <script src="web/JS/inscribete.js"></script>
 </body>
 </html>
+<style>
+    h5{
+       font-size: 200px;
+       color: red;
+    }
+</style>
