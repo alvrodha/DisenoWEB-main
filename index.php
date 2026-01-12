@@ -21,7 +21,7 @@ include_once('dat/cifrarContrasena.php');
 <body>
 <div id="nav">
     <div id="logo">
-        <img src="web/IMG/Logo1.png" alt="Logo" width="200px"></a>
+        <a href="../index.php"><img src="web/IMG/Logo1.png" alt="Logo" width="200px"></a>
     </div>
     <ul id="nav-list">
        <H1>COMPLETA EL FORMULARIO PARA ACCEDER A LA WEB (MAQUETA)</H1>
