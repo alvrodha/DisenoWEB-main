@@ -91,7 +91,8 @@ include_once('dat/cifrarContrasena.php');
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>¡Hola, amigo!</h1> <br>
-                    <p>Para acceder es obligatorio iniciar sesión</p>
+                      <p>Completa tus datos para empezar la aventura</p>
+                    <button class="ghost" id="signUp">Registrarse</button>
                 </div>
             </div>
         </div>
