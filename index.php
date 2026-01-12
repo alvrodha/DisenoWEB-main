@@ -64,11 +64,11 @@ include_once('dat/cifrarContrasena.php');
                 <h1>Crea una cuenta</h1>
                 <span> </span>
                 <input type="hidden" name="action" value="register">
-                <input type="text" name="usser" placeholder="Usuario" />
-                <input type="email" name="email" placeholder="Email" />
-                <input type="password" name="password" placeholder="Password" />
+                <input type="text" name="usserRegistro" placeholder="Usuario" />
+                <input type="email" name="emailRegistro" placeholder="Email" />
+                <input type="password" name="passwordRegistro" placeholder="Password" />
                 <input type="submit" id="botones" value="REGISTRARSE">
-                 
+            </form>  
            
             </div>
         <div class="form-container sign-in-container">
@@ -76,8 +76,8 @@ include_once('dat/cifrarContrasena.php');
                 <h1>Inicia sesión</h1>
                 <span> </span>
                 <input type="hidden" name="action" value="login">
-                <input type="email" name="email" placeholder="Email" required/>
-                <input type="password" name="password" placeholder="Password" required/>
+                <input type="email" name="email" placeholder="Email" />
+                <input type="password" name="password" placeholder="Password" />
                 <input type="submit" id="botones" value="INICIAR SESIÓN">
             </form>
              <a href="layouts/homeInvitado.php"><input type="button" value="ENTRAR COMO INVITADO"></a>
