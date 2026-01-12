@@ -1,3 +1,8 @@
+<?php
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,15 +14,14 @@
     <link rel="stylesheet" href="../web/CSS/home.css"/>
 </head>
 <body>
+    <canvas id="background"></canvas>
     <div id="nav">
         <div id="logo">
-            <a href="home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
+         <img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
-            <li><a href="calendario.html">CALENDARIO</a></li>
-            <li><a href="equipos.html">EQUIPOS</a></li>
-            <li><a href="clasificacion.html">CLASIFICACIÓN</a></li>
-            <!--<li><a href="jugadores.html">JUGADORES</a></li>-->
+         <li><h2>INICIA SESIÓN PARA ACCEDER AL MENÚ</h2></li>
+            <!--<li><a href="TETULEAGUE PHP/web/HTML/jugadores.html">JUGADORES</a></li>-->
         </ul>
     </div>
     <div class="ticker-s24">
@@ -34,6 +38,7 @@
                 <li class="ticker__item">Calendario de próximos partidos</li>
                 <li class="ticker__item">Estadísticas de jugadores actualizadas</li>
             </ul>
+            <!-- Copia automática para el loop -->
             <ul class="ticker__list">
                 <li class="ticker__item">   </li>
                 <li class="ticker__item">Nuevos partidos añadidos a Tetuscores</li>
@@ -49,17 +54,81 @@
         </div>
     </div>
     <div id="navWindow">
-        <div id="navWindowPath">
-            <a href="../index.php">Home</a>
-        </div>
+       
         <div id="navWindowUser">
             <div id="navWindowUserButton">
                 <img src="../web/IMG/user.png">
-                <a href="inscribete.html">Iniciar sesión</a>
+                <a href="../index.php">Iniciar sesión / Registrarse</a>
             </div> 
         </div>
     </div>
+
+    
+<!-- Contenedor principal de todo el contenido de la página -->
+<div id="content">
+
+    <!-- 📰 Bloque de noticias superior -->
+    <div class="bloque noticias">
+        <h1>📰 Noticias</h1>
+        <div class="noticias-content">
+           <a href="../index.php"> <H3>BLOQUEADO PARA INVITADOS...</H3> </a>
+        </div>
+    </div>
+     
+    <!-- ====== BLOQUES INFERIORES ====== -->
+    <!-- Este div agrupa las seis cajas con animaciones al pasar el ratón -->
+    <div class="bloques-inferiores">
+   
+        <!-- Cada .bloque representa una caja -->
+        <div class="bloque slide-up">
+            <h1>¿Quiénes somos?</h1>
+            <div class="respuesta">
+                <p>TetuScores nació como un proyecto de fin de curso para la asignatura de Diseño Web en el centro Tetuán de las Victorias.</p>
+            </div>
+        </div>
+
+        <div class="bloque slide-up">
+            <h1>¿Qué ofrecemos?</h1>
+            <div class="respuesta">
+                <ul>
+                    <li>Calendario de partidos actualizado.</li>
+                    <li>Clasificación en tiempo real.</li>
+                    <li>Información de equipos y jugadores.</li>
+                    <li>Formulario de inscripción.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bloque calendario">
+    <h1>Próximos partidos</h1>
+
+    <a href="../index.php"> <H3>BLOQUEADO PARA INVITADOS...</H3> </a>
+    </div>
+
+        <div class="bloque clasificacion">
+    <h1>Clasificación</h1>
+    <div class="tabla-contenedor">
+        <a href="../index.php"> <H3>BLOQUEADO PARA INVITADOS...</H3> </a>
+    </div>
 </div>
+
+        <div class="bloque slide-up">
+            <h1>¿A quién va dirigido?</h1>
+            <div class="respuesta">
+                <p>A estudiantes, profesores y aficionados al deporte del centro.</p>
+            </div>
+        </div>
+
+        <div class="bloque slide-up">
+            <h1>¿Cómo participar?</h1>
+            <div class="respuesta">
+                <p>Solo necesitas formar tu equipo e inscribirte en la sección correspondiente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div id="footer">
     <div class="footer-content">
         <p>Contacto: <a href="mailto:jorgeparron2@gmail.com">jorgeparron2@gmail.com</a></p>
@@ -70,5 +139,16 @@
         <p>© 2025 TetuScores. Todos los derechos reservados.</p>
     </div>
 </div>
+
 </body>
+<style>
+    h3{
+        color: red;
+    }
+    h2{
+        color: white;
+    }
+</style>
+
+</script>
 </html>

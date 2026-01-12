@@ -64,21 +64,23 @@ include_once('dat/cifrarContrasena.php');
                 <h1>Crea una cuenta</h1>
                 <span> </span>
                 <input type="hidden" name="action" value="register">
-                <input type="text" name="usser" placeholder="Usuario" />
-                <input type="email" name="email" placeholder="Email" />
-                <input type="password" name="password" placeholder="Password" />
+                <input type="text" name="usserRegistro" placeholder="Usuario" />
+                <input type="email" name="emailRegistro" placeholder="Email" />
+                <input type="password" name="passwordRegistro" placeholder="Password" />
                 <input type="submit" id="botones" value="REGISTRARSE">
-            </form>
-        </div>
+            </form>  
+           
+            </div>
         <div class="form-container sign-in-container">
             <form method="post" action="app/controlAcceso.php">
                 <h1>Inicia sesión</h1>
                 <span> </span>
                 <input type="hidden" name="action" value="login">
-                <input type="email" name="email" placeholder="Email" required/>
-                <input type="password" name="password" placeholder="Password" required/>
+                <input type="email" name="email" placeholder="Email" />
+                <input type="password" name="password" placeholder="Password" />
                 <input type="submit" id="botones" value="INICIAR SESIÓN">
             </form>
+             <a href="layouts/homeInvitado.php"><input type="button" value="ENTRAR COMO INVITADO"></a>
         </div>
         <div class="overlay-container">
             <div class="overlay">
@@ -89,7 +91,8 @@ include_once('dat/cifrarContrasena.php');
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>¡Hola, amigo!</h1> <br>
-                    <p>Para acceder es obligatorio iniciar sesión</p>
+                      <p>Completa tus datos para empezar la aventura</p>
+                    <button class="ghost" id="signUp">Registrarse</button>
                 </div>
             </div>
         </div>

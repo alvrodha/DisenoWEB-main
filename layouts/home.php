@@ -21,7 +21,7 @@ controlInteraccion();
     <canvas id="background"></canvas>
     <div id="nav">
         <div id="logo">
-            <a href="../index.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
+            <a href="home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
             <li><a href="calendario.html">CALENDARIO</a></li>
@@ -66,7 +66,7 @@ controlInteraccion();
         <div id="navWindowUser">
             <div id="navWindowUserButton">
                 <img src="../web/IMG/user.png">
-                <a href="inscribete.html">Iniciar sesión</a>
+                <a href="../index.php">Cerrar la sesión</a>
             </div> 
         </div>
     </div>
