@@ -17,7 +17,6 @@
             <li><a href="calendario.html">CALENDARIO</a></li>
             <li><a href="equipos.html">EQUIPOS</a></li>
             <li><a href="clasificacion.html">CLASIFICACIÓN</a></li>
-            <!--<li><a href="jugadores.html">JUGADORES</a></li>-->
         </ul>
     </div>
     <div class="ticker-s24">
@@ -59,6 +58,11 @@
             </div> 
         </div>
     </div>
+</div>
+<div id="content">
+    <h1>Perfil de jugador</h1>
+    
+
 </div>
 <div id="footer">
     <div class="footer-content">

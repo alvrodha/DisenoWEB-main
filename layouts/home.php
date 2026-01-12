@@ -27,6 +27,7 @@ controlInteraccion();
             <li><a href="calendario.html">CALENDARIO</a></li>
             <li><a href="equipos.html">EQUIPOS</a></li>
             <li><a href="clasificacion.html">CLASIFICACIÓN</a></li>
+            <li><a href="perfil.php">MI PERFIL</a></li>
             <!--<li><a href="TETULEAGUE PHP/web/HTML/jugadores.html">JUGADORES</a></li>-->
         </ul>
     </div>

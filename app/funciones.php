@@ -130,9 +130,9 @@ function validarEditUser($usuario, $NewUsuario):bool {
     return true;
 }
 
-//Función de detección de interaccion con la pagina web
+//Función de detección de interaccion con la pagina web,controla el tiempo que pasa sin interactuar un usuario
 Function controlInteraccion(){
-    $timeout = 10; 
+    $timeout = 600; 
 
     if (isset($_SESSION['ultimaAccion']) && (time() - $_SESSION['ultimaAccion']) > $timeout) {
     session_unset();
