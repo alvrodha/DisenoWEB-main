@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     usser VARCHAR(50),
     passwd VARCHAR(255),
     bloqueado BOOLEAN,
+    partidos INT,
     goles INT,
     asistencias INT,
     faltas INT,
@@ -23,11 +24,11 @@ CREATE TABLE IF NOT EXISTS noticias (
 );
 -- SCRIPT DE INSERCION
 INSERT INTO `usuarios`
-(`email`, `usser`, `passwd`, `bloqueado`, `goles`, `asistencias`, `faltas`, `intentos`, `edad`, `nombre`, `ape1`, `ape2`)
+(`email`, `usser`, `passwd`, `bloqueado`, `partidos` , `goles`, `asistencias`, `faltas`, `intentos`, `edad`, `nombre`, `ape1`, `ape2`)
 VALUES
 ('root@gmail.com', 'root', '$2y$10$OyC0auWAWwnMmc1JrV7zAu1kHSpV9k5K7WlmAnExPbWPxvtd.aB9i', 0, NULL, NULL, NULL, 0, 35, 'Administrador', 'Sistema', ''),
-('ana@gmail.com', 'ana', '$2y$10$8WDUXpO7graD1lJe0i/SSOVY0M80jmHtQkFB0RTDv8DJQbo7K7VWe', 0, 4, 2, 7, 0, 28, 'Ana', 'García', 'López'),
-('juan@gmail.com', 'juan', '$2y$10$gX1KzAg6GFhGIk8BbQ54BOB6Gf07rNt.XTZrwNa0OTPtgb2teE.Pi ', 0, 0, 5, 2, 1, 32, 'Juan', 'Pérez', 'Martín'),
-('maria@gmail.com', 'maria', '$2y$10$g5pavdOt4y8aNU8BZRRdauDMmsK0cJ6oXt1QWLWW7Ond6aSqWLCNu', 0, 2, 3, 8, 0, 25, 'María', 'Sánchez', 'Ruiz'),
-('carlos@gmail.com', 'carlos', '$2y$10$dLmzihMogthObOu76ZvRpuB1jQ0.l58yyH3NOjugC092dJRIdBVia', 1, 4, 1, 0, 3, 41, 'Carlos', 'Fernández', 'Gómez'),
-('laura@gmail.com', 'laura', '$2y$10$1XmjQobUWz2nNu7/JYdSueYCV6cj4VaT8rTOv.iShqs1Ue3nM36S', 0, 0, 1, 4, 0, 29, 'Laura', 'Díaz', 'Navarro');
+('ana@gmail.com', 'ana', '$2y$10$8WDUXpO7graD1lJe0i/SSOVY0M80jmHtQkFB0RTDv8DJQbo7K7VWe', 0, 5 ,4, 2, 7, 0, 28, 'Ana', 'García', 'López'),
+('juan@gmail.com', 'juan', '$2y$10$gX1KzAg6GFhGIk8BbQ54BOB6Gf07rNt.XTZrwNa0OTPtgb2teE.Pi ', 0, 4, 0, 5, 2, 1, 32, 'Juan', 'Pérez', 'Martín'),
+('maria@gmail.com', 'maria', '$2y$10$g5pavdOt4y8aNU8BZRRdauDMmsK0cJ6oXt1QWLWW7Ond6aSqWLCNu', 0, 6, 2, 3, 8, 0, 25, 'María', 'Sánchez', 'Ruiz'),
+('carlos@gmail.com', 'carlos', '$2y$10$dLmzihMogthObOu76ZvRpuB1jQ0.l58yyH3NOjugC092dJRIdBVia', 1,7, 4, 1, 0, 3, 41, 'Carlos', 'Fernández', 'Gómez'),
+('laura@gmail.com', 'laura', '$2y$10$1XmjQobUWz2nNu7/JYdSueYCV6cj4VaT8rTOv.iShqs1Ue3nM36S', 0, 10, 0, 1, 4, 0, 29, 'Laura', 'Díaz', 'Navarro');

@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($passwd, $usr->passwd)) {
             // Guardar última acción
             $_SESSION['ultimaAccion'] = time();
-            
+            $_SESSION['email'] = $usr->email;
             // Redirigir según tipo de usuario
             if ($usr->email === "root@gmail.com") {
                 header("Location: ../layouts/admin/administrador.php");
