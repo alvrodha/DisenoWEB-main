@@ -24,7 +24,7 @@ include_once('dat/cifrarContrasena.php');
         <a href="../index.php"><img src="web/IMG/Logo1.png" alt="Logo" width="200px"></a>
     </div>
     <ul id="nav-list">
-       <H1>COMPLETA EL FORMULARIO PARA ACCEDER A LA WEB (MAQUETA)</H1>
+       <H1>COMPLETA EL FORMULARIO PARA ACCEDER A LA WEB </H1>
     </ul>
 </div>
 <div class="ticker-s24">
@@ -115,3 +115,8 @@ include_once('dat/cifrarContrasena.php');
  <script src="web/JS/inscribete.js"></script>
 </body>
 </html>
+<style>
+    h1{
+        color:white;
+    } 
+</style>
