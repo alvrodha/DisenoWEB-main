@@ -144,7 +144,7 @@
     { 
         trigger_error('La clonación no permitida', E_USER_ERROR); 
     }
-        public function migrarContrasenas() {
+    public function migrarContrasenas() {
         $stmtSelect = $this->dbh->prepare("SELECT email, passwd FROM usuarios");
         $stmtSelect->execute();
         $usuarios = $stmtSelect->fetchAll(PDO::FETCH_ASSOC);
@@ -161,6 +161,8 @@
             }
         }
         echo "Contraseñas migradas correctamente";
+        print_r($usuarios);
     }
+
 }
 ?>
