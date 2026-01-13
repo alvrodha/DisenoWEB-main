@@ -8,11 +8,13 @@ controlInteraccion();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $accion = $_POST['accion'] ?? null;
     switch ($accion) {
-
         case "añadir":
             $Newusuario = definirNewUsr();
-            validarAddUser($Newusuario);
-            header("Location: admUsuarios.php");
+            if (validarAddUser($Newusuario)) {
+                header("Location: admUsuarios.php?success=1");
+            } else {
+                header("Location: admUsuarios.php?error=1");
+            }
             exit;
             break;
         case "eliminar":
@@ -98,10 +100,10 @@ function definirNewUsr() {
                     <h2>Añadir usuario</h2>
                     <form class="modal-form" method="post">
                         <input type="hidden" name="accion" value="añadir">
-                        <input type="text" name="NewUsuario" value="Usuario">
-                        <input type="email" name="NewEmail" value="Email">
-                        <input type="text" name="NewContraseña" value="Contraseña">
-                        <input type="text" name="NewContraseñaRep" value="Contraseña">
+                        <input type="text" name="NewUsuario" placeholder="Usuario">
+                        <input type="email" name="NewEmail" placeholder="Email">
+                        <input type="text" name="NewContraseña" placeholder="Contraseña">
+                        <input type="text" name="NewContraseñaRep" placeholder="Contraseña">
                         <div class="modal-actions">
                             <input type="reset" class="close-modal" value="Cancelar"></button>
                             <input type="submit" class="confirm" value="Añadir">

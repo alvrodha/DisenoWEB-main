@@ -111,22 +111,33 @@ function limpiarArrayEntrada(array &$entrada){
 }
 
 // Función para validar la inserción de un usuario para evitar duplicaciones
-function validarAddUser($newUsuario):bool {
+function validarAddUser($newUsuario): bool {
     $db = AccesoDatos::getModelo();
-    
+    /*
+    if ($newUsuario->passwd !== $newUsuario->passwdRep) {
+        return false;
+    }
+
+    if (strlen($newUsuario->passwd) < 8) {
+        return false;
+    }
+
     if ($db->checkEmail($newUsuario->email)) {
         return false;
-    } elseif ($db->checkUser($newUsuario->usser)) {
-        return false;
-    } elseif ($newUsuario->passwd != $newUsuario->passwdRep) {
-        return false;
-    } elseif (strlen($newUsuario->passwd) < 8) {
-        return false;
-    } else {
-        $db->addUsuario($newUsuario);
-        return true;
     }
+
+    if ($db->checkUser($newUsuario->usser)) {
+        return false;
+    }
+    */
+    if ($newUsuario->passwd != $newUsuario->passwdRep) {
+        return false;
+    }
+    $newUsuario->passwd = password_hash($newUsuario->passwd, PASSWORD_DEFAULT);
+    $db->addUsuario($newUsuario);
+    return true;
 }
+
 
 // Función para validar la eliminación de un usuario
 /*

@@ -132,12 +132,12 @@
 
     //checkUser --> Funcion check para evitar validar usuarios con correos ya existentes
     public function checkUser($usser): bool {
-    $stmt = $this->dbh->prepare(
-        "SELECT usser FROM usuarios WHERE usser = ?"
-    );
-    $stmt->execute([$usser]);
-    return $stmt->rowCount() === 1;
-}
+        $stmt = $this->dbh->prepare(
+            "SELECT usser FROM usuarios WHERE usser = ?"
+        );
+        $stmt->execute([$usser]);
+        return $stmt->rowCount() === 1;
+    }
 
 
 
