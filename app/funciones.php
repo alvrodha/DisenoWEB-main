@@ -84,8 +84,26 @@ function mostrarNoticiasAdmin(){
         } else {
             $msg .= "<td>Oculto</td>";
         }
-        $msg .= "<td><a href>Detalles</a></td>\n";
-        $msg .= "</tr>\n";
+        $msg .= "<td>
+        <!--
+            <form method=\"post\">
+                <input type=\"hidden\" name=\"tituloTabla\" value=\"{$noticia->titulo}\">
+                <input type=\"hidden\" name=\"fechaTabla\" value=\"{$noticia->fecha}\">
+                <input type=\"hidden\" name=\"autorTabla\" value=\"{$noticia->autor}\">
+                <input type=\"hidden\" name=\"contenidoTabla\" value=\"{$noticia->contenido}\">
+                <input type=\"hidden\" name=\"VisibilidadTabla\" value=\"{$noticia->visisble}\">
+                <button type=\"submit\" class=\"modal-btn-edit\">
+                    <i class='bx bx-pencil'></i>
+                </button>
+            </form>
+        -->
+            <form method=\"post\" class=\"form-del-tabla\">
+                <input type=\"hidden\" name=\"noticiaTabla\" value=\"{$noticia->titulo}\">
+                <button type=\"button\" class=\"modal-btn-del\">
+                    <i class=\"bx bx-trash\"></i>
+                </button>
+            </form>
+        </td></tr>";
     }
     $msg .= "</table>\n";
 
@@ -135,11 +153,24 @@ function validarAddUser($newUsuario): bool {
     return true;
 }
 
+// Función para validar la inserción de una noticia
+function validarAddNot($noticia):bool {
+    $db = AccesoDatos::getModelo();
+    $db->addNoticia($noticia);
+    return true;
+}
+
 
 // Función para validar la eliminación de un usuario
 function validarDelUser($usuario): bool {
     $db = AccesoDatos::getModelo();
     return $db->borrarUsuario($usuario->usser);
+}
+
+// Fución para validar la eliminación de noticias
+function validarDelNot($noticia):bool {
+    $db = AccesoDatos::getModelo();
+    return $db->borrarNoticia($noticia->titulo);
 }
 
 

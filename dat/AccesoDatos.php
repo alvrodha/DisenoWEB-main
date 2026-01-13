@@ -54,6 +54,7 @@
     }
     //addNoticia--> Funcion INSERT en la base de datos para los objetos noticia.
     public function addNoticia (Noticia $noticia) {
+        /*
         $stmt_noticia = $this->dbh->prepare("INSERT INTO noticias (titulo, contenido, autor, fecha, visible) VALUES (?, ?, ?, ?, ?)");
         $stmt_noticia->bindParam(1, $noticia->titulo);
         $stmt_noticia->bindParam(2, $noticia->contenido);
@@ -61,6 +62,31 @@
         $stmt_noticia->bindParam(4, $noticia->fecha);
         $stmt_noticia->bindParam(5, $noticia->visible);
         return $stmt_noticia->execute();
+        */
+        try {
+            $stmt = $this->dbh->prepare("INSERT INTO noticias (`titulo`, `contenido`, `autor`, `fecha`, ``visible) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$noticia->titulo, $noticia->contenido, $noticia->autor, $noticia->fecha, $noticia->visible]);
+            return $stmt->rowCount() === 1;
+        } catch (PDOException $e) {
+            error_log("Error al registrar usuario: " . $e->getMessage());
+            return false;
+        }
+        
+    }
+
+    // Función DELETE en la base de datos para los objetos noticia.
+    public function borrarNoticia($noticia) {
+        error_log("INTENTANDO BORRAR NOTICIA: [" . $noticia . "]");
+        try {
+            $stmt = $this->dbh->prepare("DELETE FROM noticias WHERE titulo = ?");
+            $stmt->bindValue(1, trim($noticia), PDO::PARAM_STR);
+            $stmt->execute();
+            error_log("FILAS AFECTADAS: " . $stmt->rowCount());
+            return $stmt->rowCount() === 1;
+        } catch (PDOException $e) {
+            error_log("Error al borrar usuario: " . $e->getMessage());
+            return false;
+        }
     }
 
     //-------------------------------------------------------------
@@ -104,7 +130,6 @@
     //borrarUsuario --> Funcion DELETE para borrar usuarios, borrando por el codigo de usuario o login
     public function borrarUsuario($usser): bool {
         error_log("INTENTANDO BORRAR USUARIO: [" . $usser . "]");
-
         try {
             $stmt = $this->dbh->prepare("DELETE FROM usuarios WHERE usser = ?");
             $stmt->bindValue(1, trim($usser), PDO::PARAM_STR);

@@ -1,11 +1,50 @@
 <?php
 session_start();
-include_once('../../dat/AccesoDatos.php');
-include_once('../../app/funciones.php');
-//control de sesion
+include_once ('../../app/funciones.php');
+// Control de sesion
 controlInteraccion();
-?>
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $accion = $_POST['accion'] ?? null;
+    switch ($accion) {
+        case "añadir":
+            $NewUsuario = definirNewNot();
+            validarAddNot($NewUsuario);
+            header("Location: admNoticias.php");
+            exit;
+            break;
+        case "eliminar":
+            $usuario = definirNot();
+            validarDelNot($usuario);
+            header("Location: admNoticias.php");
+            exit;
+            break;
+        /*
+        case "editar":
+            $usuario    = definirUsr();
+            $newUsuario = definirNewUsr();
+            validarEditUser($usuario, $newUsuario);
+            break;
+        */
+    }
+}
+
+// Definir usuario, a partir de la tabla generada
+function definirNot() {
+    $noticia = new Noticia();
+    $noticia->usser = trim($_POST['Titulo'] ?? '');
+    return $noticia;
+}
+
+// Definir usuario, a partir de los datos introducidos
+function definirNewnot() {
+        $noticia = new noticia();
+        $noticia->titulo = trim($_POST['NewTitulo'] ?? '');
+        $noticia->autor = $_POST['NewAutor'];
+        $noticia->contenido = $_POST['NewContenido'];
+        return $noticia;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +54,12 @@ controlInteraccion();
     <title>TetuScores</title>
     <link rel="stylesheet" href="../../web/CSS/default.css"/>
     <link rel="stylesheet" href="../../web/CSS/adm/noticias.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <div id="nav">
         <div id="logo">
-            <a href="administrador.php"><img src="../../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
+            <a href="administrador.html"><img src="../../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
             <li><a href="admLiga.html">Liga</a></li>
@@ -30,24 +70,85 @@ controlInteraccion();
 
 <!-- Contenedor principal de todo el contenido de la página -->
     <div id="content">
-        <div id="tabla">
-            <div id="controladorTabla">
-                <h1>Panel de Administrador de noticias</h1>
-                <input  type="button" id="modal-btn" name="addNoticia" value="añadir noticia">
-                <div class="modal modal-add" hidden>
-
-                </div>
-                <div class="modal modal-del" hiden>
-
-                </div>
-                <div class="modal modal-edit" hiden>
-
+        <div id="content-table">
+            <div id="content-header">
+            <h1>Panel de Administrador de Noticias</h1>
+            <div id="inputs-header">
+                <input type="search" id="search-bar" class="search-bar" value="Search">
+                <ul class="menu-order">
+                    <li class="menu-order menu-order-dropdown">
+                        <a href="#" class="menu-link">
+                            <span>Ordenar</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="#" class="sub-menu-item">Por fecha</a></li>
+                            <li><a href="#" class="sub-menu-item">Por titulo</a></li>
+                            <li><a href="#" class="sub-menu-item">Por autor</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- MODAL AÑADIR -->
+            <div id="modal-add" class="modal">
+                <div class="modal-content">
+                    <h2>Añadir noticia</h2>
+                    <form class="modal-form" method="post">
+                        <input type="hidden" name="accion" value="añadir">
+                        <input type="text" name="NewTitulo" placeholder="Titulo">
+                        <input type="text" name="NewAutor" placeholder="Autor">
+                        <input type="text" name="NewContenido" placeholder="Contenido">
+                        <div class="modal-actions">
+                            <input type="reset" class="close-modal" value="Cancelar"></button>
+                            <input type="submit" class="confirm" value="Añadir">
+                        </div>
+                    </form>
                 </div>
             </div>
-            <!-- La funcion tiene que devolver la tabla con las noticias según la query -->
-            <?= mostrarNoticiasAdmin() ?>
+
+            <!-- MODAL ELIMINAR -->
+            <div id="modal-del" class="modal">
+                <div class="modal-content">
+                    <h2>Eliminar noticia</h2>
+                    <p>¿Estás seguro de que quieres eliminar esta noticia?</p>
+                    <form class="modal-form" method="post">
+                        <input type="hidden" name="accion" value="eliminar">
+                        <div class="modal-actions">
+                            <input type="reset" class="close-modal" value="Cancelar">
+                            <input type="submit" class="confirm" value="Eliminar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- MODAL EDITAR -->
+            <!--
+            <div id="modal-edit" class="modal">
+                <div class="modal-content">
+                    <h2>Editar usuario</h2>
+                    <form class="modal-form" method="post">
+                        <input type="hidden" name="accion" value="editar">
+                        <input type="hidden" name="usuario" id="edit-usuario">
+
+                        <input type="text" name="NewUsuario" id="edit-nombre">
+                        <input type="email" name="NewEmail" id="edit-email">
+                        <input type="text" name="NewContraseña" id="edit-passwd">
+
+                        <div class="modal-actions">
+                            <input type="reset" class="close-modal" value="Cancelar">
+                            <input type="submit" class="confirm" value="Guardar Cambios">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            -->
+        </div>
+        <div class="contenido">
+            <?= mostrarNoticiasAdmin() ?>  
+            <div class="table-actions">
+                <a id="modal-btn-add"><i class='bx bx-plus-circle'></i> Añadir Nueva Noticia</a>
+            </div>
         </div>
     </div>
-    <script src="../../web/JS/admin.js"></script>
+    <script src="../../web/JS/admin.js" defer></script>
 </body>
 </html>

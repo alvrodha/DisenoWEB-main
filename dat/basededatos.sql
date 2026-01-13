@@ -17,9 +17,11 @@ CREATE TABLE IF NOT EXISTS usuarios (
 
 -- Tabla Noticia
 CREATE TABLE IF NOT EXISTS noticias (
-    msg TEXT,
+    titulo VARCHAR(255),
+    autor VARCHAR(70),
+    contenido TEXT,
     fecha DATETIME,
-    autor VARCHAR(50)
+    visible BOOLEAN,
 );
 -- SCRIPT DE INSERCION
 INSERT INTO `usuarios`
@@ -31,3 +33,9 @@ VALUES
 ('maria@gmail.com', 'maria', 'maria123', 0, 2, 3, 8, 0, 25, 'María', 'Sánchez', 'Ruiz'),
 ('carlos@gmail.com', 'carlos', 'carlos123', 1, 4, 1, 0, 3, 41, 'Carlos', 'Fernández', 'Gómez'),
 ('laura@gmail.com', 'laura', 'laura123', 0, 0, 1, 4, 0, 29, 'Laura', 'Díaz', 'Navarro');
+
+INSERT INTO `noticias`
+(`titulo`, `autor`, `contenido`, `fecha`, `visible`)
+VALUES
+('pepe la lia', 'pepe', 'pepe la ha liado esta mañana', NOW(), true);
+
