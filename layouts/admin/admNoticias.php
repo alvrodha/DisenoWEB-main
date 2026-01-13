@@ -149,6 +149,6 @@ function definirNewnot() {
             </div>
         </div>
     </div>
-    <script src="../../web/JS/admin.js" defer></script>
+    <script src="../../web/JS/AdmNoticia.js" defer></script>
 </body>
 </html>

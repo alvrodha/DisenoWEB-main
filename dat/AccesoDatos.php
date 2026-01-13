@@ -71,7 +71,6 @@
             error_log("Error al registrar usuario: " . $e->getMessage());
             return false;
         }
-        
     }
 
     // Función DELETE en la base de datos para los objetos noticia.
@@ -84,7 +83,7 @@
             error_log("FILAS AFECTADAS: " . $stmt->rowCount());
             return $stmt->rowCount() === 1;
         } catch (PDOException $e) {
-            error_log("Error al borrar usuario: " . $e->getMessage());
+            error_log("Error al borrar noticias: " . $e->getMessage());
             return false;
         }
     }

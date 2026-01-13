@@ -155,6 +155,6 @@ function definirNewUsr() {
             </div>
         </div>
     </div>
-    <script src="../../web/JS/admin.js" defer></script>
+    <script src="../../web/JS/AdmUsuario.js" defer></script>
 </body>
 </html>
