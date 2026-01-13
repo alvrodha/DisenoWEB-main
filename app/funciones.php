@@ -161,6 +161,7 @@ Function controlInteraccion(){
     $timeout = 600; 
     if(!isset ($_SESSION['ultimaAccion'])){
          header("Location: /php/DisenoWEB-main/index.php");
+         exit();
     }
     if (isset($_SESSION['ultimaAccion']) && (time() - $_SESSION['ultimaAccion']) > $timeout) {
     session_unset();

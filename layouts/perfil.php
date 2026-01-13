@@ -54,7 +54,7 @@
         <div id="navWindowUser">
             <div id="navWindowUserButton">
                 <img src="../web/IMG/user.png">
-                <a href="inscribete.html">Iniciar sesión</a>
+                <a href="../app/logout.php">Cerrar la sesion</a>
             </div> 
         </div>
     </div>
