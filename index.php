@@ -24,7 +24,7 @@ include_once('dat/cifrarContrasena.php');
         <a href="../index.php"><img src="web/IMG/Logo1.png" alt="Logo" width="200px"></a>
     </div>
     <ul id="nav-list">
-       <H1>COMPLETA EL FORMULARIO PARA ACCEDER A LA WEB (MAQUETA)</H1>
+       <H1>COMPLETA EL FORMULARIO PARA ACCEDER A LA WEB </H1>
     </ul>
 </div>
 <div class="ticker-s24">
@@ -88,14 +88,14 @@ include_once('dat/cifrarContrasena.php');
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>¡Bienvenido de nuevo!</h1>
-                    <p>Para seguir conectado inicia sesión con nosotros</p>
+                    <h1>¡Bienvenido de nuevo!</h1><br>
+                    <p>Para seguir conectado inicia sesión con nosotros</p> <br>
                     <button class="ghost" id="signIn">Inciar sesión</button>
                     
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>¡Hola, amigo!</h1> <br>
-                      <p>Completa tus datos para empezar la aventura</p>
+                      <p>Completa tus datos para empezar la aventura</p> <br>
                     <button class="ghost" id="signUp">Registrarse</button>
                 </div>
             </div>
@@ -115,3 +115,8 @@ include_once('dat/cifrarContrasena.php');
  <script src="web/JS/inscribete.js"></script>
 </body>
 </html>
+<style>
+    h1{
+        color:white;
+    } 
+</style>

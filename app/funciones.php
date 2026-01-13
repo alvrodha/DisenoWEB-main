@@ -1,6 +1,5 @@
 <?php 
 include_once(__DIR__ . '/../dat/AccesoDatos.php');
-
 function mostrarUsusarios() {
     $titulos = ["Usuario", "Email", "Contraseña", "Acciones"];
     $msg = "<table id='tablaUsuarios' class='table-users'>\n";
@@ -173,7 +172,35 @@ function validarDelNot($noticia):bool {
     return $db->borrarNoticia($noticia->titulo);
 }
 
+function verPerfil(){
+    $email = $_SESSION['email'];
+    $titulos = ["Usuario", "Apellido 1", "Apellido 2","Partidos", "Goles", "Asistencias", "Faltas"];
+    $msg = "<table id='tablaUsuarios' class='table-users'>\n";
+    $msg .= "<thead><tr>";
+    foreach ($titulos as $titulo) {
+        $msg .= "<th>$titulo</th>";
+    }
+    $msg .= "</tr></thead>";
+    $msg .= "<tbody>";
 
+    $db = AccesoDatos::getModelo();
+    $usuario = $db->getUsuario($email);
+   
+        $msg .= "<tr>";
+        $msg .= "<td>{$usuario->usser}</td>";
+        $msg .= "<td>{$usuario->ape1}</td>";
+        $msg .= "<td>{$usuario->ape2}</td>";
+        $msg .= "<td>{$usuario->partidos}</td>";
+        $msg .= "<td>{$usuario->goles}</td>";
+        $msg .= "<td>{$usuario->asistencias}</td>";
+        $msg .= "<td>{$usuario->faltas}</td>";
+        $msg .= "<td>
+        </td>";
+        $msg .= "</tr>";
+    
+    $msg .= "</tbody></table>\n";
+    return $msg;
+}
 
 // Función para validar la edición de un usuario
 /*
@@ -202,3 +229,4 @@ Function controlInteraccion(){
     $_SESSION['ultimaAccion'] = time();
 }
 ?>
+

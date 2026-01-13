@@ -11,8 +11,11 @@ class Usuario
     private $nombre;
     private $ape1;
     private $ape2;
+    private $goles;
+    private $asistencias;
+    private $partidos;
+    private $faltas;
 
-    
     // Getter con método mágico
     function __get($name){
         if(property_exists($this, $name)) {

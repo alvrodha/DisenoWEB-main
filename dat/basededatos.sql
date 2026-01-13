@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     usser VARCHAR(50),
     passwd VARCHAR(255),
     bloqueado BOOLEAN,
+    partidos INT,
     goles INT,
     asistencias INT,
     faltas INT,
@@ -25,7 +26,7 @@ CREATE TABLE IF NOT EXISTS noticias (
 );
 -- SCRIPT DE INSERCION
 INSERT INTO `usuarios`
-(`email`, `usser`, `passwd`, `bloqueado`, `goles`, `asistencias`, `faltas`, `intentos`, `edad`, `nombre`, `ape1`, `ape2`)
+(`email`, `usser`, `passwd`, `bloqueado`, `partidos` , `goles`, `asistencias`, `faltas`, `intentos`, `edad`, `nombre`, `ape1`, `ape2`)
 VALUES
 ('root@gmail.com', 'root', 'root', 0, NULL, NULL, NULL, 0, 35, 'Administrador', 'Sistema', ''),
 ('ana@gmail.com', 'ana', 'ana123', 0, 4, 2, 7, 0, 28, 'Ana', 'García', 'López'),
