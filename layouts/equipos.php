@@ -12,13 +12,13 @@ controlInteraccion();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../web/IMG/favicon.png">
     <title>TetuScores</title>
-    <link rel="stylesheet" href="../web/CSS/default.css"/>
-    <link rel="stylesheet" href="../web/CSS/home.css"/>
+    <link rel="stylesheet" href="../web/CSS/default.css" />
+    <link rel="stylesheet" href="../web/CSS/equipos.css">
 </head>
 <body>
     <div id="nav">
         <div id="logo">
-            <a href="../index.html"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
+            <a href="home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
             <li><a href="calendario.php" class="active">CALENDARIO</a></li>
@@ -27,7 +27,7 @@ controlInteraccion();
             <li><a href="perfil.php">PERFIL</a></li>
         </ul>
     </div>
-    <div class="ticker-s24">
+        <div class="ticker-s24">
         <div class="ticker__wrap">
             <ul class="ticker__list">
                 <li class="ticker__item">Últimos resultados actualizados</li>
@@ -41,6 +41,7 @@ controlInteraccion();
                 <li class="ticker__item">Calendario de próximos partidos</li>
                 <li class="ticker__item">Estadísticas de jugadores actualizadas</li>
             </ul>
+            <!-- Copia automática para el loop -->
             <ul class="ticker__list">
                 <li class="ticker__item">   </li>
                 <li class="ticker__item">Nuevos partidos añadidos a Tetuscores</li>
@@ -55,24 +56,70 @@ controlInteraccion();
             </ul>
         </div>
     </div>
-    <div id="navWindow">
+        <div id="navWindow">
         <div id="navWindowPath">
-            <a href="../index.php">Home</a>
+            <a href="../home.php">Home</a> &gt; <a href="equipos.html">Equipos</a>
         </div>
         <div id="navWindowUser">
             <div id="navWindowUserButton">
                 <img src="../web/IMG/user.png">
-                <a href="../app/logout.php">Cerrar la sesion</a>
+                <a href="../app/logout.php">Cerrar la sesión</a>
             </div> 
         </div>
     </div>
+    <div id="content">
+    <div id="tarjeta01">
+        <h2>1ºASIR</h2>
+        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-1ºASIR.png" alt="1ºASIR Logo" width="150px">
+        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=1'">
+    </div>
+    <div id="tarjeta02">
+        <h2>1ºB AF DUAL</h2>
+        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-1ºB-AF-DUAL.png" alt="1ºB AF DUAL Logo" width="150px">
+        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=2'">
+    </div>
+    <div id="tarjeta03">
+        <h2>1ºB SMR</h2>
+        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-1ºBSMR.png" alt="1ºB SMR Logo" width="150px">
+        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=3'">
+    </div>
+    <div id="tarjeta04">
+        <h2>1ºDAW</h2>
+        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-1ºDAW.png" alt="1ºDAW Logo" width="150px">
+        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=4'">
+    </div>
+    <div id="tarjeta05">
+        <h2>1ºDAM</h2>
+        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-1ºDAM.png" alt="1ºDAM Logo" width="150px">
+        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=5'">
+    </div>
+    <div id="tarjeta06">
+        <h2>2ºASIR</h2>
+        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-2ºASIR.png" alt="2ºASIR Logo" width="150px">
+        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=6'">
+    </div>
+    <div id="tarjeta07">
+        <h2>2ºDAM</h2>
+        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-2ºDAM.png" alt="2ºDAM Logo" width="150px">
+        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=7'">
+    </div>
+    <div id="tarjeta08">
+        <h2>2ºDAW</h2>
+        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-2ºDAW.png" alt="2ºDAW Logo" width="150px">
+        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=8'">
+    </div>
+    <div id="tarjeta09">
+        <h2>2º SMR</h2>
+        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-2ºSMR.png" alt="2º SMR Logo" width="150px">
+        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=9'">
+    </div>
+    <div id="tarjeta10">
+        <h2>FPB</h2>
+        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-FPB.png" alt="FPB Logo" width="150px">
+        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=10'">
+    </div>
 </div>
-<div id="content">
-    <h1>Perfil de jugador</h1>
-    
-
-</div>
-<div id="footer">
+    <div id="footer">
     <div class="footer-content">
         <p>Contacto: <a href="mailto:jorgeparron2@gmail.com">jorgeparron2@gmail.com</a></p>
         <p>Teléfono: <a href="tel:+34644736788">+34 644 73 67 88</a></p>

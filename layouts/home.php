@@ -24,10 +24,10 @@ controlInteraccion();
             <a href="home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
-            <li><a href="calendario.html">CALENDARIO</a></li>
-            <li><a href="equipos.html">EQUIPOS</a></li>
-            <li><a href="clasificacion.html">CLASIFICACIÓN</a></li>
-            <!--<li><a href="TETULEAGUE PHP/web/HTML/jugadores.html">JUGADORES</a></li>-->
+            <li><a href="calendario.php" class="active">CALENDARIO</a></li>
+            <li><a href="equipos.php">EQUIPOS</a></li>
+            <li><a href="clasificacion.php">CLASIFICACIÓN</a></li>
+            <li><a href="perfil.php">PERFIL</a></li>
         </ul>
     </div>
     <div class="ticker-s24">

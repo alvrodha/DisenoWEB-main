@@ -1,3 +1,10 @@
+<?php
+session_start();
+include_once ('../dat/AccesoDatos.php');
+include_once ('../app/funciones.php');
+//control de sesion
+controlInteraccion();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +13,7 @@
     <link rel="icon" type="image/png" href="../web/IMG/favicon.png">
     <title>TetuScores</title>
     <link rel="stylesheet" href="../web/CSS/default.css" />
-    <link rel="stylesheet" href="../web/CSS/equipos.css">
+    <link rel="stylesheet" href="../web/CSS/clasificacion.css" />
 </head>
 <body>
     <div id="nav">
@@ -14,10 +21,10 @@
             <a href="home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
-            <li><a href="calendario.html">CALENDARIO</a></li>
-            <li><a href="equipos.html">EQUIPOS</a></li>
-            <li><a href="clasificacion.html">CLASIFICACIÓN</a></li>
-            <!--<li><a href="TETULEAGUE PHP/web/HTML/jugadores.html">JUGADORES</a></li>-->
+            <li><a href="calendario.php" class="active">CALENDARIO</a></li>
+            <li><a href="equipos.php">EQUIPOS</a></li>
+            <li><a href="clasificacion.php">CLASIFICACIÓN</a></li>
+            <li><a href="perfil.php">PERFIL</a></li>
         </ul>
     </div>
         <div class="ticker-s24">
@@ -49,9 +56,10 @@
             </ul>
         </div>
     </div>
-        <div id="navWindow">
+    
+    <div id="navWindow">
         <div id="navWindowPath">
-            <a href="../home.php">Home</a> &gt; <a href="equipos.html">Equipos</a>
+            <a href="../index.php">Home</a> &gt; <a href="clasificacion.html">Clasificación</a>
         </div>
         <div id="navWindowUser">
             <div id="navWindowUserButton">
@@ -61,58 +69,143 @@
         </div>
     </div>
     <div id="content">
-    <div id="tarjeta01">
-        <h2>1ºASIR</h2>
-        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-1ºASIR.png" alt="1ºASIR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=1'">
-    </div>
-    <div id="tarjeta02">
-        <h2>1ºB AF DUAL</h2>
-        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-1ºB-AF-DUAL.png" alt="1ºB AF DUAL Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=2'">
-    </div>
-    <div id="tarjeta03">
-        <h2>1ºB SMR</h2>
-        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-1ºBSMR.png" alt="1ºB SMR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=3'">
-    </div>
-    <div id="tarjeta04">
-        <h2>1ºDAW</h2>
-        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-1ºDAW.png" alt="1ºDAW Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=4'">
-    </div>
-    <div id="tarjeta05">
-        <h2>1ºDAM</h2>
-        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-1ºDAM.png" alt="1ºDAM Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=5'">
-    </div>
-    <div id="tarjeta06">
-        <h2>2ºASIR</h2>
-        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-2ºASIR.png" alt="2ºASIR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=6'">
-    </div>
-    <div id="tarjeta07">
-        <h2>2ºDAM</h2>
-        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-2ºDAM.png" alt="2ºDAM Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=7'">
-    </div>
-    <div id="tarjeta08">
-        <h2>2ºDAW</h2>
-        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-2ºDAW.png" alt="2ºDAW Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=8'">
-    </div>
-    <div id="tarjeta09">
-        <h2>2º SMR</h2>
-        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-2ºSMR.png" alt="2º SMR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=9'">
-    </div>
-    <div id="tarjeta10">
-        <h2>FPB</h2>
-        <img src="TETULEAGUE PHP/web/IMG/ESCUDOS/EQ-FPB.png" alt="FPB Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=10'">
-    </div>
+  <h2>CLASIFICACIÓN</h2>
+  <table>
+    <tr>
+      <th>Posición</th>
+      <th>Equipo</th>
+      <th>Puntos</th>
+      <th>Partidos Jugados</th>
+      <th>Victorias</th>
+      <th>Empates</th>
+      <th>Derrotas</th>
+      <th>Goles a Favor</th>
+      <th>Goles en Contra</th>
+      <th>Diferencia de Goles</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1ºDAM</td>
+      <td>30</td>
+      <td>15</td>
+      <td>10</td>
+      <td>0</td>
+      <td>5</td>
+      <td>25</td>
+      <td>15</td>
+      <td>+10</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1ºB AF DUAL</td>
+      <td>28</td>
+      <td>15</td>
+      <td>9</td>
+      <td>1</td>
+      <td>5</td>
+      <td>22</td>
+      <td>14</td>
+      <td>+8</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1ºB SMR</td>
+      <td>26</td>
+      <td>15</td>
+      <td>8</td>
+      <td>2</td>
+      <td>5</td>
+      <td>21</td>
+      <td>16</td>
+      <td>+5</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1ºDAW</td>
+      <td>24</td>
+      <td>15</td>
+      <td>7</td>
+      <td>3</td>
+      <td>5</td>
+      <td>20</td>
+      <td>18</td>
+      <td>+2</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>FPB</td>
+      <td>22</td>
+      <td>15</td>
+      <td>6</td>
+      <td>4</td>
+      <td>5</td>
+      <td>18</td>
+      <td>17</td>
+      <td>+1</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2ºDAW</td>
+      <td>20</td>
+      <td>15</td>
+      <td>6</td>
+      <td>2</td>
+      <td>7</td>
+      <td>17</td>
+      <td>19</td>
+      <td>-2</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2ºASIR</td>
+      <td>18</td>
+      <td>15</td>
+      <td>5</td>
+      <td>3</td>
+      <td>7</td>
+      <td>16</td>
+      <td>21</td>
+      <td>-5</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>1ºASIR</td>
+      <td>15</td>
+      <td>15</td>
+      <td>4</td>
+      <td>3</td>
+      <td>8</td>
+      <td>14</td>
+      <td>22</td>
+      <td>-8</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2ºDAM</td>
+      <td>12</td>
+      <td>15</td>
+      <td>3</td>
+      <td>3</td>
+      <td>9</td>
+      <td>12</td>
+      <td>25</td>
+      <td>-13</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2º SMR</td>
+      <td>10</td>
+      <td>15</td>
+      <td>2</td>
+      <td>4</td>
+      <td>9</td>
+      <td>11</td>
+      <td>24</td>
+      <td>-13</td>
+</tr>
+  </table>
 </div>
-    <div id="footer">
+<div id="footer">
     <div class="footer-content">
         <p>Contacto: <a href="mailto:jorgeparron2@gmail.com">jorgeparron2@gmail.com</a></p>
         <p>Teléfono: <a href="tel:+34644736788">+34 644 73 67 88</a></p>
