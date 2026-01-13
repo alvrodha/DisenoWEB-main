@@ -29,7 +29,6 @@
     padding: 5px;
 }
 
-/* Estilos para la tabla emergente de creación de noticias */
 .modal {
     display: none;
     position: fixed;
@@ -38,9 +37,6 @@
     height: 100%;
     background-color: white;
 }
-
-
-
 
 #tablaNoticias {
     width: 100%;

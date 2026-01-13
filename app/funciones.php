@@ -1,54 +1,46 @@
 <?php 
 include_once(__DIR__ . '/../dat/AccesoDatos.php');
 
-
 function mostrarUsusarios() {
-
     $titulos = ["Usuario", "Email", "Contraseña", "Acciones"];
-    $msg = "<table>\n";
-    // Cabecera
-    $msg .= "<tr>";
+    $msg = "<table id='tablaUsuarios' class='table-users'>\n";
+    $msg .= "<thead><tr>";
     foreach ($titulos as $titulo) {
         $msg .= "<th>$titulo</th>";
     }
-    $msg .= "</tr>";
+    $msg .= "</tr></thead>";
+    $msg .= "<tbody>";
 
-    // Obtener usuarios
     $db = AccesoDatos::getModelo();
     $usuarios = $db->getUsuarios();
     foreach ($usuarios as $usuario) {
         $msg .= "<tr>";
-
-        // Datos visibles
         $msg .= "<td>{$usuario->usser}</td>";
         $msg .= "<td>{$usuario->email}</td>";
         $msg .= "<td>{$usuario->passwd}</td>";
-
-        // Acciones
         $msg .= "<td>
         <!--
-            <a href='#'
-                class='modal-btn-edit'
-                data-usuario=\"" . htmlspecialchars($usuario->usser, ENT_QUOTES) . "\"
-                data-email=\"" . htmlspecialchars($usuario->email, ENT_QUOTES) . "\"
-                data-passwd=\"" . htmlspecialchars($usuario->passwd, ENT_QUOTES) . "\">
-                <i class='bx bx-pencil'></i>
-            </a>
+            <form method=\"post\">
+                <input type=\"hidden\" name=\"usuarioTabla\" value=\"{$usuario->usser}\">
+                <input type=\"hidden\" name=\"emailTabla\" value=\"{$usuario->email}\">
+                <input type=\"hidden\" name=\"passwdTabla\" value=\"{$usuario->passwd}\">
+                <button type=\"submit\" class=\"modal-btn-edit\">
+                    <i class='bx bx-pencil'></i>
+                </button>
+            </form>
         -->
-            <a href='#'
-                class='modal-btn-del'
-                data-usuario=\"" . htmlspecialchars($usuario->usser, ENT_QUOTES) . "\">
-                <i class='bx bx-trash'></i>
-            </a>
+            <form method=\"post\" class=\"form-del-tabla\">
+                <input type=\"hidden\" name=\"usuarioTabla\" value=\"{$usuario->usser}\">
+                <button type=\"button\" class=\"modal-btn-del\">
+                    <i class=\"bx bx-trash\"></i>
+                </button>
+            </form>
         </td>";
-
+        $msg .= "</tr>";
     }
-    $msg .= "</table>\n";
-    $msg .= "<a id='modal-btn-add'>Añadir</a>";
+    $msg .= "</tbody></table>\n";
     return $msg;
 }
-
-
 
 function mostrarNoticias() {
     $msg = "";
@@ -106,6 +98,7 @@ function limpiarEntrada(string $entrada):string{
     $salida = strip_tags($salida); // Elimina marcas
     return $salida;
 }
+
 // Función para limpiar todos elementos de un array
 function limpiarArrayEntrada(array &$entrada){
  
@@ -115,35 +108,40 @@ function limpiarArrayEntrada(array &$entrada){
 }
 
 // Función para validar la inserción de un usuario para evitar duplicaciones
-function validarAddUser($newUsuario):bool {
+function validarAddUser($newUsuario): bool {
     $db = AccesoDatos::getModelo();
-    
+    /*
+    if ($newUsuario->passwd !== $newUsuario->passwdRep) {
+        return false;
+    }
+
+    if (strlen($newUsuario->passwd) < 8) {
+        return false;
+    }
+
     if ($db->checkEmail($newUsuario->email)) {
         return false;
-    } elseif ($db->checkUser($newUsuario->usser)) {
-        return false;
-    } elseif ($newUsuario->passwd != $newUsuario->passwdRep) {
-        return false;
-    } elseif (!count_chars($newUsuario->passwd) < 10) {
-        return false;
-    } else {
-        $db->addUsuario($newUsuario);
-        return true;
     }
+
+    if ($db->checkUser($newUsuario->usser)) {
+        return false;
+    }
+    */
+    if ($newUsuario->passwd != $newUsuario->passwdRep) {
+        return false;
+    }
+    $newUsuario->passwd = password_hash($newUsuario->passwd, PASSWORD_DEFAULT);
+    $db->addUsuario($newUsuario);
+    return true;
 }
+
 
 // Función para validar la eliminación de un usuario
 function validarDelUser($usuario): bool {
     $db = AccesoDatos::getModelo();
-
-    if ($db->checkUser($usuario->usser)) {
-        // Usuario existe → borramos
-        return $db->borrarUsuario($usuario->usser);
-    } else {
-        return false;
-    }
-    // Usuario no existe → fallo  
+    return $db->borrarUsuario($usuario->usser);
 }
+
 
 
 // Función para validar la edición de un usuario
@@ -164,12 +162,12 @@ Function controlInteraccion(){
          exit();
     }
     if (isset($_SESSION['ultimaAccion']) && (time() - $_SESSION['ultimaAccion']) > $timeout) {
-    session_unset();
-    session_destroy();
-    header("Location: /php/DisenoWEB-main/index.php");
-    exit();
-}
+        session_unset();
+        session_destroy();
+        header("Location: /php/DisenoWEB-main/index.php");
+        exit();
+    }
 
-$_SESSION['ultimaAccion'] = time();
+    $_SESSION['ultimaAccion'] = time();
 }
 ?>

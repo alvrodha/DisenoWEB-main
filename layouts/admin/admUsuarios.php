@@ -1,63 +1,54 @@
 <?php
 session_start();
 include_once ('../../app/funciones.php');
-//control de sesion
+// Control de sesion
 controlInteraccion();
-
-$transactionStatus = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $accion = $_POST['accion'] ?? null;
-
-    if ($accion === "eliminar") {
-        $usuario = definirUsr();
-        $transactionStatus = validarDelUser($usuario) ? 'success' : 'fail';
+    switch ($accion) {
+        case "añadir":
+            $Newusuario = definirNewUsr();
+            if (validarAddUser($Newusuario)) {
+                header("Location: admUsuarios.php?success=1");
+            } else {
+                header("Location: admUsuarios.php?error=1");
+            }
+            exit;
+            break;
+        case "eliminar":
+            $usuario = definirUsr();
+            validarDelUser($usuario);
+            header("Location: admUsuarios.php");
+            exit;
+            break;
+        /*
+        case "editar":
+            $usuario    = definirUsr();
+            $newUsuario = definirNewUsr();
+            validarEditUser($usuario, $newUsuario);
+            break;
+        */
     }
-    if($accion === "añadir") {
-        $newUsuario = definirNewUsr();
-        $transactionStatus = validarAddUser($newUsuario) ? 'success' : 'fail';
-    }
-    // Editar...
-    /*
-    if ($accion === "editar" {
-        $transactionStatus = validarEditUser($usuario, $newUsuario) ? 'success' : 'fail';
-    }
-    */
-                
 }
-
-            
 
 // Definir usuario, a partir de la tabla generada
-/*
 function definirUsr() {
     $usuario = new Usuario();
-    $usuario->usser = $_POST['del-usuario'] ?? '';
+    $usuario->usser = trim($_POST['usuario'] ?? '');
     return $usuario;
-}
-*/
-// depuración
-function definirUsr() {
-    $usuario = new Usuario();
-    $usuario->usser = trim($_POST['del-usuario'] ?? '');
-    var_dump($usuario->usser); // ver qué valor llega
-    return $usuario;
-}
-
-
-    
+} 
 
 // Definir usuario, a partir de los datos introducidos
 function definirNewUsr() {
         $usuario = new Usuario();
-        $usuario->usser = $_POST['NewUsuario'] ?? '';
-        $usuario->passwd = $_POST['NewContraseña'] ?? '';
-        $usuario->passwdRep = $_POST['NewContraseñaRep'] ?? '';
-        $usuario->email = $_POST['NewEmail'] ?? '';
+        $usuario->usser = trim($_POST['NewUsuario'] ?? '');
+        $usuario->passwd = $_POST['NewContraseña'];
+        $usuario->passwdRep = $_POST['NewContraseñaRep'];
+        $usuario->email = $_POST['NewEmail'];
         return $usuario;
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,103 +76,85 @@ function definirNewUsr() {
     <div id="content">
         <div id="content-table">
             <div id="content-header">
-                <h1>Panel de Administrador de usuarios</h1>
-                <div id="inputs-header">
-                    <input type="search" id="search-bar" class="search-bar" value="Search">
-                    <ul class="menu-order">
-                        <li class="menu-order menu-order-dropdown">
-                            <a href="#" class="menu-link">
-                                <span>Ordenar</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li><a href="#" class="sub-menu-item">Por fecha</a></li>
-                                <li><a href="#" class="sub-menu-item">Por nombre</a></li>
-                                <li><a href="#" class="sub-menu-item">Por id</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <!-- MODAL AÑADIR -->
-                    <div id="modal-add" class="modal">
-                        <div class="modal-content">
-                            <h2>Añadir usuario</h2>
-                            <form class="modal-form" method="post">
-                                <input type="hidden" name="accion" value="añadir">
-                                <input type="text" name="NewUsuario" value="Usuario">
-                                <input type="email" name="NewEmail" value="Email">
-                                <input type="text" name="NewContraseña" value="Contraseña">
-                                <input type="text" name="NewContraseñaRep" value="Contraseña">
-                                <div class="modal-actions">
-                                    <input type="reset" class="close-modal" value="Cancelar"></button>
-                                    <input type="submit" class="confirm" value="Añadir">
-                                </div>
-                            </form>
+            <h1>Panel de Administrador de usuarios</h1>
+            <div id="inputs-header">
+                <input type="search" id="search-bar" class="search-bar" value="Search">
+                <ul class="menu-order">
+                    <li class="menu-order menu-order-dropdown">
+                        <a href="#" class="menu-link">
+                            <span>Ordenar</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="#" class="sub-menu-item">Por fecha</a></li>
+                            <li><a href="#" class="sub-menu-item">Por nombre</a></li>
+                            <li><a href="#" class="sub-menu-item">Por id</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- MODAL AÑADIR -->
+            <div id="modal-add" class="modal">
+                <div class="modal-content">
+                    <h2>Añadir usuario</h2>
+                    <form class="modal-form" method="post">
+                        <input type="hidden" name="accion" value="añadir">
+                        <input type="text" name="NewUsuario" placeholder="Usuario">
+                        <input type="email" name="NewEmail" placeholder="Email">
+                        <input type="text" name="NewContraseña" placeholder="Contraseña">
+                        <input type="text" name="NewContraseñaRep" placeholder="Contraseña">
+                        <div class="modal-actions">
+                            <input type="reset" class="close-modal" value="Cancelar"></button>
+                            <input type="submit" class="confirm" value="Añadir">
                         </div>
-                    </div>
-
-                    <!-- MODAL ELIMINAR -->
-                    <div id="modal-del" class="modal">
-                        <div class="modal-content">
-                            <h2>Eliminar usuario</h2>
-                            <p>¿Estás seguro de que quieres eliminar este usuario?</p>
-                            <form class="modal-form" method="post">
-                                <input type="hidden" name="accion" value="eliminar">
-                                <input type="hidden" name="del-usuario" id="del-usuario">
-                                <div class="modal-actions">
-                                    <input type="reset" class="close-modal" value="Cancelar">
-                                    <input type="submit" class="confirm" value="Eliminar">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- MODAL EDITAR -->
-                    <!--
-                    <div id="modal-edit" class="modal">
-                        <div class="modal-content">
-                            <h2>Editar usuario</h2>
-                            <form class="modal-form" method="post">
-                                <input type="hidden" name="accion" value="editar">
-                                <input type="hidden" name="usuario" id="edit-usuario">
-
-                                <input type="text" name="NewUsuario" id="edit-nombre">
-                                <input type="email" name="NewEmail" id="edit-email">
-                                <input type="text" name="NewContraseña" id="edit-passwd">
-
-                                <div class="modal-actions">
-                                    <input type="reset" class="close-modal" value="Cancelar">
-                                    <input type="submit" class="confirm" value="Guardar Cambios">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    -->
-
-                    <!-- MODAL ÉXITO EN LA TRANSACCiÓN -->
-                    <div id="modal-success" class="modal">
-                        <div class="modal-content">
-                            <h2>Éxito</h2>
-                            <p>La operación se realizó correctamente.</p>
-                            <button class="close-modal">Aceptar</button>
-                        </div>
-                    </div>
-
-                    <!-- MODAL ERROR EN LA TRANSACCiÓN -->
-                    <div id="modal-fail" class="modal">
-                        <div class="modal-content">
-                            <h2>Error</h2>
-                            <p>Ha ocurrido un error durante la operación.</p>
-                            <button class="close-modal">Cerrar</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-            <?= mostrarUsusarios() ?>   
-        </div> 
+
+            <!-- MODAL ELIMINAR -->
+            <div id="modal-del" class="modal">
+                <div class="modal-content">
+                    <h2>Eliminar usuario</h2>
+                    <p>¿Estás seguro de que quieres eliminar este usuario?</p>
+                    <form class="modal-form" method="post">
+                        <input type="hidden" name="accion" value="eliminar">
+                        <!-- usuario se añade por JS -->
+                        <div class="modal-actions">
+                            <input type="reset" class="close-modal" value="Cancelar">
+                            <input type="submit" class="confirm" value="Eliminar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- MODAL EDITAR -->
+            <!--
+            <div id="modal-edit" class="modal">
+                <div class="modal-content">
+                    <h2>Editar usuario</h2>
+                    <form class="modal-form" method="post">
+                        <input type="hidden" name="accion" value="editar">
+                        <input type="hidden" name="usuario" id="edit-usuario">
+
+                        <input type="text" name="NewUsuario" id="edit-nombre">
+                        <input type="email" name="NewEmail" id="edit-email">
+                        <input type="text" name="NewContraseña" id="edit-passwd">
+
+                        <div class="modal-actions">
+                            <input type="reset" class="close-modal" value="Cancelar">
+                            <input type="submit" class="confirm" value="Guardar Cambios">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            -->
+        </div>
+        <div class="contenido">
+            <?= mostrarUsusarios() ?>  
+            <div class="table-actions">
+                <a id="modal-btn-add"><i class='bx bx-plus-circle'></i> Añadir Nuevo Usuario</a>
+            </div>
+        </div>
     </div>
-    <script>
-        const transactionStatus = <?= json_encode($transactionStatus) ?>;
-    </script>
     <script src="../../web/JS/admin.js" defer></script>
 </body>
 </html>
