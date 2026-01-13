@@ -1,22 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     const modalAdd = document.getElementById("modal-add");
     const modalDel = document.getElementById("modal-del");
 
     const openModal = modal => modal && (modal.style.display = "flex");
     const closeModal = modal => modal && (modal.style.display = "none");
 
-    /* =========================
-       ABRIR MODAL AÑADIR
-    ========================== */
+    /* ABRIR MODAL AÑADIR */
     document.getElementById("modal-btn-add")?.addEventListener("click", e => {
         e.preventDefault();
         openModal(modalAdd);
     });
 
-    /* =========================
-       ELIMINAR (desde tabla)
-    ========================== */
+    /* ELIMINAR (desde tabla) */
     document.querySelectorAll("form .modal-btn-del").forEach(btn => {
         btn.addEventListener("click", e => {
             e.preventDefault();
@@ -38,9 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    /* =========================
-       CERRAR MODALES
-    ========================== */
+    /* CERRAR MODALES */
     document.querySelectorAll(".close-modal").forEach(btn => {
         btn.addEventListener("click", e => {
             e.preventDefault();

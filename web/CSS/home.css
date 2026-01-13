@@ -45,7 +45,7 @@
     font-size: 1.1em;
 }
 
-/* 👇 Solo la noticia activa se muestra */
+/* Solo la noticia activa se muestra */
 .noticias-content p.active {
     opacity: 1;
 }
@@ -80,8 +80,8 @@
 
 /* =========================
    ANIMACIONES DE LAS CAJAS
-   ========================= */
-
+   ========================= 
+*/
 /* Contenedor de la parte que se desliza */
 
 
@@ -93,11 +93,9 @@
   padding: 20px;
   overflow: hidden;
   cursor: pointer;
-  height: auto; /* se ajusta al contenido */
-  min-height: 300px; /* opcional: para bloques pequeños mantener tamaño base */
+  height: auto;
+  min-height: 300px;
 }
-
-
 
 /* Pregunta siempre visible */
 .bloque.slide-up h1 {
@@ -113,12 +111,12 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  transform: translateY(100%); /* totalmente fuera de la caja */
+  transform: translateY(100%);
   background-color: #415f7e;
   color: white;
   padding: 20px;
   box-sizing: border-box;
-  transition: transform 0.5s ease; /* animación suave */
+  transition: transform 0.5s ease;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -127,7 +125,7 @@
 
 /* Al hacer hover, la respuesta sube hasta un punto fijo */
 .bloque.slide-up:hover .respuesta {
-  transform: translateY(0px); /* sube totalmente hasta el fondo de la pregunta */
+  transform: translateY(0px);
 }
 
 /* ======== TABLA DE PARTIDOS ======== */
@@ -156,6 +154,7 @@
 .tabla-partidos tr:hover {
     background-color: #f1f1f1;
 }
+
 /* ======== CLASIFICACIÓN MINI (dentro de caja) ======== */
 .clasificacion {
   background-color: white;

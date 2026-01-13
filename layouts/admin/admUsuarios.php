@@ -4,7 +4,6 @@ include_once ('../../app/funciones.php');
 // Control de sesion
 controlInteraccion();
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $accion = $_POST['accion'] ?? null;
     switch ($accion) {
@@ -50,7 +49,6 @@ function definirNewUsr() {
         return $usuario;
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,7 +91,7 @@ function definirNewUsr() {
                         </ul>
                     </li>
                 </ul>
-
+            </div>
             <!-- MODAL AÑADIR -->
             <div id="modal-add" class="modal">
                 <div class="modal-content">

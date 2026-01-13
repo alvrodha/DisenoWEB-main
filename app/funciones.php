@@ -1,19 +1,16 @@
 <?php 
 include_once(__DIR__ . '/../dat/AccesoDatos.php');
 
-
 function mostrarUsusarios() {
     $titulos = ["Usuario", "Email", "Contraseña", "Acciones"];
     $msg = "<table id='tablaUsuarios' class='table-users'>\n";
-        
-    // Cabecera con thead
     $msg .= "<thead><tr>";
     foreach ($titulos as $titulo) {
         $msg .= "<th>$titulo</th>";
     }
     $msg .= "</tr></thead>";
+    $msg .= "<tbody>";
 
-    $msg .= "<tbody>"; // Inicio de cuerpo
     $db = AccesoDatos::getModelo();
     $usuarios = $db->getUsuarios();
     foreach ($usuarios as $usuario) {
@@ -21,7 +18,6 @@ function mostrarUsusarios() {
         $msg .= "<td>{$usuario->usser}</td>";
         $msg .= "<td>{$usuario->email}</td>";
         $msg .= "<td>{$usuario->passwd}</td>";
-        // ... resto del código de los botones ...
         $msg .= "<td>
         <!--
             <form method=\"post\">
@@ -102,6 +98,7 @@ function limpiarEntrada(string $entrada):string{
     $salida = strip_tags($salida); // Elimina marcas
     return $salida;
 }
+
 // Función para limpiar todos elementos de un array
 function limpiarArrayEntrada(array &$entrada){
  
@@ -140,18 +137,6 @@ function validarAddUser($newUsuario): bool {
 
 
 // Función para validar la eliminación de un usuario
-/*
-function validarDelUser($usuario): bool {
-    $db = AccesoDatos::getModelo();
-
-    if ($db->checkUser($usuario->usser)) {
-        // Usuario existe → borramos
-        return $db->borrarUsuario($usuario->usser);
-    } else {
-        return false;
-    }
-    // Usuario no existe → fallo  
-}*/
 function validarDelUser($usuario): bool {
     $db = AccesoDatos::getModelo();
     return $db->borrarUsuario($usuario->usser);
@@ -176,12 +161,12 @@ Function controlInteraccion(){
          header("Location: /php/DisenoWEB-main/index.php");
     }
     if (isset($_SESSION['ultimaAccion']) && (time() - $_SESSION['ultimaAccion']) > $timeout) {
-    session_unset();
-    session_destroy();
-    header("Location: /php/DisenoWEB-main/index.php");
-    exit();
-}
+        session_unset();
+        session_destroy();
+        header("Location: /php/DisenoWEB-main/index.php");
+        exit();
+    }
 
-$_SESSION['ultimaAccion'] = time();
+    $_SESSION['ultimaAccion'] = time();
 }
 ?>

@@ -6,12 +6,10 @@
  include_once __DIR__ . '/Noticia.php';
  
  class AccesoDatos{
-    //Modelo de Patrón singleton
     private static $modelo = null;
     private $dbh = null;
 
     public static function getModelo(){
-        // Si no existe lo crea el acceso de a la BD
         if (self::$modelo == null){
             self::$modelo = new AccesoDatos();
         }
@@ -21,10 +19,11 @@
     public static function closeModelo(){
         if (self::$modelo != null){
             $obj = self::$modelo;
-            $obj->dbh = null;     // Cierro la conexión
-            self::$modelo = null; // Borro el objeto.
+            $obj->dbh = null;
+            self::$modelo = null;
         }
     }
+
     //Configuración de la base de datos
      public function __construct() {
         try {
@@ -89,8 +88,8 @@
         }
         return $tusser;
     }
-    //addUsuario--> funcion insert para añadir usuarios 
 
+    //addUsuario--> funcion insert para añadir usuarios 
     public function addUsuario($usuario): bool {
         try {
             $stmt = $this->dbh->prepare("INSERT INTO usuarios (`email`, `usser`, `passwd`) VALUES (?, ?, ?)");
@@ -101,6 +100,7 @@
             return false;
         }
     }
+
     //borrarUsuario --> Funcion DELETE para borrar usuarios, borrando por el codigo de usuario o login
     public function borrarUsuario($usser): bool {
         error_log("INTENTANDO BORRAR USUARIO: [" . $usser . "]");
@@ -139,32 +139,28 @@
         return $stmt->rowCount() === 1;
     }
 
-
-
     //evitar clonar objetos(PATRON SINGLETON)
      public function __clone()
     { 
         trigger_error('La clonación no permitida', E_USER_ERROR); 
     }
-    public function migrarContrasenas() {
-    $stmtSelect = $this->dbh->prepare("SELECT email, passwd FROM usuarios");
-    $stmtSelect->execute();
-    $usuarios = $stmtSelect->fetchAll(PDO::FETCH_ASSOC);
+        public function migrarContrasenas() {
+        $stmtSelect = $this->dbh->prepare("SELECT email, passwd FROM usuarios");
+        $stmtSelect->execute();
+        $usuarios = $stmtSelect->fetchAll(PDO::FETCH_ASSOC);
 
-    $stmtUpdate = $this->dbh->prepare("UPDATE usuarios SET passwd = :passwd WHERE email = :email");
+        $stmtUpdate = $this->dbh->prepare("UPDATE usuarios SET passwd = :passwd WHERE email = :email");
 
-    foreach ($usuarios as $row) {
-        if (!password_get_info($row['passwd'])['algo']) {
-            $hash = password_hash($row['passwd'], PASSWORD_DEFAULT);
-            $stmtUpdate->execute([
-                ':passwd' => $hash,
-                ':email'     => $row['email']
-            ]);
+        foreach ($usuarios as $row) {
+            if (!password_get_info($row['passwd'])['algo']) {
+                $hash = password_hash($row['passwd'], PASSWORD_DEFAULT);
+                $stmtUpdate->execute([
+                    ':passwd' => $hash,
+                    ':email'     => $row['email']
+                ]);
+            }
         }
+        echo "Contraseñas migradas correctamente";
     }
-    echo "Contraseñas migradas correctamente";
 }
-
- }
- 
- ?>
+?>
