@@ -88,14 +88,14 @@ include_once('dat/cifrarContrasena.php');
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>¡Bienvenido de nuevo!</h1>
-                    <p>Para seguir conectado inicia sesión con nosotros</p>
+                    <h1>¡Bienvenido de nuevo!</h1><br>
+                    <p>Para seguir conectado inicia sesión con nosotros</p> <br>
                     <button class="ghost" id="signIn">Inciar sesión</button>
                     
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>¡Hola, amigo!</h1> <br>
-                      <p>Completa tus datos para empezar la aventura</p>
+                      <p>Completa tus datos para empezar la aventura</p> <br>
                     <button class="ghost" id="signUp">Registrarse</button>
                 </div>
             </div>

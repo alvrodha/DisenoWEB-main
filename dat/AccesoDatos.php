@@ -117,14 +117,9 @@
             return false;
         }
     }
-    /*
-    public function getPerfil($email){
-       $stmt = $this->dbh->prepare("SELECT * FROM usuarios WHERE email = ?");
-        $stmt->execute([$email]);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Usuario');
-
-    }*/
-    //checkEmail --> Funcion check para evitar validar usuarios con correos ya existentes
+    public function modificarPerfil(){
+        
+    }
     public function checkEmail($email): bool {
         try {
             $stmt = $this->dbh->prepare("SELECT EXISTS (SELECT 1 FROM usuarios WHERE email = ?)");

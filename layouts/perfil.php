@@ -70,7 +70,7 @@ controlInteraccion();
 <div id="content">
     <h1>Perfil de jugador:</h1>
     <?php echo verPerfil(); ?>
-
+  BOTON DE CAMBIAR PERFIL AQUI
 </div>
 <div id="footer">
     <div class="footer-content">
