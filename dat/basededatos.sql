@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS noticias (
 );
 -- SCRIPT DE INSERCION
 INSERT INTO `usuarios`
-(`email`, `user`, `passwd`, `bloqueado`, `intentos`, `edad`, `nombre`, `ape1`, `ape2`)
+(`email`, `usser`, `passwd`, `bloqueado`, `intentos`, `edad`, `nombre`, `ape1`, `ape2`)
 VALUES
 ('root@gmail.com', 'root', 'root', 0, 0, 35, 'Administrador', 'Sistema', ''),
 ('ana@gmail.com', 'ana', 'ana123', 0, 0, 28, 'Ana', 'García', 'López'),

@@ -90,9 +90,10 @@
         return $tusser;
     }
     //addUsuario--> funcion insert para añadir usuarios 
+
     public function addUsuario($usuario): bool {
         try {
-            $stmt = $this->dbh->prepare("INSERT INTO usuarios (`email`, `user`, `passwd`) VALUES (?, ?, ?)");
+            $stmt = $this->dbh->prepare("INSERT INTO usuarios (`email`, `usser`, `passwd`) VALUES (?, ?, ?)");
             $stmt->execute([$usuario->email, $usuario->usser, $usuario->passwd]);
             return $stmt->rowCount() === 1;
         } catch (PDOException $e) {
@@ -102,10 +103,14 @@
     }
     //borrarUsuario --> Funcion DELETE para borrar usuarios, borrando por el codigo de usuario o login
     public function borrarUsuario($usser): bool {
+        error_log("INTENTANDO BORRAR USUARIO: [" . $usser . "]");
+
         try {
             $stmt = $this->dbh->prepare("DELETE FROM usuarios WHERE usser = ?");
-            $stmt->bindValue(1, $usser);
+            $stmt->bindValue(1, trim($usser), PDO::PARAM_STR);
             $stmt->execute();
+            error_log("FILAS AFECTADAS: " . $stmt->rowCount());
+
             return $stmt->rowCount() === 1;
         } catch (PDOException $e) {
             error_log("Error al borrar usuario: " . $e->getMessage());
@@ -126,16 +131,14 @@
     }
 
     //checkUser --> Funcion check para evitar validar usuarios con correos ya existentes
-    public function checkUser($usuario): bool {
-        try {
-            $stmt = $this->dbh->prepare("SELECT EXISTS(SELECT 1 FROM usuarios WHERE usser = ?)");
-            $stmt->bindParam(1, $usuario);
-            $stmt->execute();
-            return (bool) $stmt->fetchColumn();
-        } catch (PDOException $e) {
-            return false;
-        }
-    }
+    public function checkUser($usser): bool {
+    $stmt = $this->dbh->prepare(
+        "SELECT usser FROM usuarios WHERE usser = ?"
+    );
+    $stmt->execute([$usser]);
+    return $stmt->rowCount() === 1;
+}
+
 
 
     //evitar clonar objetos(PATRON SINGLETON)

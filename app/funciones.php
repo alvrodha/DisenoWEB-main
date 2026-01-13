@@ -3,52 +3,48 @@ include_once(__DIR__ . '/../dat/AccesoDatos.php');
 
 
 function mostrarUsusarios() {
-
     $titulos = ["Usuario", "Email", "Contraseña", "Acciones"];
-    $msg = "<table>\n";
-    // Cabecera
-    $msg .= "<tr>";
+    $msg = "<table id='tablaUsuarios' class='table-users'>\n";
+        
+    // Cabecera con thead
+    $msg .= "<thead><tr>";
     foreach ($titulos as $titulo) {
         $msg .= "<th>$titulo</th>";
     }
-    $msg .= "</tr>";
+    $msg .= "</tr></thead>";
 
-    // Obtener usuarios
+    $msg .= "<tbody>"; // Inicio de cuerpo
     $db = AccesoDatos::getModelo();
     $usuarios = $db->getUsuarios();
     foreach ($usuarios as $usuario) {
         $msg .= "<tr>";
-
-        // Datos visibles
         $msg .= "<td>{$usuario->usser}</td>";
         $msg .= "<td>{$usuario->email}</td>";
         $msg .= "<td>{$usuario->passwd}</td>";
-
-        // Acciones
+        // ... resto del código de los botones ...
         $msg .= "<td>
         <!--
-            <a href='#'
-                class='modal-btn-edit'
-                data-usuario=\"" . htmlspecialchars($usuario->usser, ENT_QUOTES) . "\"
-                data-email=\"" . htmlspecialchars($usuario->email, ENT_QUOTES) . "\"
-                data-passwd=\"" . htmlspecialchars($usuario->passwd, ENT_QUOTES) . "\">
-                <i class='bx bx-pencil'></i>
-            </a>
+            <form method=\"post\">
+                <input type=\"hidden\" name=\"usuarioTabla\" value=\"{$usuario->usser}\">
+                <input type=\"hidden\" name=\"emailTabla\" value=\"{$usuario->email}\">
+                <input type=\"hidden\" name=\"passwdTabla\" value=\"{$usuario->passwd}\">
+                <button type=\"submit\" class=\"modal-btn-edit\">
+                    <i class='bx bx-pencil'></i>
+                </button>
+            </form>
         -->
-            <a href='#'
-                class='modal-btn-del'
-                data-usuario=\"" . htmlspecialchars($usuario->usser, ENT_QUOTES) . "\">
-                <i class='bx bx-trash'></i>
-            </a>
+            <form method=\"post\" class=\"form-del-tabla\">
+                <input type=\"hidden\" name=\"usuarioTabla\" value=\"{$usuario->usser}\">
+                <button type=\"button\" class=\"modal-btn-del\">
+                    <i class=\"bx bx-trash\"></i>
+                </button>
+            </form>
         </td>";
-
+        $msg .= "</tr>";
     }
-    $msg .= "</table>\n";
-    $msg .= "<a id='modal-btn-add'>Añadir</a>";
+    $msg .= "</tbody></table>\n";
     return $msg;
 }
-
-
 
 function mostrarNoticias() {
     $msg = "";
@@ -124,7 +120,7 @@ function validarAddUser($newUsuario):bool {
         return false;
     } elseif ($newUsuario->passwd != $newUsuario->passwdRep) {
         return false;
-    } elseif (!count_chars($newUsuario->passwd) < 10) {
+    } elseif (strlen($newUsuario->passwd) < 8) {
         return false;
     } else {
         $db->addUsuario($newUsuario);
@@ -133,6 +129,7 @@ function validarAddUser($newUsuario):bool {
 }
 
 // Función para validar la eliminación de un usuario
+/*
 function validarDelUser($usuario): bool {
     $db = AccesoDatos::getModelo();
 
@@ -143,7 +140,12 @@ function validarDelUser($usuario): bool {
         return false;
     }
     // Usuario no existe → fallo  
+}*/
+function validarDelUser($usuario): bool {
+    $db = AccesoDatos::getModelo();
+    return $db->borrarUsuario($usuario->usser);
 }
+
 
 
 // Función para validar la edición de un usuario

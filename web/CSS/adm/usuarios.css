@@ -1,214 +1,201 @@
 /* ================= CONTENEDOR PRINCIPAL ================= */
-#content-table {
-    border: 2px solid green;
-    padding: 10px;
-    width: 95%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+#contenedor {
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* ================= HEADER ================= */
-#content-header {
-    border: 2px solid blue;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-#content-header h1 {
-    font-size: 2.6rem;
-    color: #333;
-}
-
-/* ================= INPUTS HEADER ================= */
-#inputs-header {
+#header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var();
+    padding-bottom: 15px;
+}
+
+#header h1 {
+    color: var(--color);
+    font-size: 1.8rem;
+}
+
+/* Barra de búsqueda y Ordenar */
+#inputs-header {
+    display: flex;
     gap: 15px;
+    align-items: center;
 }
 
-/* Buscador */
 .search-bar {
-    border-radius: 50px;
-    padding: 0.8rem 1.2rem;
+    padding: 8px 15px;
     border: 1px solid #ccc;
-    width: 250px;
-    width: 95%;
+    border-radius: 20px;
+    outline: none;
 }
 
-/* ================= MENU ORDENAR ================= */
 .menu-order {
     list-style: none;
     position: relative;
 }
 
 .menu-link {
-    display: block;
-    padding: 0.8rem 1.2rem;
-    background-color: #1C1D3D;
+    background-color: var(--color-secondary);
     color: white;
-    border-radius: 1rem;
-    text-decoration: none;
-    cursor: pointer;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 0.9rem;
 }
 
-/* Dropdown */
 .sub-menu {
-    position: absolute;
-    top: 110%;
-    left: 0;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    padding: 0.5rem 0;
-    list-style: none;
     display: none;
-    min-width: 150px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
     z-index: 10;
+    list-style: none;
+    min-width: 120px;
+}
+
+.menu-order-dropdown:hover .sub-menu {
+    display: block;
 }
 
 .sub-menu-item {
     display: block;
-    padding: 0.6rem 1rem;
-    color: #333;
-    text-decoration: none;
+    padding: 10px;
+    color: var(--color);
+    border-bottom: 1px solid #eee;
 }
 
 .sub-menu-item:hover {
-    background-color: #f0f0f0;
+    background-color: #f4f4f4;
 }
 
-/* Mostrar dropdown */
-.menu-order:hover .sub-menu {
-    display: block;
+/* ================= TABLA DE USUARIOS ================= */
+.contenido {
+    overflow-x: auto;
 }
 
-/* ================= BOTÓN AÑADIR ================= */
-#modal-btn-add {
+#tablaUsuarios th {
+    background-color: var(--color);
     color: white;
-    background-color: #1C1D3D;
-    padding: 0.8rem 1.2rem;
-    border-radius: 1rem;
+    padding: 12px;
+    text-align: left;
+}
+
+#tablaUsuarios td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.9rem;
+    color: #333;
+    word-break: break-all;
+}
+
+#tablaUsuarios tr:hover {
+    background-color: #f9f9f9;
+}
+
+.table-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+/* Botones de acción en tabla */
+.modal-btn-del {
+    background-color: #e74c3c;
+    color: white;
     border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-btn-del:hover {
+    background-color: #c0392b;
+}
+
+/* Botón Añadir Usuario */
+#modal-btn-add {
+    display: inline-block;
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.4s;
+}
+
+#modal-btn-add:hover {
+    background-color: #1e8449;
+    transform: translateY(-2px);
 }
 
 /* ================= MODALES ================= */
 .modal {
     display: none;
     position: fixed;
-    top: 0;
+    z-index: 2000;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.6);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
 }
 
 .modal-content {
-    border: 2px solid red;
-    display: flex;
-    flex-direction: column;
     background-color: white;
-    padding: 25px;
-    border-radius: 15px;
-    width: 350px;
-    gap: 15px;
+    margin: 10% auto;
+    padding: 30px;
+    width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-.modal-content h2 {
-    border: 2px solid blue;
-    margin: 0;
-    color: #1C1D3D;
-}
-
-/* Inputs del modal */
 .modal-form {
-    border: 2px solid pink;
     display: flex;
     flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.modal-form input {
-    border: 2px solid violet;
-    padding: 0.6rem;
-    margin: 0.4rem;
-    border-radius: 8px;
+.modal-form input[type="text"],
+.modal-form input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-/* Botones del modal */
 .modal-actions {
     display: flex;
-    justify-content: space-between;
-}
-
-.modal-actions input {
-    background-color: #1C1D3D;
-    color: white;
-    border-radius: 0.3rem;
-    padding: 0.5rem;
-}
-
-.confirm {
-    
-}
-
-.confirm.danger {
-    background-color: darkred;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .close-modal {
-    background-color: #ccc;
-}
-
-
-/* ================= TABLA ================= */
-#content-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-#content-table th,
-#content-table td {
-    padding: 0.2rem;
-    text-align: center;
-}
-
-#content-table th {
-    background-color: lightgray;
-}
-
-#content-table tr {
-    background-color: white;
-}
-
-#content-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-#content-table tr:hover {
-    background-color: #e0e0e0;
-}
-
-/* ================= ICONOS ================= */
-.modal-btn-edit,
-.modal-btn-del {
+    background: #95a5a6;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 1.5rem;
 }
 
-.modal-btn-edit {
-    color: #1C1D3D;
-}
-
-.modal-btn-del {
-    color: darkred;
+.confirm {
+    background: var(--color-tertiary);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
 }
