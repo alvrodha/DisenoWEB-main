@@ -10,7 +10,7 @@ include_once('dat/cifrarContrasena.php');
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/web/IMG/favicon.png">
@@ -62,7 +62,7 @@ include_once('dat/cifrarContrasena.php');
         
         <div class="form-container sign-up-container">
             <form method="post" action="app/controlAcceso.php">
-                <h1>Crea una cuenta</h1>
+                <h1 style="color:black">Crea una cuenta</h1>
                 <span> </span>
                 <input type="hidden" name="action" value="register">
                 <input type="text" name="usserRegistro" placeholder="Usuario" />
@@ -75,7 +75,7 @@ include_once('dat/cifrarContrasena.php');
         <div class="form-container sign-in-container">
             <form method="post" action="app/controlAcceso.php">
               
-                <h1>Inicia sesión</h1>
+                <h1 style="color:black">Inicia sesión</h1>
                 <span> </span>
                 <input type="hidden" name="action" value="login">
                 <input type="email" name="email" placeholder="Email" />
