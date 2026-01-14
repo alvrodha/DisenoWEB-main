@@ -63,7 +63,12 @@ input {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+	min-height: 30px !important;
+	
+    padding-bottom: 50px !important;
 }
+
+
 
 .container {
 	background-color: #fff;
@@ -73,7 +78,8 @@ input {
 	overflow: hidden;
 	width: 768px;
 	max-width: 100%;
-	min-height: 480px;
+	min-width: 500px;
+	min-height: 620px;
     margin: 30px;
 }
 
