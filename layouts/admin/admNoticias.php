@@ -59,7 +59,7 @@ function definirNewNot() {
 <body>
     <div id="nav">
         <div id="logo">
-            <a href="administrador.html"><img src="../../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
+            <a href="administrador.php"><img src="../../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
             <li><a href="admLiga.html">Liga</a></li>
