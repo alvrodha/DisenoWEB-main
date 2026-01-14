@@ -75,7 +75,7 @@ include_once('dat/cifrarContrasena.php');
         <div class="form-container sign-in-container">
             <form method="post" action="app/controlAcceso.php">
               
-                <h1>Inicia sesión</h1>
+                <h2>Inicia sesión</h2>
                 <span> </span>
                 <input type="hidden" name="action" value="login">
                 <input type="email" name="email" placeholder="Email" />
