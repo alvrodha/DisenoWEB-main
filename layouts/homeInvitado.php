@@ -12,8 +12,9 @@
     <title>TetuScores</title>
     <link rel="stylesheet" href="../web/CSS/default.css"/>
     <link rel="stylesheet" href="../web/CSS/home.css"/>
+    
 </head>
-<script src="web/JS/background.js" defer></script>
+
 <body>
     <canvas id="background"></canvas>
     
@@ -143,6 +144,8 @@
 </div>
 
 </body>
+<script src="../web/JS/background.js" defer></script>
+
 <style>
     h3{
         color: red;
@@ -152,5 +155,5 @@
     }
 </style>
 
-</script>
+
 </html>
