@@ -28,7 +28,7 @@
      public function __construct() {
         try {
             $dns = 'mysql:host='.SERVER_DB.';dbname='.DATABASE_NAME;
-            $this->dbh = new PDO($dns, DB_USER, '');
+            $this->dbh = new PDO($dns, DB_USER, 'root');
             $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "Error de conexión con la base de datos: ".$e->getMessage();
