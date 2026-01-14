@@ -129,11 +129,6 @@ function limpiarArrayEntrada(array &$entrada){
 // Función para validar la inserción de un usuario para evitar duplicaciones
 function validarAddUser($newUsuario): bool {
     $db = AccesoDatos::getModelo();
-    /*
-    if ($newUsuario->passwd !== $newUsuario->passwdRep) {
-        return false;
-    }
-
     if (strlen($newUsuario->passwd) < 8) {
         return false;
     }
@@ -143,10 +138,6 @@ function validarAddUser($newUsuario): bool {
     }
 
     if ($db->checkUser($newUsuario->usser)) {
-        return false;
-    }
-    */
-    if ($newUsuario->passwd != $newUsuario->passwdRep) {
         return false;
     }
     $newUsuario->passwd = password_hash($newUsuario->passwd, PASSWORD_DEFAULT);
