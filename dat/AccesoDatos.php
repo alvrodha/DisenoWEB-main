@@ -64,7 +64,7 @@
         return $stmt_noticia->execute();
         */
         try {
-            $stmt = $this->dbh->prepare("INSERT INTO noticias (`titulo`, `contenido`, `autor`, `fecha`, ``visible) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $this->dbh->prepare("INSERT INTO noticias (`titulo`, `contenido`, `autor`, `fecha`, `visible`) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute([$noticia->titulo, $noticia->contenido, $noticia->autor, $noticia->fecha, $noticia->visible]);
             return $stmt->rowCount() === 1;
         } catch (PDOException $e) {
@@ -77,7 +77,7 @@
     public function borrarNoticia($noticia) {
         error_log("INTENTANDO BORRAR NOTICIA: [" . $noticia . "]");
         try {
-            $stmt = $this->dbh->prepare("DELETE FROM noticias WHERE titulo = ?");
+            $stmt = $this->dbh->prepare("DELETE FROM noticias WHERE id = ?");
             $stmt->bindValue(1, trim($noticia), PDO::PARAM_STR);
             $stmt->execute();
             error_log("FILAS AFECTADAS: " . $stmt->rowCount());
@@ -117,7 +117,7 @@
     //addUsuario--> funcion insert para añadir usuarios 
     public function addUsuario($usuario): bool {
         try {
-            $stmt = $this->dbh->prepare("INSERT INTO usuarios (`email`, `usser`, `passwd`) VALUES (?, ?, ?)");
+            $stmt = $this->dbh->prepare("INSERT INTO usuarios (email, usser, passwd) VALUES (?, ?, ?)");
             $stmt->execute([$usuario->email, $usuario->usser, $usuario->passwd]);
             return $stmt->rowCount() === 1;
         } catch (PDOException $e) {

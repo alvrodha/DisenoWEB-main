@@ -44,7 +44,6 @@ function definirNewUsr() {
         $usuario = new Usuario();
         $usuario->usser = trim($_POST['NewUsuario'] ?? '');
         $usuario->passwd = $_POST['NewContraseña'];
-        $usuario->passwdRep = $_POST['NewContraseñaRep'];
         $usuario->email = $_POST['NewEmail'];
         return $usuario;
     }
@@ -57,7 +56,7 @@ function definirNewUsr() {
     <link rel="icon" type="image/png" href="../../web/IMG/favicon.png">
     <title>TetuScores</title>
     <link rel="stylesheet" href="../../web/CSS/default.css"/>
-    <link rel="stylesheet" href="../../web/CSS/adm/usuarios.css"/>
+    <link rel="stylesheet" href="../../web/CSS/adm/admin.css"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -101,7 +100,6 @@ function definirNewUsr() {
                         <input type="text" name="NewUsuario" placeholder="Usuario">
                         <input type="email" name="NewEmail" placeholder="Email">
                         <input type="text" name="NewContraseña" placeholder="Contraseña">
-                        <input type="text" name="NewContraseñaRep" placeholder="Contraseña">
                         <div class="modal-actions">
                             <input type="reset" class="close-modal" value="Cancelar"></button>
                             <input type="submit" class="confirm" value="Añadir">

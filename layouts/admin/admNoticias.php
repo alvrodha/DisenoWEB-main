@@ -32,12 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Definir usuario, a partir de la tabla generada
 function definirNot() {
     $noticia = new Noticia();
-    $noticia->usser = trim($_POST['Titulo'] ?? '');
+    $noticia->id = trim($_POST['noticiaTabla'] ?? '');
     return $noticia;
 }
 
 // Definir usuario, a partir de los datos introducidos
-function definirNewnot() {
+function definirNewNot() {
         $noticia = new noticia();
         $noticia->titulo = trim($_POST['NewTitulo'] ?? '');
         $noticia->autor = $_POST['NewAutor'];
@@ -53,7 +53,7 @@ function definirNewnot() {
     <link rel="icon" type="image/png" href="../../web/IMG/favicon.png">
     <title>TetuScores</title>
     <link rel="stylesheet" href="../../web/CSS/default.css"/>
-    <link rel="stylesheet" href="../../web/CSS/adm/noticias.css">
+    <link rel="stylesheet" href="../../web/CSS/adm/admin.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>

@@ -18,11 +18,12 @@ CREATE TABLE IF NOT EXISTS usuarios (
 
 -- Tabla Noticia
 CREATE TABLE IF NOT EXISTS noticias (
+    id_noticia INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255),
     autor VARCHAR(70),
     contenido TEXT,
     fecha DATETIME,
-    visible BOOLEAN,
+    visible BOOLEAN
 );
 -- SCRIPT DE INSERCION
 INSERT INTO `usuarios`

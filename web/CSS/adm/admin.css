@@ -81,14 +81,14 @@
     overflow-x: auto;
 }
 
-#tablaUsuarios th {
+.table-datos th {
     background-color: var(--color);
     color: white;
     padding: 12px;
     text-align: left;
 }
 
-#tablaUsuarios td {
+.table-datos td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
     font-size: 0.9rem;
@@ -96,7 +96,7 @@
     word-break: break-all;
 }
 
-#tablaUsuarios tr:hover {
+.table-datos tr:hover {
     background-color: #f9f9f9;
 }
 
