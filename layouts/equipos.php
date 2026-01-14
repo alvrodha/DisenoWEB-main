@@ -15,7 +15,9 @@ controlInteraccion();
     <link rel="stylesheet" href="../web/CSS/default.css" />
     <link rel="stylesheet" href="../web/CSS/equipos.css">
 </head>
+<script src="../web/JS/background.js" defer></script>
 <body>
+    <canvas id="background"></canvas>
     <div id="nav">
         <div id="logo">
             <a href="home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>

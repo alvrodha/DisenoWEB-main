@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="../web/CSS/default.css"/>
     <link rel="stylesheet" href="../web/CSS/home.css"/>
 </head>
+<script src="web/JS/background.js" defer></script>
 <body>
     <canvas id="background"></canvas>
+    
     <div id="nav">
         <div id="logo">
          <img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
