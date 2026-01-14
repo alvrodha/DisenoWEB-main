@@ -2,7 +2,7 @@
 include_once(__DIR__ . '/../dat/AccesoDatos.php');
 function mostrarUsusarios() {
     $titulos = ["Usuario", "Email", "Contraseña", "Acciones"];
-    $msg = "<table id='tablaUsuarios' class='table-users'>\n";
+    $msg = "<table id='tablaUsuarios' class='table-datos'>\n";
     $msg .= "<thead><tr>";
     foreach ($titulos as $titulo) {
         $msg .= "<th>$titulo</th>";
@@ -63,7 +63,7 @@ function mostrarNoticias() {
 
 function mostrarNoticiasAdmin(){
     $titulos = ["ID", "Título","Fecha","Autor","Contenido", "Visibilidad", "Gestionar"];
-    $msg = '<table id="tablaNoticias">'."\n";
+    $msg = "<table id='tablaNoticias' class='table-datos'>\n";
      // Identificador de la tabla
     $msg .= "<thead><tr>";
     foreach ($titulos as $titulo) {

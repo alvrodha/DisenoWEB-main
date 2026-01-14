@@ -53,7 +53,7 @@ function definirNewNot() {
     <link rel="icon" type="image/png" href="../../web/IMG/favicon.png">
     <title>TetuScores</title>
     <link rel="stylesheet" href="../../web/CSS/default.css"/>
-    <link rel="stylesheet" href="../../web/CSS/adm/noticias.css">
+    <link rel="stylesheet" href="../../web/CSS/adm/admin.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
