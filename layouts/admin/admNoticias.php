@@ -32,12 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Definir usuario, a partir de la tabla generada
 function definirNot() {
     $noticia = new Noticia();
-    $noticia->usser = trim($_POST['Titulo'] ?? '');
+    $noticia->id = trim($_POST['noticiaTabla'] ?? '');
     return $noticia;
 }
 
 // Definir usuario, a partir de los datos introducidos
-function definirNewnot() {
+function definirNewNot() {
         $noticia = new noticia();
         $noticia->titulo = trim($_POST['NewTitulo'] ?? '');
         $noticia->autor = $_POST['NewAutor'];

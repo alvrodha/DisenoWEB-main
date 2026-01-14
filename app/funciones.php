@@ -62,18 +62,20 @@ function mostrarNoticias() {
 }
 
 function mostrarNoticiasAdmin(){
-    $titulos = [ "Título","Fecha","Autor","Contenido", "Visibilidad", "Gestionar"];
+    $titulos = ["ID", "Título","Fecha","Autor","Contenido", "Visibilidad", "Gestionar"];
     $msg = '<table id="tablaNoticias">'."\n";
      // Identificador de la tabla
-    $msg .= "<tr>";
-    for ($j=0; $j < count($titulos); $j++){
-        $msg .= "<th>$titulos[$j]</th>";
-    }  
-    $msg .= "</tr>";
+    $msg .= "<thead><tr>";
+    foreach ($titulos as $titulo) {
+        $msg .= "<th>$titulo</th>";
+    }
+    $msg .= "</tr></thead>";
+    $msg .= "<tbody>";
     $db = AccesoDatos::getModelo();
     $tnoticias = $db->getNoticias();
     foreach ($tnoticias as $noticia) {
         $msg .= "<tr>";
+        $msg .= "<td> $noticia->id </td>";
         $msg .= "<td> $noticia->titulo </td>";
         $msg .= "<td> $noticia->fecha </td>";
         $msg .= "<td> $noticia->autor </td>";
@@ -86,6 +88,7 @@ function mostrarNoticiasAdmin(){
         $msg .= "<td>
         <!--
             <form method=\"post\">
+                <input type=\"hidden\" name=\"id\" value=\"{$noticia->id}\">
                 <input type=\"hidden\" name=\"tituloTabla\" value=\"{$noticia->titulo}\">
                 <input type=\"hidden\" name=\"fechaTabla\" value=\"{$noticia->fecha}\">
                 <input type=\"hidden\" name=\"autorTabla\" value=\"{$noticia->autor}\">
@@ -97,15 +100,14 @@ function mostrarNoticiasAdmin(){
             </form>
         -->
             <form method=\"post\" class=\"form-del-tabla\">
-                <input type=\"hidden\" name=\"noticiaTabla\" value=\"{$noticia->titulo}\">
+                <input type=\"hidden\" name=\"noticiaTabla\" value=\"{$noticia->id}\">
                 <button type=\"button\" class=\"modal-btn-del\">
                     <i class=\"bx bx-trash\"></i>
                 </button>
             </form>
         </td></tr>";
     }
-    $msg .= "</table>\n";
-
+    $msg .= "</tbody></table>\n";
     return $msg;
 }
 
@@ -169,7 +171,7 @@ function validarDelUser($usuario): bool {
 // Fución para validar la eliminación de noticias
 function validarDelNot($noticia):bool {
     $db = AccesoDatos::getModelo();
-    return $db->borrarNoticia($noticia->titulo);
+    return $db->borrarNoticia($noticia->id);
 }
 
 function verPerfil(){

@@ -1,7 +1,7 @@
 <?php
 class Noticia
 {
-    private $noticia_id;
+    private $id;
     private $titulo;
     private $contenido;
     private $autor;
