@@ -16,18 +16,18 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", e => {
             e.preventDefault();
 
-            const formFila = btn.closest("form");
-            const usuario = formFila.querySelector("input[name='usuarioTabla']").value;
+            const formFila = btn.closest(".form-del-tabla");
+            const noticia = formFila.querySelector("input[name='noticiaTabla']").value;
 
             // Insertar usuario en el modal
-            let inputUsuario = modalDel.querySelector("input[name='usuario']");
-            if (!inputUsuario) {
-                inputUsuario = document.createElement("input");
-                inputUsuario.type = "hidden";
-                inputUsuario.name = "usuario";
-                modalDel.querySelector("form").appendChild(inputUsuario);
+            let inputNoticia = modalDel.querySelector("input[name='noticia']");
+            if (!inputNoticia) {
+                inputNoticia = document.createElement("input");
+                inputNoticia.type = "hidden";
+                inputNoticia.name = "noticia";
+                modalDel.querySelector("form").appendChild(inputNoticia);
             }
-            inputUsuario.value = usuario;
+            inputNoticia.value = noticia;
 
             openModal(modalDel);
         });
