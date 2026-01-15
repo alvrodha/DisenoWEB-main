@@ -40,7 +40,7 @@ VALUES
 ('juan@gmail.com', 'juan', '$2y$10$gX1KzAg6GFhGIk8BbQ54BOB6Gf07rNt.XTZrwNa0OTPtgb2teE.Pi ', 0, 6, 0, 5, 2, 1, 32, 'Juan', 'Pérez', 'Martín'),
 ('maria@gmail.com', 'maria', '$2y$10$g5pavdOt4y8aNU8BZRRdauDMmsK0cJ6oXt1QWLWW7Ond6aSqWLCNu', 0, 6, 2, 3, 8, 0, 25, 'María', 'Sánchez', 'Ruiz'),
 ('carlos@gmail.com', 'carlos', '$2y$10$dLmzihMogthObOu76ZvRpuB1jQ0.l58yyH3NOjugC092dJRIdBVia', 1, 6, 4, 1, 0, 3, 41, 'Carlos', 'Fernández', 'Gómez'),
-('laura@gmail.com', 'laura', '$2y$10$1XmjQobUWz2nNu7/JYdSueYCV6cj4VaT8rTOv.iShqs1Ue3nM36S', 0, 6, 0, 1, 4, 0, 29, 'Laura', 'Díaz', 'Navarro')
+('laura@gmail.com', 'laura', '$2y$10$1XmjQobUWz2nNu7/JYdSueYCV6cj4VaT8rTOv.iShqs1Ue3nM36S', 0, 6, 0, 1, 4, 0, 29, 'Laura', 'Díaz', 'Navarro');
 
 INSERT INTO `noticias`
 (`titulo`, `autor`, `contenido`, `fecha`, `visible`)

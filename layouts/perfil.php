@@ -13,14 +13,14 @@ controlInteraccion();
     <link rel="icon" type="image/png" href="../web/IMG/favicon.png">
     <title>TetuScores</title>
     <link rel="stylesheet" href="../web/CSS/default.css"/>
-    <link rel="stylesheet" href="../web/CSS/home.css"/>
+    <link rel="stylesheet" href="../web/CSS/perfil.css"/>
 </head>
 <script src="../web/JS/background.js" defer></script>
 <body>
     <canvas id="background"></canvas>
     <div id="nav">
         <div id="logo">
-            <a href="../home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
+            <a href="home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
             <li><a href="calendario.php" class="active">CALENDARIO</a></li>
@@ -59,7 +59,7 @@ controlInteraccion();
     </div>
     <div id="navWindow">
         <div id="navWindowPath">
-            <a href="../index.php">Home</a>
+            <a href="../home.php">Home</a> &gt; <a href="perfil.php">Perfil</a>
         </div>
         <div id="navWindowUser">
             <div id="navWindowUserButton">
@@ -72,7 +72,6 @@ controlInteraccion();
 <div id="content">
     <h1>Perfil de jugador:</h1>
     <?php echo verPerfil(); ?>
-  BOTON DE CAMBIAR PERFIL AQUI
 </div>
 <div id="footer">
     <div class="footer-content">
@@ -86,89 +85,3 @@ controlInteraccion();
 </div>
 </body>
 </html>
-<style>
-/* Estilo general de la tabla */
-.table-users {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-/* Cabecera */
-.table-users thead {
-    background-color: #4CAF50;
-    color: white;
-    text-align: left;
-}
-
-/* Filas de la cabecera */
-.table-users thead th {
-    padding: 12px 15px;
-}
-
-/* Cuerpo de la tabla */
-.table-users tbody tr {
-    background-color: #f9f9f9;
-    transition: background 0.3s;
-}
-
-/* Filas impares */
-.table-users tbody tr:nth-child(odd) {
-    background-color: #eaf2f8;
-}
-
-/* Hover sobre la fila */
-.table-users tbody tr:hover {
-    background-color: #d1e7dd;
-}
-
-/* Celdas */
-.table-users tbody td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Links de acciones */
-.table-users tbody td a {
-    text-decoration: none;
-    color: #4CAF50;
-    font-weight: bold;
-    margin-right: 10px;
-    transition: color 0.3s;
-}
-
-.table-users tbody td a:hover {
-    color: #2e7d32;
-}
-
-/* Responsivo */
-@media screen and (max-width: 600px) {
-    .table-users {
-        width: 100%;
-        font-size: 14px;
-    }
-
-    .table-users thead {
-        display: none;
-    }
-
-    .table-users tbody td {
-        display: block;
-        text-align: right;
-        padding-left: 50%;
-        position: relative;
-    }
-
-    .table-users tbody td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 15px;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-}
-</style>

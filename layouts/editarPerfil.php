@@ -1,9 +1,54 @@
 <?php
 session_start();
-include_once ('../dat/AccesoDatos.php');
-include_once ('../app/funciones.php');
-//control de sesion
+include_once('../dat/AccesoDatos.php');
+include_once('../app/funciones.php');
+
+// Control de sesión
 controlInteraccion();
+
+$modelo = AccesoDatos::getModelo();
+
+if (!isset($_SESSION['email'])) {
+    header("Location: ../index.php");
+    exit;
+}
+
+$emailSesion = $_SESSION['email'];
+$usuario = $modelo->getUsuario($emailSesion);
+
+$mensaje = "";
+
+// PROCESAR FORMULARIO
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $nombre = trim($_POST['nombre']);
+    $ape1   = trim($_POST['ape1']);
+    $ape2   = trim($_POST['ape2']);
+    $edad   = intval($_POST['edad']);
+    $email  = trim($_POST['email']);
+
+    if ($nombre && $ape1 && $edad > 0 && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+        // Actualizar objeto
+        $usuario->nombre = $nombre;
+        $usuario->ape1   = $ape1;
+        $usuario->ape2   = $ape2;
+        $usuario->edad   = $edad;
+        $usuario->email  = $email;
+
+        // MÉTODO A CREAR EN AccesoDatos
+        $modelo->modificarPerfil($usuario->id_usuario, $usuario);
+
+        $_SESSION['email'] = $email;
+
+        // Redirigir a la página de perfil
+        header("Location: perfil.php");
+        exit(); // Muy importante para detener el script
+
+    } else {
+        $mensaje = "Datos inválidos ❌";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,15 +57,15 @@ controlInteraccion();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../web/IMG/favicon.png">
     <title>TetuScores</title>
-    <link rel="stylesheet" href="../web/CSS/default.css" />
-    <link rel="stylesheet" href="../web/CSS/equipos.css">
+    <link rel="stylesheet" href="../web/CSS/default.css"/>
+    <link rel="stylesheet" href="../web/CSS/editarPerfil.css"/>
 </head>
 <script src="../web/JS/background.js" defer></script>
 <body>
     <canvas id="background"></canvas>
     <div id="nav">
         <div id="logo">
-            <a href="home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
+            <a href="../home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
             <li><a href="calendario.php" class="active">CALENDARIO</a></li>
@@ -29,7 +74,7 @@ controlInteraccion();
             <li><a href="perfil.php">PERFIL</a></li>
         </ul>
     </div>
-        <div class="ticker-s24">
+    <div class="ticker-s24">
         <div class="ticker__wrap">
             <ul class="ticker__list">
                 <li class="ticker__item">Últimos resultados actualizados</li>
@@ -43,7 +88,6 @@ controlInteraccion();
                 <li class="ticker__item">Calendario de próximos partidos</li>
                 <li class="ticker__item">Estadísticas de jugadores actualizadas</li>
             </ul>
-            <!-- Copia automática para el loop -->
             <ul class="ticker__list">
                 <li class="ticker__item">   </li>
                 <li class="ticker__item">Nuevos partidos añadidos a Tetuscores</li>
@@ -58,70 +102,53 @@ controlInteraccion();
             </ul>
         </div>
     </div>
-        <div id="navWindow">
+    <div id="navWindow">
         <div id="navWindowPath">
-            <a href="../home.php">Home</a> &gt; <a href="equipos.php">Equipos</a>
+            <a href="../home.php">Home</a> &gt; <a href="perfil.php">Perfil</a>&gt; <a href="editarPerfil.php">Editar Perfil</a>
         </div>
         <div id="navWindowUser">
             <div id="navWindowUserButton">
                 <img src="../web/IMG/user.png">
-                <a href="../app/logout.php">Cerrar la sesión</a>
+                <a href="../app/logout.php">Cerrar la sesion</a>
             </div> 
         </div>
     </div>
-    <div id="content">
-    <div id="tarjeta01">
-        <h2>1ºASIR</h2>
-        <img src=" ../web/IMG/ESCUDOS/EQ-1ºASIR.png" alt="1ºASIR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=1'">
-    </div>
-    <div id="tarjeta02">
-        <h2>1ºB AF DUAL</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-1ºB-AF-DUAL.png" alt="1ºB AF DUAL Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=2'">
-    </div>
-    <div id="tarjeta03">
-        <h2>1ºB SMR</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-1ºBSMR.png" alt="1ºB SMR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=3'">
-    </div>
-    <div id="tarjeta04">
-        <h2>1ºDAW</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-1ºDAW.png" alt="1ºDAW Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=4'">
-    </div>
-    <div id="tarjeta05">
-        <h2>1ºDAM</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-1ºDAM.png" alt="1ºDAM Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=5'">
-    </div>
-    <div id="tarjeta06">
-        <h2>2ºASIR</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-2ºASIR.png" alt="2ºASIR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=6'">
-    </div>
-    <div id="tarjeta07">
-        <h2>2ºDAM</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-2ºDAM.png" alt="2ºDAM Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=7'">
-    </div>
-    <div id="tarjeta08">
-        <h2>2ºDAW</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-2ºDAW.png" alt="2ºDAW Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=8'">
-    </div>
-    <div id="tarjeta09">
-        <h2>2º SMR</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-2ºSMR.png" alt="2º SMR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=9'">
-    </div>
-    <div id="tarjeta10">
-        <h2>FPB</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-FPB.png" alt="FPB Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../PHP/equipo.php?id=10'">
+</div>
+
+<div id="content">
+    <h1>Editar perfil</h1>
+
+    <div class="perfil-card">
+        <?php if ($mensaje): ?>
+            <p class="mensaje"><?= $mensaje ?></p>
+        <?php endif; ?>
+
+        <form method="post" class="form-perfil">
+
+            <label>Nombre</label>
+            <input type="text" name="nombre" value="<?= htmlspecialchars($usuario->nombre) ?>" required>
+
+            <label>Primer apellido</label>
+            <input type="text" name="ape1" value="<?= htmlspecialchars($usuario->ape1) ?>" required>
+
+            <label>Segundo apellido</label>
+            <input type="text" name="ape2" value="<?= htmlspecialchars($usuario->ape2) ?>">
+
+            <label>Email</label>
+            <input type="email" name="email" value="<?= htmlspecialchars($usuario->email) ?>" required>
+
+            <label>Edad</label>
+            <input type="number" name="edad" min="1" max="100" value="<?= $usuario->edad ?>" required>
+
+            <div class="perfil-actions">
+                <button type="submit" class="btn">Guardar cambios</button>
+                <a href="perfil.php" class="btn btn-sec">Cancelar</a>
+            </div>
+
+        </form>
     </div>
 </div>
-    <div id="footer">
+<div id="footer">
     <div class="footer-content">
         <p>Contacto: <a href="mailto:jorgeparron2@gmail.com">jorgeparron2@gmail.com</a></p>
         <p>Teléfono: <a href="tel:+34644736788">+34 644 73 67 88</a></p>
@@ -130,6 +157,5 @@ controlInteraccion();
     <div class="footer-copy">
         <p>© 2025 TetuScores. Todos los derechos reservados.</p>
     </div>
-</div>
 </body>
 </html>

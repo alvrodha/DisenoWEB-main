@@ -178,8 +178,62 @@ function validarEditUser($id_usuario, $newUsuario):bool {
 
     return $db->modificarPerfil($id_usuario, $newUsuario);
 }
+function verPerfil() {
+    if (!isset($_SESSION['email'])) {
+        return "<p>Error: sesión no válida</p>";
+    }
 
-function verPerfil(){
+    $db = AccesoDatos::getModelo();
+    $email = $_SESSION['email'];
+
+    // Devuelve un objeto Usuario
+    $u = $db->getUsuario($email);
+
+    if (!$u) {
+        return "<p>No se pudo cargar el perfil.</p>";
+    }
+
+    // Evitar NULLs
+    $u->partidos    ??= 0;
+    $u->goles       ??= 0;
+    $u->asistencias ??= 0;
+    $u->faltas      ??= 0;
+    $u->intentos    ??= 0;
+
+    $estado = $u->bloqueado 
+        ? "<span class='estado bloqueado'>Bloqueado</span>" 
+        : "<span class='estado activo'>Activo</span>";
+
+    return "
+    <div class='perfil-card'>
+        <div class='perfil-header'>
+            <img src='../web/IMG/FotoPerfildefault.jpg' class='perfil-avatar'>
+            <div>
+                <h2>{$u->nombre} {$u->ape1} {$u->ape2}</h2>
+                <p>@{$u->usser}</p>
+                <p>Email: {$u->email}</p>
+                <p>Edad: {$u->edad}</p>
+                <p>Estado: $estado</p>
+            </div>
+        </div>
+
+        <h3>Estadísticas</h3>
+        <div class='stats-grid'>
+            <div>🏟 Partidos<br><strong>{$u->partidos}</strong></div>
+            <div>⚽ Goles<br><strong>{$u->goles}</strong></div>
+            <div>🎯 Asistencias<br><strong>{$u->asistencias}</strong></div>
+            <div>🚫 Faltas<br><strong>{$u->faltas}</strong></div>
+            <div>🔁 Intentos<br><strong>{$u->intentos}</strong></div>
+        </div>
+
+        <div class='perfil-actions'>
+            <a href='editarPerfil.php' class='btn'>Editar perfil</a>
+        </div>
+    </div>";
+}
+
+
+/*function verPerfil(){
     $email = $_SESSION['email'];
     $titulos = ["Usuario", "Apellido 1", "Apellido 2","Partidos", "Goles", "Asistencias", "Faltas"];
     $msg = "<table id='tablaUsuarios' class='table-users'>\n";
