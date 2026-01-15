@@ -143,6 +143,7 @@
     }
 
     // Función update para editar los datos del usuario
+    /*
     public function modificarPerfil($id_usuario, $newUsuario):bool{
         error_log("INTENTANDO MODIFICAR USUARIO: [" . $id_usuario . "]");
         try {
@@ -155,6 +156,36 @@
             $stmt->execute();
             error_log("FILAS MODIFICADAS: " . $stmt->rowCount());
             return $stmt->rowCount() >= 0; 
+        } catch (PDOException $e) {
+            error_log("Error al modificar usuario: " . $e->getMessage());
+            return false;
+        }
+    }
+    */
+    public function modificarPerfil($id_usuario, $newUsuario): bool {
+        try {
+            $sql = "UPDATE usuarios SET usser = ?, email = ?, nombre = ?, ape1 = ?, ape2 = ?, partidos = ?, goles = ?, asistencias = ?, faltas = ?, edad = ?";
+            $params = [
+                $newUsuario->usser,
+                $newUsuario->email,
+                $newUsuario->nombre,
+                $newUsuario->ape1,
+                $newUsuario->ape2,
+                $newUsuario->partidos,
+                $newUsuario->goles,
+                $newUsuario->asistencias,
+                $newUsuario->faltas,
+                $newUsuario->edad
+            ];
+            if ($newUsuario->passwd !== null) {
+                $sql .= ", passwd = ?";
+                $params[] = $newUsuario->passwd;
+            }
+            $sql .= " WHERE id_usuario = ?";
+            $params[] = $id_usuario;
+            $stmt = $this->dbh->prepare($sql);
+            $stmt->execute($params);
+            return true;
         } catch (PDOException $e) {
             error_log("Error al modificar usuario: " . $e->getMessage());
             return false;

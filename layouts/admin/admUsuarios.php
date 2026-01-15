@@ -22,10 +22,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: admUsuarios.php");
             exit;
             break;
+        // Dentro del switch ($accion) en admUsuarios.php:
+
         case "editar":
-            $usuario = definirUsr();
-            $newUsuario = definirNewUsr();
-            validarEditUser($usuario, $newUsuario);
+            $id_usuario = $_POST['id_usuario_edit'];
+            $newUsuario = new Usuario();
+            
+            // Mapeo de todos los campos del formulario
+            $newUsuario->usser       = trim($_POST['NewUsuario']);
+            $newUsuario->email       = trim($_POST['NewEmail']);
+            $newUsuario->nombre      = trim($_POST['NewNombre']);
+            $newUsuario->ape1        = trim($_POST['NewApe1']);
+            $newUsuario->ape2        = trim($_POST['NewApe2']);
+            $newUsuario->partidos    = intval($_POST['NewPartidos']);
+            $newUsuario->goles       = intval($_POST['NewGoles']);
+            $newUsuario->asistencias = intval($_POST['NewAsistencias']);
+            $newUsuario->faltas      = intval($_POST['NewFaltas']);
+            $newUsuario->edad        = intval($_POST['NewEdad']);
+            
+            // Lógica de contraseña: solo se cambia si el admin escribe algo
+            if (!empty($_POST['NewContraseña'])) {
+                $newUsuario->passwd = password_hash($_POST['NewContraseña'], PASSWORD_DEFAULT);
+            } else {
+                $newUsuario->passwd = null; // Indicamos al modelo que no actualice la clave
+            }
+            
+            if (validarEditUser($id_usuario, $newUsuario)) {
+                header("Location: admUsuarios.php?edit_success=1");
+            } else {
+                header("Location: admUsuarios.php?error=1");
+            }
             exit;
             break;
     }
@@ -127,11 +153,19 @@ function definirNewUsr() {
             <div id="modal-edit" class="modal">
                 <div class="modal-content">
                     <h2>Editar usuario</h2>
-                    <form class="modal-form" method="post">
+                    <form class="modal-form modal-form-edit" method="post">
                         <input type="hidden" name="accion" value="editar">
-                        <input type="text" name="NewUsuario" placeholder="Usuario">
-                        <input type="email" name="NewEmail" placeholder="Email">
-                        <input type="text" name="NewContraseña" placeholder="Contraseña">
+                        Usuario:<input type="text" name="NewUsuario" value="{}">
+                        Correo:<input type="email" name="NewEmail" value="Email">
+                        Contraseña:<input type="text" name="NewContraseña" value="Contraseña">
+                        Partidos:<input type="text" name="NewPartidos" value="Partidos">
+                        Goles:<input type="number" name="NewGoles" value="Goles">
+                        Asistencias<input type="number" name="NewAsistencias" value="Assitencias">
+                        Faltas:<input type="number" name="NewFaltas" value="Faltas">
+                        Edad:<input type="number" name="NewEdad" value="Edad">
+                        Nombre<input type="text" name="NewNombre" value="Nombre">
+                        Primer apellido:<input type="text" name="NewApe1" value="Apellido1">
+                        Segundo apellido:<input type="text" name="NewApe2" value="Apellido2">
                         <div class="modal-actions">
                             <input type="reset" class="close-modal" value="Cancelar">
                             <input type="submit" class="confirm" value="Guardar Cambios">

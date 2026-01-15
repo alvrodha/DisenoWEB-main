@@ -19,10 +19,19 @@ function mostrarUsusarios() {
         $msg .= "<td>{$usuario->passwd}</td>";
         $msg .= "<td>
             <form method=\"post\" class=\"form-edit-tabla\">
+                <input type=\"hidden\" name=\"idTabla\" value=\"{$usuario->id_usuario}\">
                 <input type=\"hidden\" name=\"usuarioTabla\" value=\"{$usuario->usser}\">
                 <input type=\"hidden\" name=\"emailTabla\" value=\"{$usuario->email}\">
                 <input type=\"hidden\" name=\"passwdTabla\" value=\"{$usuario->passwd}\">
-                <button type=\"submit\" class=\"modal-btn-edit\">
+                <input type=\"hidden\" name=\"partidosTabla\" value=\"{$usuario->partidos}\">
+                <input type=\"hidden\" name=\"golesTabla\" value=\"{$usuario->goles}\">
+                <input type=\"hidden\" name=\"asistenciasTabla\" value=\"{$usuario->asistencias}\">
+                <input type=\"hidden\" name=\"faltasTabla\" value=\"{$usuario->faltas}\">
+                <input type=\"hidden\" name=\"edadTabla\" value=\"{$usuario->edad}\">
+                <input type=\"hidden\" name=\"nombreTabla\" value=\"{$usuario->nombre}\">
+                <input type=\"hidden\" name=\"ape1Tabla\" value=\"{$usuario->ape1}\">
+                <input type=\"hidden\" name=\"ape2Tabla\" value=\"{$usuario->ape2}\">
+                <button type=\"button\" class=\"modal-btn-edit\">
                     <i class='bx bx-pencil'></i>
                 </button>
             </form>
@@ -164,10 +173,10 @@ function validarDelNot($noticia):bool {
 }
 
 // Función para editar los usuarios
-function validarEditUser($usuario, $newUsuario):bool {
+function validarEditUser($id_usuario, $newUsuario):bool {
     $db = AccesoDatos::getModelo();
 
-    return $db->modificarPerfil($usuario->id_usuario, $newUsuario);
+    return $db->modificarPerfil($id_usuario, $newUsuario);
 }
 
 function verPerfil(){
