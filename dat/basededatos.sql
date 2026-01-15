@@ -1,6 +1,7 @@
 CREATE database IF NOT EXISTS tetuan_league;
 --  SCRIPTS DE CREACION DE TABLA
 CREATE TABLE IF NOT EXISTS usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(100),
     usser VARCHAR(50),
     passwd VARCHAR(255),
@@ -15,6 +16,11 @@ CREATE TABLE IF NOT EXISTS usuarios (
     ape1 VARCHAR(50),
     ape2 VARCHAR(50)
 );
+
+-- Si no quieres volver a crear la bbss pon esto para actualizar los cambios
+ALTER TABLE `usuarios` 
+ADD `id_usuario` INT NOT NULL AUTO_INCREMENT FIRST, 
+ADD PRIMARY KEY (`id_usuario`);
 
 -- Tabla Noticia
 CREATE TABLE IF NOT EXISTS noticias (

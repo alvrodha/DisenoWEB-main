@@ -28,7 +28,7 @@
      public function __construct() {
         try {
             $dns = 'mysql:host='.SERVER_DB.';dbname='.DATABASE_NAME;
-            $this->dbh = new PDO($dns, DB_USER, 'root');
+            $this->dbh = new PDO($dns, DB_USER, '');
             $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "Error de conexión con la base de datos: ".$e->getMessage();
@@ -130,7 +130,7 @@
     public function borrarUsuario($usser): bool {
         error_log("INTENTANDO BORRAR USUARIO: [" . $usser . "]");
         try {
-            $stmt = $this->dbh->prepare("DELETE FROM usuarios WHERE usser = ?");
+            $stmt = $this->dbh->prepare("DELETE FROM usuarios WHERE id_usuario = ?");
             $stmt->bindValue(1, trim($usser), PDO::PARAM_STR);
             $stmt->execute();
             error_log("FILAS AFECTADAS: " . $stmt->rowCount());
@@ -141,8 +141,24 @@
             return false;
         }
     }
-    public function modificarPerfil(){
-        
+
+    // Función update para editar los datos del usuario
+    public function modificarPerfil($id_usuario, $newUsuario):bool{
+        error_log("INTENTANDO MODIFICAR USUARIO: [" . $id_usuario . "]");
+        try {
+            $sql = "UPDATE usuarios SET nombre = ?, email = ? WHERE id_usuario = ?";
+            $stmt = $this->dbh->prepare($sql);
+            $stmt->bindValue(1, $newUsuario->usser, PDO::PARAM_STR);
+            $stmt->bindValue(2, $newUsuario->passwd, PDO::PARAM_STR);
+            $stmt->bindValue(3, $newUsuario->email, PDO::PARAM_STR);
+            $stmt->bindValue(4, $id_usuario, PDO::PARAM_INT);
+            $stmt->execute();
+            error_log("FILAS MODIFICADAS: " . $stmt->rowCount());
+            return $stmt->rowCount() >= 0; 
+        } catch (PDOException $e) {
+            error_log("Error al modificar usuario: " . $e->getMessage());
+            return false;
+        }
     }
     public function checkEmail($email): bool {
         try {

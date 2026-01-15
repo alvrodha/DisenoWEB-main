@@ -8,8 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $accion = $_POST['accion'] ?? null;
     switch ($accion) {
         case "añadir":
-            $Newusuario = definirNewUsr();
-            if (validarAddUser($Newusuario)) {
+            $newusuario = definirNewUsr();
+            if (validarAddUser($newusuario)) {
                 header("Location: admUsuarios.php?success=1");
             } else {
                 header("Location: admUsuarios.php?error=1");
@@ -22,20 +22,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: admUsuarios.php");
             exit;
             break;
-        /*
         case "editar":
-            $usuario    = definirUsr();
+            $usuario = definirUsr();
             $newUsuario = definirNewUsr();
             validarEditUser($usuario, $newUsuario);
+            exit;
             break;
-        */
     }
 }
 
 // Definir usuario, a partir de la tabla generada
 function definirUsr() {
     $usuario = new Usuario();
-    $usuario->usser = trim($_POST['usuario'] ?? '');
+    $usuario->id_usuario = trim($_POST['usuario'] ?? '');
     return $usuario;
 } 
 
@@ -125,18 +124,14 @@ function definirNewUsr() {
             </div>
 
             <!-- MODAL EDITAR -->
-            <!--
             <div id="modal-edit" class="modal">
                 <div class="modal-content">
                     <h2>Editar usuario</h2>
                     <form class="modal-form" method="post">
                         <input type="hidden" name="accion" value="editar">
-                        <input type="hidden" name="usuario" id="edit-usuario">
-
-                        <input type="text" name="NewUsuario" id="edit-nombre">
-                        <input type="email" name="NewEmail" id="edit-email">
-                        <input type="text" name="NewContraseña" id="edit-passwd">
-
+                        <input type="text" name="NewUsuario" placeholder="Usuario">
+                        <input type="email" name="NewEmail" placeholder="Email">
+                        <input type="text" name="NewContraseña" placeholder="Contraseña">
                         <div class="modal-actions">
                             <input type="reset" class="close-modal" value="Cancelar">
                             <input type="submit" class="confirm" value="Guardar Cambios">
@@ -144,7 +139,6 @@ function definirNewUsr() {
                     </form>
                 </div>
             </div>
-            -->
         </div>
         <div class="contenido">
             <?= mostrarUsusarios() ?>  

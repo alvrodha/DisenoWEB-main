@@ -18,8 +18,7 @@ function mostrarUsusarios() {
         $msg .= "<td>{$usuario->email}</td>";
         $msg .= "<td>{$usuario->passwd}</td>";
         $msg .= "<td>
-        <!--
-            <form method=\"post\">
+            <form method=\"post\" class=\"form-edit-tabla\">
                 <input type=\"hidden\" name=\"usuarioTabla\" value=\"{$usuario->usser}\">
                 <input type=\"hidden\" name=\"emailTabla\" value=\"{$usuario->email}\">
                 <input type=\"hidden\" name=\"passwdTabla\" value=\"{$usuario->passwd}\">
@@ -27,9 +26,8 @@ function mostrarUsusarios() {
                     <i class='bx bx-pencil'></i>
                 </button>
             </form>
-        -->
             <form method=\"post\" class=\"form-del-tabla\">
-                <input type=\"hidden\" name=\"usuarioTabla\" value=\"{$usuario->usser}\">
+                <input type=\"hidden\" name=\"usuarioTabla\" value=\"{$usuario->id_usuario}\">
                 <button type=\"button\" class=\"modal-btn-del\">
                     <i class=\"bx bx-trash\"></i>
                 </button>
@@ -156,13 +154,20 @@ function validarAddNot($noticia):bool {
 // Función para validar la eliminación de un usuario
 function validarDelUser($usuario): bool {
     $db = AccesoDatos::getModelo();
-    return $db->borrarUsuario($usuario->usser);
+    return $db->borrarUsuario($usuario->id_usuario);
 }
 
 // Fución para validar la eliminación de noticias
 function validarDelNot($noticia):bool {
     $db = AccesoDatos::getModelo();
     return $db->borrarNoticia($noticia->id);
+}
+
+// Función para editar los usuarios
+function validarEditUser($usuario, $newUsuario):bool {
+    $db = AccesoDatos::getModelo();
+
+    return $db->modificarPerfil($usuario->id_usuario, $newUsuario);
 }
 
 function verPerfil(){
