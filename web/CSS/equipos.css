@@ -1,3 +1,5 @@
+/* CSS FILE: web/CSS/equipos.css
+/* Estilos para la página de equipos   */
 #content {
     display: flex;
     flex-wrap: wrap;           
@@ -10,7 +12,7 @@
 #content div {
     background-color: white;
     width: 19%;
-    min-height: 300px;
+    min-height: 20.3rem; /* Altura mínima para las tarjetas */
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
