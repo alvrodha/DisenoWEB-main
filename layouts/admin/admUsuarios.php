@@ -124,7 +124,7 @@ function definirNewUsr() {
                         <input type="hidden" name="accion" value="añadir">
                         <input type="text" name="NewUsuario" placeholder="Usuario">
                         <input type="email" name="NewEmail" placeholder="Email">
-                        <input type="text" name="NewContraseña" placeholder="Contraseña">
+                        <input type="text" name="NewContraseña" placeholder="Contraseña" minlength="9">
                         <div class="modal-actions">
                             <input type="reset" class="close-modal" value="Cancelar"></button>
                             <input type="submit" class="confirm" value="Añadir">
