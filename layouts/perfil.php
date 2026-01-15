@@ -20,7 +20,7 @@ controlInteraccion();
     <canvas id="background"></canvas>
     <div id="nav">
         <div id="logo">
-            <a href="../index.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
+            <a href="../home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
             <li><a href="calendario.php" class="active">CALENDARIO</a></li>
