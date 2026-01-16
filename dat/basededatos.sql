@@ -1,3 +1,4 @@
+-- SCRIPT DE CREACIÓN DE LA BASE DE DATOS 'tetuan_league'
 CREATE database IF NOT EXISTS tetuan_league;
 --  SCRIPTS DE CREACION DE TABLA
 CREATE TABLE IF NOT EXISTS usuarios (
@@ -17,11 +18,6 @@ CREATE TABLE IF NOT EXISTS usuarios (
     ape2 VARCHAR(50)
 );
 
--- Si no quieres volver a crear la bbss pon esto para actualizar los cambios
-ALTER TABLE `usuarios` 
-ADD `id_usuario` INT NOT NULL AUTO_INCREMENT FIRST, 
-ADD PRIMARY KEY (`id_usuario`);
-
 -- Tabla Noticia
 CREATE TABLE IF NOT EXISTS noticias (
     id_noticia INT AUTO_INCREMENT PRIMARY KEY,
@@ -31,6 +27,7 @@ CREATE TABLE IF NOT EXISTS noticias (
     fecha DATETIME,
     visible BOOLEAN
 );
+
 -- SCRIPT DE INSERCION
 INSERT INTO `usuarios` 
 (`email`, `usser`, `passwd`, `bloqueado`, `partidos`, `goles`, `asistencias`, `faltas`, `intentos`, `edad`, `nombre`, `ape1`, `ape2`) 
@@ -46,4 +43,3 @@ INSERT INTO `noticias`
 (`titulo`, `autor`, `contenido`, `fecha`, `visible`)
 VALUES
 ('pepe la lia', 'pepe', 'pepe la ha liado esta mañana', NOW(), true);
-
