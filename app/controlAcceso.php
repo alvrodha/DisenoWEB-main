@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Redirigir según tipo de usuario
             if ($usr->email === "root@gmail.com") {
                 header("Location: ../layouts/admin/administrador.php");
+                $_SESSION['administrador'] = 1;
             } else {
                 header("Location: ../layouts/home.php");
             }

@@ -1,6 +1,12 @@
 <?php
 session_start();
 include_once ('../../app/funciones.php');
+if(!isset($_SESSION['administrador'])){
+    session_unset();
+    session_destroy();
+    header("Location: /php/DisenoWEB-main/index.php");
+    exit();
+}
 // Control de sesion
 controlInteraccion();
 
