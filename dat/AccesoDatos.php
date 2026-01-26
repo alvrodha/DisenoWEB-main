@@ -117,7 +117,7 @@
     //addUsuario--> funcion insert para añadir usuarios 
     public function addUsuario($usuario): bool {
         try {
-            $stmt = $this->dbh->prepare("INSERT INTO usuarios (email, usser, passwd, rol) VALUES (?, ?, ?, 'default')");
+            $stmt = $this->dbh->prepare("INSERT INTO usuarios (email, usser, passwd) VALUES (?, ?, ?)");
             $stmt->execute([$usuario->email, $usuario->usser, $usuario->passwd]);
             return $stmt->rowCount() === 1;
         } catch (PDOException $e) {
