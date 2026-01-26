@@ -26,7 +26,7 @@ Aplicación web desarrollada en PHP para gestionar una pequeña liga de fútbol.
 - Formulario de modificación de datos tanto por parte del administrador como por parte del usuario.
 - Vista de invitado limitada.
 
-### 🛠️ Optativas personalizadas
+### Optativas personalizadas
 - Hasheo automático de contraseñas al registrar usuarios y al insertar los usuarios de prueba.
 - Sistema gestor de noticias (añadir, eliminar, editar y visualizar).
 - Sistema de modales (ventanas emergentes) en ambos paneles de administración para confirmar cambios, inserciones y eliminaciones.
@@ -35,11 +35,16 @@ Aplicación web desarrollada en PHP para gestionar una pequeña liga de fútbol.
 
 ## Base de datos
 
-###Creación
+### Usuarios de prueba
+(administraror) email: root@gmail.com   password: root
+(periodista)    email: ana@gmail.com    password: ana123
+(default)       email: juan@gmail.com   password: juan123
+
+### Creación
 - Script de creación e inserción en "/dat/basededatos.sql"
 - Las contraseñas se insertan hasheadas automáticamente, no es necesario un script adicional
 
-###Conexión
+### Conexión
 - Configurable en "/app/config.php"
 - database_name = tetuan_league
 - database_user = root

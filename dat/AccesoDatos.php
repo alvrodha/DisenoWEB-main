@@ -54,15 +54,6 @@
     }
     //addNoticia--> Funcion INSERT en la base de datos para los objetos noticia.
     public function addNoticia (Noticia $noticia) {
-        /*
-        $stmt_noticia = $this->dbh->prepare("INSERT INTO noticias (titulo, contenido, autor, fecha, visible) VALUES (?, ?, ?, ?, ?)");
-        $stmt_noticia->bindParam(1, $noticia->titulo);
-        $stmt_noticia->bindParam(2, $noticia->contenido);
-        $stmt_noticia->bindParam(3, $noticia->autor);
-        $stmt_noticia->bindParam(4, $noticia->fecha);
-        $stmt_noticia->bindParam(5, $noticia->visible);
-        return $stmt_noticia->execute();
-        */
         try {
             $stmt = $this->dbh->prepare("INSERT INTO noticias (`titulo`, `contenido`, `autor`, `fecha`, `visible`) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute([$noticia->titulo, $noticia->contenido, $noticia->autor, $noticia->fecha, $noticia->visible]);
