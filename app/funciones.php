@@ -224,7 +224,6 @@ function verPerfil() {
             <div>⚽ Goles<br><strong>{$u->goles}</strong></div>
             <div>🎯 Asistencias<br><strong>{$u->asistencias}</strong></div>
             <div>🚫 Faltas<br><strong>{$u->faltas}</strong></div>
-            <div>🔁 Intentos<br><strong>{$u->intentos}</strong></div>
         </div>
 
         <div class='perfil-actions'>

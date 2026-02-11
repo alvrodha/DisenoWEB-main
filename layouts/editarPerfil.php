@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div id="navWindow">
         <div id="navWindowPath">
-            <a href="../home.php">Home</a> &gt; <a href="perfil.php">Perfil</a>&gt; <a href="editarPerfil.php">Editar Perfil</a>
+            <a href="./home.php">Home</a> &gt; <a href="perfil.php">Perfil</a>&gt; <a href="editarPerfil.php">Editar Perfil</a>
         </div>
         <div id="navWindowUser">
             <div id="navWindowUserButton">
