@@ -4,7 +4,7 @@ session_start();
 session_unset();
 session_destroy();
 
-header("Location: /php/DisenoWEB-main/index.php");
+header("Location: ../index.php");
 exit();
 
 ?>
