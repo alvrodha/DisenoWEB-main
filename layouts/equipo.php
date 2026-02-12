@@ -2,34 +2,35 @@
 session_start();
 include_once ('../dat/AccesoDatos.php');
 include_once ('../app/funciones.php');
-//control de sesion
 controlInteraccion();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../web/IMG/favicon.png">
-    <title>TetuScores</title>
+    <title>TetuScores - Detalle de Equipo</title>
     <link rel="stylesheet" href="../web/CSS/default.css" />
-    <link rel="stylesheet" href="../web/CSS/equipos.css">
+    <link rel="stylesheet" href="../web/CSS/equipo.css">
 </head>
 <script src="../web/JS/background.js" defer></script>
 <body>
     <canvas id="background"></canvas>
+    
     <div id="nav">
         <div id="logo">
             <a href="home.php"><img src="../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
-            <li><a href="calendario.php" class="active">CALENDARIO</a></li>
-            <li><a href="equipos.php">EQUIPOS</a></li>
+            <li><a href="calendario.php">CALENDARIO</a></li>
+            <li><a href="equipos.php" class="active">EQUIPOS</a></li>
             <li><a href="clasificacion.php">CLASIFICACIÓN</a></li>
             <li><a href="perfil.php">PERFIL</a></li>
         </ul>
     </div>
-        <div class="ticker-s24">
+
+     <div class="ticker-s24">
         <div class="ticker__wrap">
             <ul class="ticker__list">
                 <li class="ticker__item">Últimos resultados actualizados</li>
@@ -58,69 +59,69 @@ controlInteraccion();
             </ul>
         </div>
     </div>
-        <div id="navWindow">
+
+    <div id="navWindow">
         <div id="navWindowPath">
-            <a href="./home.php">Home</a> &gt; <a href="equipos.php">Equipos</a>
+            <a href="./home.php">Home</a> > <a href="equipos.php">Equipos</a> > <a href="equipos.php">Equipos</a>
         </div>
         <div id="navWindowUser">
             <div id="navWindowUserButton">
                 <img src="../web/IMG/user.png">
                 <a href="../app/logout.php">Cerrar la sesión</a>
-            </div> 
+            </div>
+            </div>
+    </div>
+
+    <div id="content">
+    <div class="main-layout">
+        <div class="canvas-side">
+            <canvas id="campoFutbol" width="300" height="450"></canvas>
+        </div>
+
+        <div class="info-side">
+            <div class="container-equipo">
+                <div class="header-ficha">
+                    <img src="../web/IMG/ESCUDOS/EQ-1ºDAW.png" width="100px">
+                    <div>
+                        <h2>EQUIPO DEMO</h2>
+                        <p>Fútbol 5 - Torneo Tetuán</p>
+                    </div>
+                </div>
+
+                <div class="grid-stats">
+                    <div class="stat-box"><span>10</span>PJ</div>
+                    <div class="stat-box"><span>7</span>PG</div>
+                    <div class="stat-box"><span>1</span>PE</div>
+                    <div class="stat-box"><span>2</span>PP</div>
+                </div>
+
+                <table class="tabla-jugadores">
+                    <thead>
+                        <tr>
+                            <th>Nº</th>
+                            <th>Jugador</th>
+                            <th>Posición</th>
+                            <th>Goles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>García, Carlos</td><td>Portero</td><td>0</td></tr>
+                        <tr><td>4</td><td>Rodríguez, Luis</td><td>Cierre</td><td>2</td></tr>
+                        <tr><td>7</td><td>Martínez, Ana</td><td>Ala</td><td>5</td></tr>
+                        <tr><td>10</td><td>López, Javier</td><td>Pívot</td><td>12</td></tr>
+                    </tbody>
+                </table>
+
+                <div style="text-align: center;">
+                    <button class="btn-volver" onclick="location.href='equipos.php'">VOLVER A EQUIPOS</button>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="content">
-    <div id="tarjeta01">
-        <h2>1ºASIR</h2>
-        <img src=" ../web/IMG/ESCUDOS/EQ-1ºASIR.png" alt="1ºASIR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../layouts/equipo.php'">
-    </div>
-    <div id="tarjeta02">
-        <h2>1ºB AF DUAL</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-1ºB-AF-DUAL.png" alt="1ºB AF DUAL Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../layouts/equipo.php'">
-    </div>
-    <div id="tarjeta03">
-        <h2>1ºB SMR</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-1ºBSMR.png" alt="1ºB SMR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../layouts/equipo.php'">
-    </div>
-    <div id="tarjeta04">
-        <h2>1ºDAW</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-1ºDAW.png" alt="1ºDAW Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../layouts/equipo.php'">
-    </div>
-    <div id="tarjeta05">
-        <h2>1ºDAM</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-1ºDAM.png" alt="1ºDAM Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../layouts/equipo.php'">
-    </div>
-    <div id="tarjeta06">
-        <h2>2ºASIR</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-2ºASIR.png" alt="2ºASIR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../layouts/equipo.php'">
-    </div>
-    <div id="tarjeta07">
-        <h2>2ºDAM</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-2ºDAM.png" alt="2ºDAM Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../layouts/equipo.php'">
-    </div>
-    <div id="tarjeta08">
-        <h2>2ºDAW</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-2ºDAW.png" alt="2ºDAW Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../layouts/equipo.php'">
-    </div>
-    <div id="tarjeta09">
-        <h2>2º SMR</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-2ºSMR.png" alt="2º SMR Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../layouts/equipo.php'">
-    </div>
-    <div id="tarjeta10">
-        <h2>FPB</h2>
-        <img src="../web/IMG/ESCUDOS/EQ-FPB.png" alt="FPB Logo" width="150px">
-        <input type="button" value="Saber más" onclick="location.href='../layouts/equipo.php'">
-    </div>
 </div>
+
+<script src="../web/JS/campo.js"></script>
+
     <div id="footer">
     <div class="footer-content">
         <p>Contacto: <a href="mailto:jorgeparron2@gmail.com">jorgeparron2@gmail.com</a></p>
@@ -129,7 +130,6 @@ controlInteraccion();
     </div>
     <div class="footer-copy">
         <p>© 2025 TetuScores. Todos los derechos reservados.</p>
-    </div>
-</div>
+    </div></div>
 </body>
 </html>
