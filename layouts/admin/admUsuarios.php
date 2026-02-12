@@ -87,7 +87,7 @@ function definirNewUsr() {
     <link rel="icon" type="image/png" href="../../web/IMG/favicon.png">
     <title>TetuScores</title>
     <link rel="stylesheet" href="../../web/CSS/default.css"/>
-    <link rel="stylesheet" href="../../web/CSS/adm/admin.css"/>
+    <link rel="stylesheet" href="../../web/CSS/adm/admin_usuarios.css"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -96,7 +96,7 @@ function definirNewUsr() {
             <a href="administrador.php"><img src="../../web/IMG/Logo1.png" alt="Logo" width="200px"></a>
         </div>
         <ul id="nav-list">
-            <li><a href="admLiga.html">Liga</a></li>
+            <li><a href="administrador.php">Liga</a></li>
             <li><a href="admNoticias.php">Noticias</a></li>
             <li><a href="admUsuarios.php">Usuarios</a></li>
         </ul>

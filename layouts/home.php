@@ -64,12 +64,17 @@ controlInteraccion();
             <a href="home.php">Home</a>
         </div>
         <div id="navWindowUser">
-            <div id="navWindowUserButton">
-                <img src="../web/IMG/user.png">
-                <a href="../app/logout.php">Cerrar la sesión</a>
-            </div> 
+        <div id="accessibility-tools">
+            <button onclick="changeFontSize('decrease')" title="Disminuir letra">A-</button>
+            <button onclick="changeFontSize('increase')" title="Aumentar letra">A+</button>
         </div>
+        
+        <div id="navWindowUserButton">
+            <img src="../web/IMG/user.png" alt="User">
+            <a href="../app/logout.php">Cerrar la sesión</a>
+        </div> 
     </div>
+</div>
 
     
 <!-- Contenedor principal de todo el contenido de la página -->
@@ -198,6 +203,7 @@ controlInteraccion();
 
 </body>
 <script src="../web/JS/background.js"></script>
+<script src="../web/JS/accesibilidad.js" defer></script>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
     var noticias = document.querySelectorAll(".noticias-content p");
