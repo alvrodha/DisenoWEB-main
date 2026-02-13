@@ -233,46 +233,6 @@ function verPerfil() {
 }
 
 
-/*function verPerfil(){
-    $email = $_SESSION['email'];
-    $titulos = ["Usuario", "Apellido 1", "Apellido 2","Partidos", "Goles", "Asistencias", "Faltas"];
-    $msg = "<table id='tablaUsuarios' class='table-users'>\n";
-    $msg .= "<thead><tr>";
-    foreach ($titulos as $titulo) {
-        $msg .= "<th>$titulo</th>";
-    }
-    $msg .= "</tr></thead>";
-    $msg .= "<tbody>";
-
-    $db = AccesoDatos::getModelo();
-    $usuario = $db->getUsuario($email);
-   
-        $msg .= "<tr>";
-        $msg .= "<td>{$usuario->usser}</td>";
-        $msg .= "<td>{$usuario->ape1}</td>";
-        $msg .= "<td>{$usuario->ape2}</td>";
-        $msg .= "<td>{$usuario->partidos}</td>";
-        $msg .= "<td>{$usuario->goles}</td>";
-        $msg .= "<td>{$usuario->asistencias}</td>";
-        $msg .= "<td>{$usuario->faltas}</td>";
-        $msg .= "<td>
-        </td>";
-        $msg .= "</tr>";
-    
-    $msg .= "</tbody></table>\n";
-    return $msg;
-}
-
-// Función para validar la edición de un usuario
-/*
-function validarEditUser($usuario, $NewUsuario):bool {
-    $db = AccesoDatos::getModelo();
-
-
-    return true;
-}
-*/
-
 //Función de detección de interaccion con la pagina web
 Function controlInteraccion(){
     $timeout = 600; 
