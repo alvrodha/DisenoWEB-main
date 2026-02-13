@@ -1,0 +1,96 @@
+/* Importamos la base de admin para no repetir código */
+@import url("admin_noticias.css");
+
+/* ====== AJUSTES ESPECÍFICOS PARA USUARIOS ====== */
+
+/* Contenedor de la tabla para scroll horizontal si hay muchas columnas de stats */
+.contenido {
+    overflow-x: auto;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* ====== MODAL DE EDICIÓN (GRID DE 2 COLUMNAS) ====== */
+#modal-edit .modal-content {
+    width: 650px; /* Más ancho para las dos columnas */
+    max-width: 95%;
+}
+
+.modal-form-edit {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dividimos en dos columnas */
+    gap: 12px 20px;
+    align-items: center;
+}
+
+/* Título del modal ocupando ambas columnas */
+#modal-edit h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 10px;
+    color: var(--primary);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Estilo de las etiquetas dentro del modal */
+.modal-form-edit label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: -10px; /* Pegar la etiqueta al input */
+}
+
+/* Hacemos que los inputs ocupen su celda */
+.modal-form-edit input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* La sección de acciones (botones) debe ocupar las dos columnas abajo */
+.modal-form-edit .modal-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* ====== ESTILOS DE LA TABLA DE USUARIOS ====== */
+
+/* Pintar los encabezados de estadísticas de un color distinto */
+table th:nth-child(n+5) {
+    background-color: var(--accent);
+    text-align: center;
+}
+
+table td:nth-child(n+5) {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Iconos de Boxicons en la tabla */
+.bx {
+    vertical-align: middle;
+    font-size: 1.1rem;
+}
+
+.confirm {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.confirm:hover {
+    background-color: #070c5a;
+}

@@ -1,0 +1,72 @@
+/* ====== CONTENIDO ====== */
+#content {
+    margin: 2rem;
+}
+
+/* ====== TÍTULOS ====== */
+h1 {
+    text-align: center;
+    color: var(--color);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+h2 {
+    background-color: var(--color);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    display: inline-block;
+}
+
+/* ====== TABLA CALENDARIO ====== */
+.tabla-calendario {
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* cabecera */
+.tabla-calendario th {
+    background-color: #ececff;
+    font-weight: 600;
+    padding: 0.75rem;
+    color: var(--color);
+    letter-spacing: 0.3px;
+}
+
+/* celdas */
+.tabla-calendario td {
+    background-color: #f8f9fc;
+    padding: 0.8rem;
+    transition: background-color 0.2s ease;
+}
+
+/* líneas suaves */
+.tabla-calendario tr:not(:last-child) td {
+    border-bottom: 1px solid #e3e6f0;
+}
+
+/* separadores verticales */
+.tabla-calendario th:not(:last-child),
+.tabla-calendario td:not(:last-child) {
+    border-right: 1px solid #e3e6f0;
+}
+
+/* hover elegante */
+.tabla-calendario tbody tr:hover td {
+    background-color: #eef1ff;
+}
+
+/* celda destacada (día actual o evento) */
+.tabla-calendario .activo {
+    background-color: var(--color-secondary);
+    color: white;
+    font-weight: 600;
+}

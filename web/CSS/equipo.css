@@ -1,0 +1,145 @@
+/* ====== ESTILOS FICHA DE EQUIPO (CUADRADOS CON BORDES REDONDEADOS) ====== */
+
+.container-equipo {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    z-index: 1;
+    position: relative;
+}
+
+/* Cabecera: Cuadrada con bordes redondeados */
+.header-ficha {
+    background: #1c1d3d; /* Tu color principal */
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    border-radius: 15px; /* Bordes redondeados */
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-ficha img {
+    background: white;
+    padding: 10px;
+    border-radius: 12px; /* Redondeado más suave para el logo */
+    margin-right: 25px;
+}
+
+.header-ficha h2 {
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.header-ficha p {
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+/* Grid de Estadísticas */
+.grid-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    background: #415f7e; /* Tu color secundario */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px; /* Bordes redondeados */
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    background: #070c5a;
+    transform: translateY(-5px); /* Pequeño salto al pasar el ratón */
+}
+
+.stat-box span {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Tabla de Jugadores */
+.tabla-jugadores {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-collapse: separate; /* Necesario para redondear bordes de tabla */
+    border-spacing: 0;
+    color: #1c1d3d;
+    border-radius: 15px; /* Bordes redondeados */
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.tabla-jugadores th {
+    background: #070c5a;
+    color: white;
+    padding: 18px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.tabla-jugadores td {
+    padding: 15px 18px;
+    border-bottom: 1px solid #eee;
+}
+
+.tabla-jugadores tr:last-child td {
+    border-bottom: none;
+}
+
+/* Botón Volver */
+.btn-volver {
+    display: inline-block;
+    background: #1c1d3d;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px; /* Bordes totalmente redondeados (tipo píldora) */
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.btn-volver:hover {
+    background: #070c5a;
+}
+.main-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap; /* Para móviles */
+}
+
+.canvas-side {
+    background: #2e5a2e;
+    padding: 15px;
+    border-radius: 15px;
+    border: 4px solid #1c1d3d;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.info-side {
+    flex: 1;
+    max-width: 700px;
+}
+
+#campoFutbol {
+    display: block;
+    border-radius: 5px;
+}
+
+/* Ajuste del contenedor original para que no tenga márgenes excesivos */
+.container-equipo {
+    margin: 0 auto;
+}
